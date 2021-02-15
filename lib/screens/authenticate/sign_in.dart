@@ -1,3 +1,4 @@
+import 'package:cooking_app/screens/authenticate/sign_form.dart';
 import 'package:cooking_app/screens/authenticate/social.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
 import 'package:flutter/material.dart';
@@ -16,51 +17,57 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Sign in",
-              style: TextStyle(
-                color: HexColor("#042E84"),
-                decoration: TextDecoration.none,
+        child: Padding(
+          padding:  EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Sign in",
+                style: TextStyle(
+                  color: HexColor("#042E84"),
+                  decoration: TextDecoration.none,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            RaisedButton(
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    color: HexColor("#042E84"),
+              SizedBox(
+                height: 20.0,
+              ),
+              SignForm(),
+              RaisedButton(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: HexColor("#042E84"),
+                    ),
                   ),
-                ),
-                onPressed: () async {
-                    vmCooking.signInAnon();
-                    print(vmCooking.uid);
-                }),
-            SizedBox(
-              height: 20.0,
-            ),
-             Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Social(
-                      icon: "assets/icons/google.svg",
-                      press: () {},
-                    ),
-                    Social(
-                      icon: "assets/icons/facebook.svg",
-                      press: () {},
-                    ),
-                    Social(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                  ],
-                ),
-          ],
+                  onPressed: () async {
+                      vmCooking.signInAnon();
+                      print(vmCooking.uid);
+                  }),
+              SizedBox(
+                height: 20.0,
+              ),
+               Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Social(
+                        icon: "assets/icons/google.svg",
+                        press: () {},
+                      ),
+                      Social(
+                        icon: "assets/icons/facebook.svg",
+                        press: () {},
+                      ),
+                      Social(
+                        icon: "assets/icons/twitter.svg",
+                        press: () {},
+                      ),
+                    ],
+                  ),
+            ],
+          ),
         ));
   }
 }

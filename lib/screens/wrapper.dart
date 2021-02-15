@@ -1,4 +1,5 @@
 import 'package:cooking_app/screens/authenticate/authenticate.dart';
+import 'package:cooking_app/screens/authenticate/signIn_screen.dart';
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,6 @@ import 'package:provider/provider.dart';
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SignIn();
+    return SignInScreen();
   }
 }
