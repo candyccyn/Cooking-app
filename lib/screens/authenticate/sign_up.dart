@@ -1,4 +1,4 @@
-import 'package:cooking_app/screens/signup/signup_form.dart';
+import 'package:cooking_app/screens/authenticate/signup_form.dart';
 import 'package:flutter/material.dart';
 class Body extends StatelessWidget {
   @override

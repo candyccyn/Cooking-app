@@ -1,6 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_form.dart';
 import 'package:cooking_app/screens/authenticate/social.dart';
-import 'package:cooking_app/screens/signup/signup_screen.dart';
+import 'package:cooking_app/screens/authenticate/signup_screen.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';

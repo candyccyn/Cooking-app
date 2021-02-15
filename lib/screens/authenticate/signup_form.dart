@@ -1,7 +1,6 @@
 import 'package:cooking_app/screens/authenticate/error.dart';
 import 'package:flutter/material.dart';
 
-
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
@@ -34,8 +33,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return Form(
         key: _formKey,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               buildUsernameFormField(),
@@ -43,12 +41,10 @@ class _SignUpFormState extends State<SignUpForm> {
               buildEmailFormField(),
               SizedBox(height: 30),
               buildPasswordFormField(),
-            SizedBox(height: 30),
+              SizedBox(height: 30),
               buildConfirmPasswordFormField(),
               FormError(errors: errors),
-             SizedBox(height: 30),
-            
-
+              SizedBox(height: 30),
               RaisedButton(
                   child: Text(
                     "Register",
@@ -58,12 +54,10 @@ class _SignUpFormState extends State<SignUpForm> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                    //valid
-             
-                  }
+                      //valid
 
-                  }
-                  ),
+                    }
+                  }),
             ],
           ),
         ));
@@ -86,26 +80,26 @@ class _SignUpFormState extends State<SignUpForm> {
         return null;
       },
       decoration: InputDecoration(
-          labelText: "username",
-          hintText: "enter username",
-          filled: true,
-          fillColor: Color(0xFFFFECDF),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: Icon(Icons.person),
-          enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-          gapPadding: 10,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-        ),),
-          
+        labelText: "username",
+        hintText: "enter username",
+        filled: true,
+        fillColor: Color(0xFFFFECDF),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(Icons.person),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        //   gapPadding: 10,
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        // ),
+      ),
     );
   }
 
@@ -130,24 +124,24 @@ class _SignUpFormState extends State<SignUpForm> {
       },
       decoration: InputDecoration(
         filled: true,
-          fillColor: Color(0xFFFFECDF),
+        fillColor: Color(0xFFFFECDF),
         labelText: "Confirm password",
         hintText: "Re-entered a password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-          gapPadding: 10,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        //   gapPadding: 10,
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        // ),
       ),
     );
   }
@@ -179,22 +173,22 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: "Password",
         hintText: "enter a password",
         filled: true,
-          fillColor: Color(0xFFFFECDF),
+        fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-          gapPadding: 10,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        //   gapPadding: 10,
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        // ),
       ),
     );
   }
@@ -206,7 +200,8 @@ class _SignUpFormState extends State<SignUpForm> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: "Please Enter your email");
-        } else if ( RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
+        } else if (RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
           removeError(error: "Please Enter Valid Email");
         }
         return null;
@@ -215,7 +210,8 @@ class _SignUpFormState extends State<SignUpForm> {
         if (value.isEmpty) {
           addError(error: "Please Enter your email");
           return "";
-        } else if (!( RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")).hasMatch(value)) {
+        } else if (!(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))
+            .hasMatch(value)) {
           addError(error: "Please Enter Valid Email");
           return "";
         }
@@ -228,23 +224,20 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: "enter an email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.mail),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-          gapPadding: 10,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: Color(0xFF757575),
-          ),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        //   gapPadding: 10,
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(30),
+        //   borderSide: BorderSide(
+        //     color: Color(0xFF757575),
+        //   ),
+        // ),
       ),
     );
   }
-
-
-
 }

@@ -1,4 +1,4 @@
-import 'package:cooking_app/screens/signup/body.dart';
+import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {

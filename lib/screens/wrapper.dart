@@ -1,7 +1,7 @@
 import 'package:cooking_app/screens/authenticate/authenticate.dart';
-import 'package:cooking_app/screens/authenticate/signIn_screen.dart';
+import 'package:cooking_app/screens/authenticate/signin_screen.dart';
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
-import 'package:cooking_app/screens/signup/signup_screen.dart';
+import 'package:cooking_app/screens/authenticate/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
