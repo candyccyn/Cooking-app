@@ -1,0 +1,8 @@
+import 'package:cooking_app/screens/authenticate/signIn_screen.dart';
+import 'package:cooking_app/screens/signup/signup_screen.dart';
+import 'package:flutter/widgets.dart';
+
+final Map<String, WidgetBuilder> routes = {
+  SignInScreen.routeName: (context) => SignInScreen(),
+  SignUpScreen.routeName: (context) => SignUpScreen(),
+};

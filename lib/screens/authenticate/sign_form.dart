@@ -93,8 +93,10 @@ class _SignFormState extends State<SignForm> {
         labelText: "password",
         suffixIcon: Icon(Icons.lock),
         hintText: "enter password",
-         floatingLabelBehavior: FloatingLabelBehavior.always,
-         contentPadding: EdgeInsets.symmetric(horizontal:42,vertical:20),
+        filled: true,
+        fillColor: Color(0xFFFFECDF),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: BorderSide(
@@ -102,13 +104,12 @@ class _SignFormState extends State<SignForm> {
           ),
           gapPadding: 10,
         ),
-          focusedBorder: OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: BorderSide(
             color: Color(0xFF757575),
           ),
-          ),
-       
+        ),
       ),
     );
   }
@@ -134,12 +135,14 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       decoration: InputDecoration(
-          labelText: "username",
-          hintText: "enter username",
-          suffixIcon: Icon(Icons.person),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            contentPadding: EdgeInsets.symmetric(horizontal:42,vertical:20),
-          enabledBorder: OutlineInputBorder(
+        labelText: "username",
+        hintText: "enter username",
+        filled: true,
+        fillColor: Color(0xFFFFECDF),
+        suffixIcon: Icon(Icons.person),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: BorderSide(
             color: Color(0xFF757575),
@@ -151,9 +154,7 @@ class _SignFormState extends State<SignForm> {
           borderSide: BorderSide(
             color: Color(0xFF757575),
           ),
-        
-          
-          ),
+        ),
       ),
     );
   }
