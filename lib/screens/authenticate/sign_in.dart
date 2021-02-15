@@ -1,3 +1,4 @@
+import 'package:cooking_app/screens/authenticate/social.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -41,7 +42,24 @@ class _SignInState extends State<SignIn> {
                 }),
             SizedBox(
               height: 20.0,
-            )
+            ),
+             Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Social(
+                      icon: "assets/icons/google.svg",
+                      press: () {},
+                    ),
+                    Social(
+                      icon: "assets/icons/facebook.svg",
+                      press: () {},
+                    ),
+                    Social(
+                      icon: "assets/icons/twitter.svg",
+                      press: () {},
+                    ),
+                  ],
+                ),
           ],
         ));
   }
