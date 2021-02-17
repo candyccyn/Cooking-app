@@ -36,11 +36,11 @@ class _SignInState extends State<SignIn> {
               SizedBox(
                 height: 50.0,
               ),
-                Text(
-                  "Sign in username and password \nor continue with social media",
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
+              Text(
+                "Sign in username and password \nor continue with social media",
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
                 height: 30.0,
               ),
               SignForm(),
@@ -55,13 +55,13 @@ class _SignInState extends State<SignIn> {
               //       vmCooking.signInAnon();
               //       print(vmCooking.uid);
               //     }),
-              RoundedButton(text: "Login",
-              press: ()
-              async {
-                    vmCooking.signInAnon();
-                    print(vmCooking.uid);
-
-              },),
+              RoundedButton(
+                text: "Login",
+                press: () async {
+                  vmCooking.signInAnon();
+                  print(vmCooking.uid);
+                },
+              ),
               SizedBox(
                 height: 20.0,
               ),
@@ -93,8 +93,8 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(fontSize: 15),
                   ),
                   GestureDetector(
-                      onTap: () {},
-                      //=>Navigator.pushNamed(context, SignUpScreen.routeName),
+                      onTap: () =>
+                          Navigator.pushNamed(context, SignUpScreen.routeName),
                       child: Text("Sign up ",
                           style: TextStyle(
                               fontSize: 15,

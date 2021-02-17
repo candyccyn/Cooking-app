@@ -1,4 +1,6 @@
+import 'package:cooking_app/roundedbutton.dart';
 import 'package:cooking_app/screens/authenticate/error.dart';
+import 'package:cooking_app/screens/authenticate/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -45,19 +47,33 @@ class _SignUpFormState extends State<SignUpForm> {
               buildConfirmPasswordFormField(),
               FormError(errors: errors),
               SizedBox(height: 30),
-              RaisedButton(
-                  child: Text(
-                    "Register",
-                    style: TextStyle(
-                      color: Color(0xFFFF7643),
-                    ),
+              RoundedButton(
+                text: "Sign up",
+                press: () {
+                  // if (_formKey.currentState.validate()) {
+                  //   //valid
+                   
+                  // }
+                },
+              ),
+              SizedBox(height:30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account ? ",
+                    style: TextStyle(fontSize: 15),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      //valid
-
-                    }
-                  }),
+                  GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, SignInScreen.routeName),
+                      child: Text("Sign in ",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xFFFFA925),
+                              fontWeight: FontWeight.bold))),
+                ],
+              ),
             ],
           ),
         ));
@@ -86,19 +102,19 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.person),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        //   gapPadding: 10,
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        // ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+          gapPadding: 10,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+        ),
       ),
     );
   }
@@ -129,19 +145,19 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: "Re-entered a password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        //   gapPadding: 10,
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        // ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+          gapPadding: 10,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+        ),
       ),
     );
   }
@@ -176,19 +192,19 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        //   gapPadding: 10,
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        // ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+          gapPadding: 10,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+        ),
       ),
     );
   }
@@ -224,19 +240,19 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: "enter an email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.mail),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        //   gapPadding: 10,
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(30),
-        //   borderSide: BorderSide(
-        //     color: Color(0xFF757575),
-        //   ),
-        // ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+          gapPadding: 10,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Color(0xFF757575),
+          ),
+        ),
       ),
     );
   }
