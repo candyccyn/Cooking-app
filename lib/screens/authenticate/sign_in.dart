@@ -1,3 +1,4 @@
+import 'package:cooking_app/roundedbutton.dart';
 import 'package:cooking_app/screens/authenticate/sign_form.dart';
 import 'package:cooking_app/screens/authenticate/social.dart';
 import 'package:cooking_app/screens/authenticate/signup_screen.dart';
@@ -28,25 +29,39 @@ class _SignInState extends State<SignIn> {
                 "Sign in",
                 style: TextStyle(
                   fontSize: 30,
-                  color: Color(0xFFFF7643),
+                  color: Color(0xFF012060),
                   decoration: TextDecoration.none,
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 50.0,
+              ),
+                Text(
+                  "Sign in username and password \nor continue with social media",
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                height: 30.0,
               ),
               SignForm(),
-              RaisedButton(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Color(0xFFFF7643),
-                    ),
-                  ),
-                  onPressed: () async {
+              // RaisedButton(
+              //     child: Text(
+              //       "Login",
+              //       style: TextStyle(
+              //         color: Color(0xFF012060),
+              //       ),
+              //     ),
+              //     onPressed: () async {
+              //       vmCooking.signInAnon();
+              //       print(vmCooking.uid);
+              //     }),
+              RoundedButton(text: "Login",
+              press: ()
+              async {
                     vmCooking.signInAnon();
                     print(vmCooking.uid);
-                  }),
+
+              },),
               SizedBox(
                 height: 20.0,
               ),
@@ -75,15 +90,15 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Text(
                     "Don't have an account ? ",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 15),
                   ),
                   GestureDetector(
                       onTap: () {},
                       //=>Navigator.pushNamed(context, SignUpScreen.routeName),
                       child: Text("Sign up ",
                           style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xFFFF7643),
+                              fontSize: 15,
+                              color: Color(0xFFFFA925),
                               fontWeight: FontWeight.bold))),
                 ],
               ),

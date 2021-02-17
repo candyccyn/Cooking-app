@@ -57,7 +57,7 @@ class _SignFormState extends State<SignForm> {
                   onTap: () {},
                   child: Text(
                     "Forgot pasword",
-                    style: TextStyle(decoration: TextDecoration.underline),
+                    style: TextStyle(color:Color(0xff091D67),decoration: TextDecoration.underline),
                   )),
             ],
           ),
