@@ -1,4 +1,5 @@
-import 'package:cooking_app/screens/authenticate/error.dart';
+import 'package:cooking_app/widgets/authentication_widgets/error.dart';
+
 import 'package:flutter/material.dart';
 
 class SignForm extends StatefulWidget {

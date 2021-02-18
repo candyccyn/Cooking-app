@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Content extends StatelessWidget {
-  const Content({
+class WelcomeContent extends StatelessWidget {
+  const WelcomeContent({
     Key key,
     this.text,
     this.image,
@@ -22,7 +22,7 @@ class Content extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Text(text,textAlign: TextAlign.center,),
+        Text(text, textAlign: TextAlign.center,),
         Image.asset(
           image,
           height: 320,

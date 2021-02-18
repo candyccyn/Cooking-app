@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class Social extends StatelessWidget {
   const Social({
     Key key, this.icon, this.press,

@@ -1,6 +1,7 @@
-import 'package:cooking_app/roundedbutton.dart';
-import 'package:cooking_app/screens/authenticate/error.dart';
-import 'package:cooking_app/screens/authenticate/signin_screen.dart';
+import 'package:cooking_app/screens/authenticate/sign_in.dart';
+import 'package:cooking_app/widgets/authentication_widgets/error.dart';
+import 'package:cooking_app/widgets/shared/roundedbutton.dart';
+
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -28,7 +29,7 @@ class _SignUpFormState extends State<SignUpForm> {
       setState(() {
         errors.remove(error);
       });
-  }
+  }     // TODO delete these 2 function and implement them in viewmodel
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ));
   }
 
+  // TODO reduce redundant
   TextFormField buildUsernameFormField() {
     return TextFormField(
       onSaved: (newValue) => username = newValue,
