@@ -7,10 +7,11 @@ class CookingUserViewModel {
 
 
   void signInAnon() async {
+    _cookingUser = await _auth.signInAnon();
+  }
 
-    dynamic result = await _auth.signInAnon();
-
-    _cookingUser = result;
+  void signInEmail(String email, String password) async {
+    _cookingUser = await _auth.signInEmail(email, password);
   }
 
   String get uid {

@@ -1,6 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
-import 'package:cooking_app/widgets/authentication_widgets/signup_widgets/sign_form.dart';
+import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/social.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
@@ -40,7 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50.0,
+                    height: 30.0,
                   ),
                   Text(
                     "Sign in username and password \nor continue with social media",
@@ -53,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   RoundedButton(
                     text: "Login",
                     press: () async {
-                      vmCooking.signInAnon();
+                      vmCooking.signInEmail("teevisit_kn@hotmail.com", "abc123");
                       print(vmCooking.uid);
                     },
                   ),
