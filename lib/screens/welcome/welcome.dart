@@ -29,9 +29,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   flex: 4,
                   child: PageView.builder(
                     onPageChanged: (value) {
+                      setState(() {
                       welcomeVM.currentIndex = value;
                       print(welcomeVM.currentIndex);
                       print(value);
+                       });
                     },
                     itemCount: welcomeVM.getDataLength(),
                     itemBuilder: (context, index) => WelcomeContent(
