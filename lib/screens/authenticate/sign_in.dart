@@ -1,7 +1,8 @@
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
-import 'package:cooking_app/widgets/authentication_widgets/social.dart';
+import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
+
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
 import 'package:flutter/material.dart';
@@ -67,16 +68,19 @@ class _SignInScreenState extends State<SignInScreen> {
                         icon: "assets/icons/google.svg",
                         press: () async {
                           await vmCooking.signInGoogle();
-                          print(vmCooking.uid);
                         },
                       ),
                       Social(
                         icon: "assets/icons/facebook.svg",
-                        press: () {},           // TODO implement auth service
+                        press: () async {
+                          await vmCooking.signInFacebook();
+                        },           // TODO implement auth service
                       ),
                       Social(
                         icon: "assets/icons/twitter.svg",
-                        press: () {},           // TODO implement auth service
+                        press: () async {
+                          await vmCooking.signInTwitter();
+                        },           // TODO implement auth service
                       ),
                     ],
                   ),

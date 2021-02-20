@@ -1,11 +1,11 @@
 import 'package:cooking_app/models/cooking_user.dart';
 import 'package:cooking_app/services/auth.dart';
-import 'package:flutter/material.dart';
 
 class CookingUserViewModel {
   CookingUser _cookingUser;
   AuthService _auth = AuthService();
 
+  // List... _socialLogin = [];
 
   void signInAnon() async {
     _cookingUser = await _auth.signInAnon();
@@ -17,6 +17,14 @@ class CookingUserViewModel {
 
   void signInGoogle() async {
     _cookingUser = await _auth.signInGoogle();
+  }
+
+  void signInFacebook() async {
+    return null;// TODO implement auth service
+  }
+
+  void signInTwitter() async {
+    return null;// TODO implement auth service
   }
 
   String get uid {

@@ -1,4 +1,5 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
+import 'package:cooking_app/view_models/welcome_view_model.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:cooking_app/widgets/welcome_widgets/welcome_content.dart';
 
@@ -12,12 +13,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  int current = 0;
-  List<Map<String, String>> img = [
-    {"text": "welcome", "image": "assets/images/cooking1.png"},
-    {"text": "to", "image": "assets/images/cooking2.png"},
-    {"text": "cooking", "image": "assets/images/cooking3.png"},
-  ];  // TODO move these data into viewmodel
+  WelcomeViewModel welcomeVM = WelcomeViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +29,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   flex: 4,
                   child: PageView.builder(
                     onPageChanged: (value) {
-                      setState(() {
-                        current = value;
-                      });
+                      welcomeVM.currentIndex = value;
+                      print(welcomeVM.currentIndex);
+                      print(value);
                     },
-                    itemCount: img.length,
+                    itemCount: welcomeVM.getDataLength(),
                     itemBuilder: (context, index) => WelcomeContent(
-                      image: img[index]["image"],
-                      text: img[index]["text"],
+                      image: welcomeVM.getImg(index),
+                      text: welcomeVM.getText(index),
                     ),
                   ),
                 ),
@@ -51,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
-                              img.length, (index) => buildDot(index: index))),
+                              welcomeVM.getDataLength(), (index) => buildDot(index: index))),
                       Spacer(flex:3),
                       RoundedButton(
                         text:"Get start",
@@ -78,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       height: 10,
       width: 10,
       decoration: BoxDecoration(
-          color: current == index ? Color(0xffFDDD5C) : Color(0xffC4C4C4),
+          color: welcomeVM.currentIndex == index ? Color(0xffFDDD5C) : Color(0xffC4C4C4),
           borderRadius: BorderRadius.circular(50)),
     );
   }

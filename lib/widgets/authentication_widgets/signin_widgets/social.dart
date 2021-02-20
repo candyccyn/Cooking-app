@@ -9,7 +9,6 @@ class Social extends StatelessWidget {
   final String icon;
   final Function press;
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
