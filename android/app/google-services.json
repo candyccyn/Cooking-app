@@ -15,34 +15,13 @@
       },
       "oauth_client": [
         {
-          "client_id": "17783041618-037h3gd8n0pchp345tv3k4gmjsd1c86r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBQJx-hskHuDBEYlynMcBEyn1uOAVIZ26I"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "17783041618-037h3gd8n0pchp345tv3k4gmjsd1c86r.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:17783041618:android:1ed8fe772eab3e2506398b",
-        "android_client_info": {
-          "package_name": "com.sda.cooking_login"
-        }
-      },
-      "oauth_client": [
+          "client_id": "17783041618-4jeu8br73dq6copem4jlvr2h887urmjl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sda.cooking_app",
+            "certificate_hash": "d9bd8562fa97a6b37c42dfa63b2d61e9fa437fea"
+          }
+        },
         {
           "client_id": "17783041618-037h3gd8n0pchp345tv3k4gmjsd1c86r.apps.googleusercontent.com",
           "client_type": 3

@@ -1,5 +1,6 @@
 import 'package:cooking_app/models/cooking_user.dart';
 import 'package:cooking_app/services/auth.dart';
+import 'package:flutter/material.dart';
 
 class CookingUserViewModel {
   CookingUser _cookingUser;
@@ -12,6 +13,10 @@ class CookingUserViewModel {
 
   void signInEmail(String email, String password) async {
     _cookingUser = await _auth.signInEmail(email, password);
+  }
+
+  void signInGoogle() async {
+    _cookingUser = await _auth.signInGoogle();
   }
 
   String get uid {

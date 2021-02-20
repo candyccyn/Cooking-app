@@ -65,15 +65,18 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Social(
                         icon: "assets/icons/google.svg",
-                        press: () {}, // TODO implement auth service
+                        press: () async {
+                          await vmCooking.signInGoogle();
+                          print(vmCooking.uid);
+                        },
                       ),
                       Social(
                         icon: "assets/icons/facebook.svg",
-                        press: () {},
+                        press: () {},           // TODO implement auth service
                       ),
                       Social(
                         icon: "assets/icons/twitter.svg",
-                        press: () {},
+                        press: () {},           // TODO implement auth service
                       ),
                     ],
                   ),
