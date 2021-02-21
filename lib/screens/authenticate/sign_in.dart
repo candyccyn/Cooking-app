@@ -8,7 +8,8 @@ import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
-  static String routeName="/sign_in";
+  static String routeName = "/sign_in";
+
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -26,12 +27,12 @@ class _SignInScreenState extends State<SignInScreen> {
               horizontal: 20,
             ),
             child: SingleChildScrollView(
-                          child: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                  height:90,
-                ),
+                    height: 90,
+                  ),
                   Text(
                     "Sign in",
                     style: TextStyle(
@@ -54,7 +55,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   RoundedButton(
                     text: "Login",
                     press: () async {
-                      vmCooking.signInEmail("teevisit_kn@hotmail.com", "abc123");
+                      vmCooking.signInEmail(
+                          "teevisit_kn@hotmail.com", "abc123");
                       print(vmCooking.uid);
                     },
                   ),
@@ -74,13 +76,13 @@ class _SignInScreenState extends State<SignInScreen> {
                         icon: "assets/icons/facebook.svg",
                         press: () async {
                           await vmCooking.signInFacebook();
-                        },           // TODO implement auth service
+                        },
                       ),
                       Social(
                         icon: "assets/icons/twitter.svg",
                         press: () async {
                           await vmCooking.signInTwitter();
-                        },           // TODO implement auth service
+                        },
                       ),
                     ],
                   ),
@@ -95,8 +97,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(fontSize: 15),
                       ),
                       GestureDetector(
-                          onTap: () =>
-                              Navigator.pushNamed(context, SignUpScreen.routeName),
+                          onTap: () => Navigator.pushNamed(
+                              context, SignUpScreen.routeName),
                           child: Text("Sign up ",
                               style: TextStyle(
                                   fontSize: 15,

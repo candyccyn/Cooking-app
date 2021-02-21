@@ -5,8 +5,6 @@ class CookingUserViewModel {
   CookingUser _cookingUser;
   AuthService _auth = AuthService();
 
-  // List... _socialLogin = [];
-
   Future signInAnon() async {
     _cookingUser = await _auth.signInAnon();
   }

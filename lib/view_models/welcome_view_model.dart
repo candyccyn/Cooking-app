@@ -17,3 +17,4 @@ class WelcomeViewModel {
     return _item.data[index]["image"];
   }
 }
+

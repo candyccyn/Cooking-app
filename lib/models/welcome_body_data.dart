@@ -5,3 +5,4 @@ class WelcomeBodyData {
     {"text": "cooking", "image": "assets/images/cooking3.png"},
   ];
 }
+

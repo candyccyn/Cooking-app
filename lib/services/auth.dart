@@ -11,6 +11,7 @@ class AuthService {
     return CookingUser != null ? CookingUser(uid: user.uid) : null;
   }
 
+  // testing the connection from flutter to firebase auth
   Future signInAnon() async {
     try {
       UserCredential userCredential = await _auth.signInAnonymously();
@@ -27,7 +28,7 @@ class AuthService {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      User user = userCredential.user;
+      User user = userCredential.user;// This "User" class is Firebase user class
       return _cookingUserFromFirebaseUser(user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
