@@ -7,23 +7,23 @@ class CookingUserViewModel {
 
   // List... _socialLogin = [];
 
-  void signInAnon() async {
+  Future signInAnon() async {
     _cookingUser = await _auth.signInAnon();
   }
 
-  void signInEmail(String email, String password) async {
+  Future signInEmail(String email, String password) async {
     _cookingUser = await _auth.signInEmail(email, password);
   }
 
-  void signInGoogle() async {
+  Future signInGoogle() async {
     _cookingUser = await _auth.signInGoogle();
   }
 
-  void signInFacebook() async {
+  Future signInFacebook() async {
     return null;// TODO implement auth service
   }
 
-  void signInTwitter() async {
+  Future signInTwitter() async {
     return null;// TODO implement auth service
   }
 

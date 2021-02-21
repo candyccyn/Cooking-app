@@ -6,7 +6,7 @@ import 'package:cooking_app/widgets/welcome_widgets/welcome_content.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static String routeName="/welcome";
+  static String routeName = "/welcome";
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -22,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         width: double.infinity,
         child: SafeArea(
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 Expanded(
@@ -30,10 +30,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: PageView.builder(
                     onPageChanged: (value) {
                       setState(() {
-                      welcomeVM.currentIndex = value;
-                      print(welcomeVM.currentIndex);
-                      print(value);
-                       });
+                        welcomeVM.currentIndex = value;
+                      });
                     },
                     itemCount: welcomeVM.getDataLength(),
                     itemBuilder: (context, index) => WelcomeContent(
@@ -48,12 +46,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                              welcomeVM.getDataLength(), (index) => buildDot(index: index))),
-                      Spacer(flex:3),
+                          children: List.generate(welcomeVM.getDataLength(),
+                              (index) => buildDot(index: index))),
+                      Spacer(flex: 3),
                       RoundedButton(
-                        text:"Get start",
-                        press:(){
+                        text: "Get start",
+                        press: () {
                           Navigator.pushNamed(context, SignInScreen.routeName);
                         },
                       ),
@@ -76,7 +74,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       height: 10,
       width: 10,
       decoration: BoxDecoration(
-          color: welcomeVM.currentIndex == index ? Color(0xffFDDD5C) : Color(0xffC4C4C4),
+          color: welcomeVM.currentIndex == index
+              ? Color(0xffFDDD5C)
+              : Color(0xffC4C4C4),
           borderRadius: BorderRadius.circular(50)),
     );
   }
