@@ -32,7 +32,7 @@ class _NavigationState extends State<Navigation> {
           BottomNavigationBarItem(icon: Icon(Icons.person), title: SizedBox.shrink(),),
         ],
         backgroundColor: Color.fromRGBO(255, 161, 50, 1),
-        selectedItemColor: Colors.black87,
+        selectedItemColor: Color.fromRGBO(9, 29, 103, 1),
         unselectedItemColor: Colors.white,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
