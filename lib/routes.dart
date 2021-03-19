@@ -4,8 +4,11 @@ import 'package:cooking_app/screens/welcome/welcome.dart';
 
 import 'package:flutter/widgets.dart';
 
+import 'screens/home/home.dart';
+
 final Map<String, WidgetBuilder> routes = {
   WelcomeScreen.routeName: (context) => WelcomeScreen(),
   SignInScreen.routeName: (context) => SignInScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
+  DiscoverScreen.routeName: (context) => DiscoverScreen(),
 };

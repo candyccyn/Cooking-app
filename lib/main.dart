@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 
+import 'screens/home/home.dart';
+
 void main() async {
   // Initialize firebase products
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Poppins",),
       routes: routes,
-      initialRoute: WelcomeScreen.routeName,
+      initialRoute: DiscoverScreen.routeName,
     );
   }
 }
