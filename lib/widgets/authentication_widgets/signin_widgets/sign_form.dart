@@ -9,7 +9,7 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formkey = GlobalKey<FormState>();
-  String username;
+  String email;
   String password;
   bool remember = false;
   final List<String> errors = [];
@@ -34,7 +34,7 @@ class _SignFormState extends State<SignForm> {
       key: _formkey,
       child: Column(
         children: [
-          buildUsernameFormField(),
+          buildEmailFormField(),
           SizedBox(
             height: 20,
           ),
@@ -115,32 +115,36 @@ class _SignFormState extends State<SignForm> {
     );
   }
 
-  TextFormField buildUsernameFormField() {
+  TextFormField buildEmailFormField() {
     return TextFormField(
-      keyboardType: TextInputType.name,
-      onSaved: (newValue) => username = newValue,
+      keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => email = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty && errors.contains("Please Enter your username")) {
-          setState(() {
-            errors.remove("Please Enter your username");
-          });
+        if (value.isNotEmpty) {
+          removeError(error: "Please Enter your email");
+        } else if (RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
+          removeError(error: "Please Enter Valid Email");
         }
         return null;
       },
       validator: (value) {
-        if (value.isEmpty && !errors.contains("Please Enter your username")) {
-          setState(() {
-            errors.add("Please Enter your username");
-          });
+        if (value.isEmpty) {
+          addError(error: "Please Enter your email");
+          return "";
+        } else if (!(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))
+            .hasMatch(value)) {
+          addError(error: "Please Enter Valid Email");
+          return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "username",
-        hintText: "enter username",
+        labelText: "email",
+        hintText: "enter email",
         filled: true,
         fillColor: Color(0xFFFFECDF),
-        suffixIcon: Icon(Icons.person),
+        suffixIcon: Icon(Icons.mail),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
         enabledBorder: OutlineInputBorder(

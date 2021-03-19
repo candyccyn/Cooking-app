@@ -45,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: 30.0,
                   ),
                   Text(
-                    "Sign in username and password \nor continue with social media",
+                    "Sign in email and password \nor continue with social media",
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -56,7 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     text: "Login",
                     press: () async {
                       vmCooking.signInEmail(
-                          "teevisit_kn@hotmail.com", "abc123");
+                          "oranichbest@gmail.com", "abc123");
                       print(vmCooking.uid);
                     },
                   ),
