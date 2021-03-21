@@ -1,5 +1,7 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
+import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/view_models/welcome_view_model.dart';
+import 'package:cooking_app/widgets/navigation_bar.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:cooking_app/widgets/welcome_widgets/welcome_content.dart';
 
@@ -52,7 +54,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       RoundedButton(
                         text: "Get start",
                         press: () {
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          // Navigator.pushNamed(context, SignInScreen.routeName);
+                          Navigator.pushNamed(context, Navigation.routeName);
                         },
                       ),
                       Spacer(flex: 3),

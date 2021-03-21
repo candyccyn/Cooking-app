@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Poppins",),
       routes: routes,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: WelcomeScreen.routeName,
     );
   }
 }

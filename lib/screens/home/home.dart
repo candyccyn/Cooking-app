@@ -1,4 +1,4 @@
-import 'package:cooking_app/widgets/navigation_bar.dart';
+import 'package:cooking_app/widgets/home_widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Navigation(),
+      body: Header(),
 
     );
   }
