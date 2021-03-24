@@ -1,24 +1,33 @@
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
+import 'package:cooking_app/screens/profile/profile.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
+import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
-
+import 'package:cooking_app/screens/profile/profile.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SignInScreen extends StatefulWidget {
+class SignInScreen extends StatelessWidget {
   static String routeName = "/sign_in";
 
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+        create: (context) => ProviderData(),
+        child: MaterialApp(
+          home: SignUpComponent(),
+        ));
+  }
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class SignUpComponent extends StatelessWidget {
   var vmCooking = CookingUserViewModel();
-
   @override
   Widget build(BuildContext context) {
+    final providerData = Provider.of<ProviderData>(context);
     return Scaffold(
       body: Container(
           color: Colors.white,
@@ -54,10 +63,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   SignForm(),
                   RoundedButton(
                     text: "Login",
-                    press: () async {
-                      vmCooking.signInEmail(
-                          "oranichbest@gmail.com", "abc123");
-                      print(vmCooking.uid);
+
+                    press: () {
+                      async(vmCooking.signInEmail(
+                          "teevisit_kn@hotmail.com", "abc123"));
+                      print("uid: " + vmCooking.uid);
+                      providerData.changeString(vmCooking.uid);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfileScreen()));     
                     },
                   ),
                   SizedBox(
@@ -112,4 +127,6 @@ class _SignInScreenState extends State<SignInScreen> {
           )),
     );
   }
+
+  async(Future signInEmail) {}
 }
