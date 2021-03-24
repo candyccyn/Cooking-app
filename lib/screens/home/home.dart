@@ -1,5 +1,9 @@
+import 'package:cooking_app/widgets/home_widgets/body.dart';
 import 'package:cooking_app/widgets/home_widgets/header.dart';
+import 'package:cooking_app/widgets/navigation_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../../enums.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -8,8 +12,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Header(),
-
+      body: Body(),
+      bottomNavigationBar: new Navigation(navCallback: (i) => print("Navigating to $i"))
     );
   }
 

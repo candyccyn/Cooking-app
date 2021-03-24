@@ -1,52 +1,69 @@
-import 'package:cooking_app/view_models/navigation_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/home/home.dart';
-import '../screens/welcome/welcome.dart';
-import 'home_widgets/header.dart';
-
 class Navigation extends StatefulWidget {
-  const Navigation({Key key}) : super(key: key);
-  static String routeName = "/navigate";
+  final int initialIndex;
+  final ValueChanged<int> navCallback;
+
+  Navigation({@required this.navCallback, this.initialIndex: 1});
 
   @override
-  _NavigationState createState() => _NavigationState();
+  _NavigationState createState() => new _NavigationState();
 }
 
 class _NavigationState extends State<Navigation> {
+  int _selected;
 
-  NavigationViewModel navigationVM = NavigationViewModel();
-  // int _selectedIndex = 1;
-  // List<Widget> _widgetOptions = <Widget>[WelcomeScreen(), HomeScreen(), WelcomeScreen()];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      // _selectedIndex = index;
-      navigationVM.selectedIndex = index;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _selected = widget.initialIndex;
+    notifyCallback();
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        // child: _widgetOptions.elementAt(_selectedIndex),
-        child: navigationVM.getWidget(1),
-
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: SizedBox.shrink()),
-          BottomNavigationBarItem(icon: Icon(Icons.search), title: SizedBox.shrink()),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: SizedBox.shrink(),),
-        ],
-        backgroundColor: Color.fromRGBO(255, 161, 50, 1),
-        selectedItemColor: Color.fromRGBO(9, 29, 103, 1),
-        unselectedItemColor: Colors.white,
-        // currentIndex: _selectedIndex,
-        currentIndex: navigationVM.selectedIndex,
-        onTap: _onItemTapped,
-        elevation: 5,
+    return new Material(
+      color: Color.fromRGBO(255, 161, 50, 1),
+      elevation: 8.0,
+      child: new Container(
+        height: 56.0,
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            _buildButton(0, Icons.bookmark, "Bookmarks"),
+            _buildButton(1, Icons.search, "Home"),
+            _buildButton(2, Icons.person, "Profile"),
+          ],
+        ),
       ),
     );
+  }
+
+  Widget _buildButton(int index, IconData data, String tooltip) {
+    return new Flexible(
+      flex: 1,
+      child: new Tooltip(
+        message: tooltip,
+        child: new InkWell(
+          onTap: () => onButtonTap(index),
+          child: new Center(
+          child: new Icon(data,
+              color: _selected == index ? Color.fromRGBO(9, 29, 103, 1) : Colors.white,
+          ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  onButtonTap(int index) {
+    setState(() {
+      _selected = index;
+    });
+    notifyCallback();
+  }
+
+  notifyCallback() {
+    widget.navCallback(_selected);
   }
 }
