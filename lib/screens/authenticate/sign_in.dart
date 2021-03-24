@@ -54,7 +54,7 @@ class SignUpComponent extends StatelessWidget {
                     height: 30.0,
                   ),
                   Text(
-                    "Sign in username and password \nor continue with social media",
+                    "Sign in email and password \nor continue with social media",
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -63,6 +63,7 @@ class SignUpComponent extends StatelessWidget {
                   SignForm(),
                   RoundedButton(
                     text: "Login",
+
                     press: () {
                       async(vmCooking.signInEmail(
                           "teevisit_kn@hotmail.com", "abc123"));
@@ -71,8 +72,7 @@ class SignUpComponent extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProfileScreen()));
-                      //Navigator.pushNamed(context, ProfileScreen.routeName);
+                              builder: (context) => ProfileScreen()));     
                     },
                   ),
                   SizedBox(
