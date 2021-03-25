@@ -63,11 +63,9 @@ class SignUpComponent extends StatelessWidget {
                   SignForm(),
                   RoundedButton(
                     text: "Login",
-
-                    press: () {
-                      async(vmCooking.signInEmail(
+                    press: () async {
+                      await (vmCooking.signInEmail(
                           "teevisit_kn@hotmail.com", "abc123"));
-                      print("uid: " + vmCooking.uid);
                       providerData.changeString(vmCooking.uid);
                       Navigator.push(
                           context,
