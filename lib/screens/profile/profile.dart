@@ -1,5 +1,5 @@
 //import 'package:cooking_app/models/username_provider.dart';
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
@@ -34,7 +34,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Text(
                     Provider.of<ProviderData>(context).data,
-                    // "hihi",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -54,23 +53,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
 class MenuCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //CollectionReference test = FirebaseFirestore.instance.collection("test");
-    return FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance.collection('test').get(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final List<DocumentSnapshot> documents = snapshot.data.docs;
-            return ListView(
-                children: documents
-                    .map((doc) => Card(
-                          child: ListTile(
-                            title: doc['image'],
-                          ),
-                        ))
-                    .toList());
-          } else if (snapshot.hasError) {
-            return Text("It's Error!");
-          }
-        });
+    CollectionReference test = FirebaseFirestore.instance.collection("test");
+    return FutureBuilder(
+      future: test.doc("DGpTcoD9FnkyYwXaGhzD").get(),
+      builder: (context, snapshot) {
+        return ListView.builder(
+          itemCount: snapshot.data.documents.length,
+          itemBuilder: (context, index) {
+            DocumentSnapshot menu = snapshot.data.documents[index];
+            return ListTile(
+              leading: Image.network(menu['image']),
+            );
+          },
+        );
+      },
+    );
   }
 }
