@@ -1,22 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/services/user_detail.dart';
+import 'package:flutter/cupertino.dart';
 
 const userCollection = 'users';
 
 class ProfileViewModel {
-  UserDetailService userDetailService;
-  String _userId;
-
-  var urlToImg;
-  var menuOwned;
-  var bookmarksMenu;
-  var username;
+  UserDetailService _userDetailService;
 
   ProfileViewModel(String uid) {
-    this._userId = uid;
-    this.userDetailService = UserDetailService(this._userId);
-  }
-
-  dynamic getImage() async{
-    return await this.userDetailService.getUserImage();
+    this._userDetailService = UserDetailService(uid);
   }
 }

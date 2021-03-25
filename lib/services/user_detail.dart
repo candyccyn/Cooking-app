@@ -1,20 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+const userCollection = 'users';
+
 class UserDetailService {
-  final _userDetails =
-      FirebaseFirestore.instance.collection('users');
+  CollectionReference _userDetails =
+  FirebaseFirestore.instance.collection(userCollection);
+
   var _uid;
-  var _userData;
 
   UserDetailService(String uid) {
     this._uid = uid;
   }
 
-  dynamic getUserImage() async {
-    await this._userDetails.doc(this._uid).get().then((value) {
-      this._userData = value.data()['urlToImg'];
-      return this._userData;
-    });
-
+  Future<DocumentSnapshot> getUserDetails() async {
+    return this._userDetails.doc(this._uid).get();
   }
 }
