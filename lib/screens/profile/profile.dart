@@ -1,6 +1,7 @@
 //import 'package:cooking_app/models/username_provider.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
+import 'package:cooking_app/view_models/profile_view_model.dart';
 import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
@@ -18,8 +19,13 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
   @override
   Widget build(BuildContext context) {
+    var userId = Provider.of<ProviderData>(context).data;
+    var profileVm = ProfileViewModel(userId);
+    print(profileVm.getImage());
+
     return ChangeNotifierProvider(
       create: (context) => ProviderData(),
       child: MaterialApp(
@@ -31,7 +37,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Text(
                     Provider.of<ProviderData>(context).data,
-                    // "hihi",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
