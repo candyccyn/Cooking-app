@@ -1,10 +1,13 @@
 //import 'package:cooking_app/models/username_provider.dart';
+import 'dart:html';
+
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
 import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:cooking_app/view_models/provider_viewmodel.dart';
 
@@ -37,6 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fontWeight: FontWeight.bold,
                         color: Color(0xff012160)),
                   ),
+                  MenuCategories(),
                 ],
               ),
             ),
@@ -44,5 +48,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+}
+
+class MenuCategories extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //CollectionReference test = FirebaseFirestore.instance.collection("test");
+    return FutureBuilder<QuerySnapshot>(
+        future: FirebaseFirestore.instance.collection('test').get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final List<DocumentSnapshot> documents = snapshot.data.docs;
+            return ListView(
+                children: documents
+                    .map((doc) => Card(
+                          child: ListTile(
+                            title: doc['image'],
+                          ),
+                        ))
+                    .toList());
+          } else if (snapshot.hasError) {
+            return Text("It's Error!");
+          }
+        });
   }
 }
