@@ -4,6 +4,5 @@ class CategoryData {
     {"text": "European Food", "image": "assets/images/steak.png"},
     {"text": "Drink", "image": "assets/images/drink.png"},
     {"text": "Desserts", "image": "assets/images/cake.png"},
-
   ];
 }

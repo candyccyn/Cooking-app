@@ -10,4 +10,8 @@ class NavigationViewModel {
     return _item.widgetOptions.elementAt(selectedIndex);
   }
 
+  List<Widget> getNavData() {
+    return _item.widgetOptions;
+  }
+
 }

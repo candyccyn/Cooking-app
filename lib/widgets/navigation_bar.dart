@@ -1,3 +1,4 @@
+import 'package:cooking_app/view_models/navigation_view_model.dart';
 import 'package:flutter/material.dart';
 
 class Navigation extends StatefulWidget {

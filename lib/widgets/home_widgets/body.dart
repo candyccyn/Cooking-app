@@ -15,6 +15,7 @@ class Body extends StatelessWidget {
     var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) / _crossAxisCount;
     var cellHeight = 80;
     var _aspectRatio = _width / cellHeight;
+    CategoryViewModel categoryVM = CategoryViewModel();
 
     return Scaffold(
         body: Container(
