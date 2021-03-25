@@ -1,3 +1,4 @@
+import 'package:cooking_app/view_models/navigation_view_model.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatefulWidget {
@@ -8,6 +9,8 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
+    NavigationViewModel navigationVM = NavigationViewModel();
+
     return Container(
       // decoration: BoxDecoration(color: Colors.green),
       height: 100,
