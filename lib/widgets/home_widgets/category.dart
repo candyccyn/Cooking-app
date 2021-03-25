@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoryCard extends StatelessWidget {
-  final String pngSrc;
+  final String image;
   final String title;
   final Function press;
   const CategoryCard({
     Key key,
-    this.pngSrc,
+    this.image,
     this.title,
     this.press,
   }) : super(key: key);
@@ -39,7 +38,7 @@ class CategoryCard extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  Image.asset(pngSrc,
+                  Image.asset(image,
                   height: 48,
                   width: 48),
                   Spacer(),

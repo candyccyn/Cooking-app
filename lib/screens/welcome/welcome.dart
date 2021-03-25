@@ -46,7 +46,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(welcomeVM.getDataLength(),
-                              (index) => buildDot(index: index))),
+                              (index) => buildDot(index: index))
+                      ),
                       Spacer(flex: 3),
                       RoundedButton(
                         text: "Get start",

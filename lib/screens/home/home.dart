@@ -1,11 +1,8 @@
 import 'package:cooking_app/screens/welcome/welcome.dart';
-import 'package:cooking_app/view_models/navigation_view_model.dart';
 import 'package:cooking_app/widgets/home_widgets/body.dart';
 import 'package:cooking_app/widgets/home_widgets/header.dart';
 import 'package:cooking_app/widgets/navigation_bar.dart';
 import 'package:flutter/material.dart';
-
-import '../../enums.dart';
 
 class HomeScreen extends StatelessWidget {
 

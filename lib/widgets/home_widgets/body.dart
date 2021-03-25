@@ -3,6 +3,9 @@ import 'package:cooking_app/view_models/category_view_model.dart';
 import 'package:cooking_app/widgets/home_widgets/search_bar.dart';
 import 'package:cooking_app/widgets/home_widgets/category.dart';
 import 'package:flutter/material.dart';
+import 'category.dart';
+import 'category.dart';
+import 'category.dart';
 import 'header.dart';
 
 class Body extends StatelessWidget {
@@ -12,9 +15,11 @@ class Body extends StatelessWidget {
     var _crossAxisSpacing = 20;
     var _screenWidth = MediaQuery.of(context).size.width;
     var _crossAxisCount = 2;
-    var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) / _crossAxisCount;
+    var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) /
+        _crossAxisCount;
     var cellHeight = 80;
     var _aspectRatio = _width / cellHeight;
+
     CategoryViewModel categoryVM = CategoryViewModel();
 
     return Scaffold(
@@ -47,48 +52,64 @@ class Body extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Container(
-                          // decoration: BoxDecoration(color: Colors.green),
+                          decoration: BoxDecoration(color: Colors.green),
                           height: size.height * .22,
                           child: MediaQuery.removePadding(
                             context: context,
                             removeTop: true,
                             child: GridView.count(
-                              crossAxisCount: _crossAxisCount,
+                              crossAxisCount: 2,
                               childAspectRatio: _aspectRatio,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
-                              children: <Widget>[
-                                CategoryCard(
-                                  title: "Asian Food",
-                                  pngSrc: "assets/images/noodle.png",
-                                  press: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) {
-                                        return WelcomeScreen();
-                                      }),
-                                    );
-                                  },
-                                ),
-                                CategoryCard(
-                                  title: "European Food",
-                                  pngSrc: "assets/images/steak.png",
-                                  press: () {},
-                                ),
-                                CategoryCard(
-                                  title: "Drinks",
-                                  pngSrc: "assets/images/drink.png",
-                                  press: () {},
-                                ),
-                                CategoryCard(
-                                  title: "Desserts",
-                                  pngSrc: "assets/images/cake.png",
-                                  press: () {},
-                                ),
-                              ],
+                              children: List.generate(
+                                  categoryVM.getCategorySize(), (index) {
+                                return Container(
+                                  child: CategoryCard(
+                                    image: categoryVM.getImg(index),
+                                    title: categoryVM.getText(index),
+                                  ),
+                                );
+                              }),
+                              // children: <Widget>[
+                              // ListView.builder(
+                              //     itemCount: categoryVM.getCategorySize(),
+                              //     itemBuilder: (context, index) =>
+                              //         CategoryCard(
+                              //           image: categoryVM.getImg(index),
+                              //           title: categoryVM.getText(index),
+                              //         )
+                              // )
+                              // CategoryCard(
+                              //   title: "Asian Food",
+                              //   pngSrc: "assets/images/noodle.png",
+                              //   press: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(builder: (context) {
+                              //         return WelcomeScreen();
+                              //       }),
+                              //     );
+                              //   },
+                              // ),
+                              // CategoryCard(
+                              //   title: "European Food",
+                              //   pngSrc: "assets/images/steak.png",
+                              //   press: () {},
+                              // ),
+                              // CategoryCard(
+                              //   title: "Drinks",
+                              //   pngSrc: "assets/images/drink.png",
+                              //   press: () {},
+                              // ),
+                              // CategoryCard(
+                              //   title: "Desserts",
+                              //   pngSrc: "assets/images/cake.png",
+                              //   press: () {},
+                              // ),
+                              // ],
                             ),
-                          )
-                      ),
+                          )),
                       SizedBox(height: 10),
                       Container(
                         // decoration: BoxDecoration(color: Colors.pink),
