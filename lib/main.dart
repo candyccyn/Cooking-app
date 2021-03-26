@@ -1,4 +1,5 @@
 import 'package:cooking_app/routes.dart';
+import 'package:cooking_app/screens/ImageUpload/ImageUpload.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -17,10 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Poppins",),
+      theme: ThemeData(
+        fontFamily: "Poppins",
+      ),
       routes: routes,
-      initialRoute: WelcomeScreen.routeName,
+      // initialRoute: WelcomeScreen.routeName,
+      home: ImageUpload(),
     );
   }
 }
-
