@@ -1,10 +1,9 @@
-import 'package:cooking_app/screens/welcome/welcome.dart';
 import 'package:cooking_app/view_models/category_view_model.dart';
+import 'package:cooking_app/view_models/menu_view_model.dart';
+import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/home_widgets/search_bar.dart';
 import 'package:cooking_app/widgets/home_widgets/category.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
-import 'category.dart';
 import 'category.dart';
 import 'header.dart';
 
@@ -21,6 +20,7 @@ class Body extends StatelessWidget {
     var _aspectRatio = _width / cellHeight;
 
     CategoryViewModel categoryVM = CategoryViewModel();
+    MenuViewModel menuViewModel = MenuViewModel();
 
     return Scaffold(
         body: Container(
@@ -52,7 +52,7 @@ class Body extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Container(
-                          decoration: BoxDecoration(color: Colors.green),
+                          // decoration: BoxDecoration(color: Colors.green),
                           height: size.height * .22,
                           child: MediaQuery.removePadding(
                             context: context,
@@ -71,43 +71,6 @@ class Body extends StatelessWidget {
                                   ),
                                 );
                               }),
-                              // children: <Widget>[
-                              // ListView.builder(
-                              //     itemCount: categoryVM.getCategorySize(),
-                              //     itemBuilder: (context, index) =>
-                              //         CategoryCard(
-                              //           image: categoryVM.getImg(index),
-                              //           title: categoryVM.getText(index),
-                              //         )
-                              // )
-                              // CategoryCard(
-                              //   title: "Asian Food",
-                              //   pngSrc: "assets/images/noodle.png",
-                              //   press: () {
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(builder: (context) {
-                              //         return WelcomeScreen();
-                              //       }),
-                              //     );
-                              //   },
-                              // ),
-                              // CategoryCard(
-                              //   title: "European Food",
-                              //   pngSrc: "assets/images/steak.png",
-                              //   press: () {},
-                              // ),
-                              // CategoryCard(
-                              //   title: "Drinks",
-                              //   pngSrc: "assets/images/drink.png",
-                              //   press: () {},
-                              // ),
-                              // CategoryCard(
-                              //   title: "Desserts",
-                              //   pngSrc: "assets/images/cake.png",
-                              //   press: () {},
-                              // ),
-                              // ],
                             ),
                           )),
                       SizedBox(height: 10),
@@ -128,8 +91,34 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
+                      Container(
+                        // decoration: BoxDecoration(color: Colors.green),
+                          height: size.height * .25,
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            child: GridView.count(
+                              scrollDirection: Axis.horizontal,
+                              crossAxisCount: 1,
+                              mainAxisSpacing: 20,
+                              children: List.generate(
+                                  menuViewModel.getMenuSize(), (index) {
+                                return Container(
+                                  child: RecommendCard(
+                                    image: menuViewModel.getImg(index),
+                                    // title: menuViewModel.getText(index),
+                                  ),
+                                );
+                              }),
+                            ),
+                          )
+                      ),
+                      SizedBox(height: 10),
                     ],
                   ),
-                ))));
+                )
+            )
+        )
+    );
   }
 }
