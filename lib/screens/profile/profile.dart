@@ -14,7 +14,7 @@ import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  static String routeName = "/profile";
+  static String routeName = "/profile2";
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
