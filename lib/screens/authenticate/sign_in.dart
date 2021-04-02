@@ -73,13 +73,12 @@ class SignUpComponent extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProfileScreen()));
-                      // builder: (context) =>
-                      //     ChangeNotifierProvider<NavigationBarProvider>(
-                      //       child: MyStatefulWidget(),
-                      //       create: (BuildContext context) =>
-                      //           NavigationBarProvider(),
-                      //     )));
+                              builder: (context) =>
+                                  ChangeNotifierProvider<NavigationBarProvider>(
+                                    child: MyStatefulWidget(),
+                                    create: (BuildContext context) =>
+                                        NavigationBarProvider(),
+                                  )));
                     },
                   ),
                   SizedBox(

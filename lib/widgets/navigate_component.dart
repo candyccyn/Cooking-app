@@ -24,32 +24,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hello'),
+        backgroundColor: Colors.orange,
       ),
       body: currentTab[navProvider.currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: 'Bookmark',
-            backgroundColor: Colors.orange,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Discover',
-            backgroundColor: Colors.orange,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor: Colors.orange,
-          ),
-        ],
-        currentIndex: navProvider.currentIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: (index) {
-          navProvider.currentIndex = index;
-        },
-      ),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark),
+              label: 'Bookmark',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Discover',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: navProvider.currentIndex,
+          selectedItemColor: Color.fromRGBO(9, 29, 103, 1),
+          unselectedItemColor: Colors.white,
+          onTap: (index) {
+            navProvider.currentIndex = index;
+          },
+          backgroundColor: Color.fromRGBO(255, 161, 50, 1)),
     );
   }
 }
