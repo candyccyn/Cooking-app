@@ -1,10 +1,13 @@
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
+import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
+import 'package:cooking_app/view_models/navigaition_bar_provider.dart';
 import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
+import 'package:cooking_app/widgets/navigate_component.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
 import 'package:flutter/material.dart';
@@ -70,7 +73,12 @@ class SignUpComponent extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProfileScreen()));     
+                              builder: (context) =>
+                                  ChangeNotifierProvider<NavigationBarProvider>(
+                                    child: MyStatefulWidget(),
+                                    create: (BuildContext context) =>
+                                        NavigationBarProvider(),
+                                  )));
                     },
                   ),
                   SizedBox(
