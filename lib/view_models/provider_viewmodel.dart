@@ -1,12 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cooking_app/services/user_detail.dart';
+import 'package:flutter/material.dart';
 
 class ProviderData extends ChangeNotifier {
   String data = "Some data";
   String textMessage = "username";
+  UserDetailService userDetailService = null;
   void changeString(String newString) {
     data = newString;
     notifyListeners();
+  }
+
+  void setUserDetailService(String userId) {
+    userDetailService = UserDetailService(userId);
   }
 
   void showUsername(

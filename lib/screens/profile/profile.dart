@@ -18,14 +18,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     var userId = Provider.of<ProviderData>(context).data;
     var providerData = Provider.of<ProviderData>(context);
-    UserDetailService userDetailService = UserDetailService(userId);
-
+    providerData.setUserDetailService(userId);
     return FutureBuilder<DocumentSnapshot>(
-        future: userDetailService.getUserDetails(),
+        future: providerData.userDetailService.getUserDetails(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           providerData.showUsername(context, snapshot);
-          var text = Provider.of<ProviderData>(context).textMessage;
+          var text = providerData.textMessage;
           return Text(text);
         });
   }

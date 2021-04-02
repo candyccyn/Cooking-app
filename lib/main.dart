@@ -9,7 +9,6 @@ void main() async {
   // Initialize firebase products
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(MyApp());
 }
 
@@ -17,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Poppins",),
+      theme: ThemeData(
+        fontFamily: "Poppins",
+      ),
       routes: routes,
       initialRoute: WelcomeScreen.routeName,
     );
   }
 }
-
