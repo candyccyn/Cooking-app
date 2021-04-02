@@ -13,7 +13,6 @@ void main() async {
   // Initialize firebase products
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(MyApp());
 }
 
