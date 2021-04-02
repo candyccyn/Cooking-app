@@ -115,6 +115,7 @@ class Body extends StatelessWidget {
                       //     )
                       // ),
                       RecommendCard(),
+                      SizedBox(height: 10)
                     ],
                   ),
                 )

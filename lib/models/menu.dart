@@ -14,20 +14,19 @@
 //
 // }
 
-
 class Menu {
   final int id;
   final String title;
   final List<String> images;
   final double rating;
-  final bool isFavourite, isPopular;
+  final bool isLike, isPopular;
 
   Menu({
     this.id,
     this.title,
     this.images,
     this.rating = 0.0,
-    this.isFavourite = false,
+    this.isLike = false,
     this.isPopular = false,
   });
 }
@@ -35,12 +34,10 @@ class Menu {
 List<Menu> demoMenu = [
   Menu(
     id: 1,
-    images: [
-      "assets/images/tart.png"
-    ],
+    images: ["assets/images/tart.png"],
     title: "Portuguese Egg Tarts",
     rating: 4.8,
-    isFavourite: true,
+    isLike: true,
     isPopular: true,
   ),
   Menu(
@@ -54,12 +51,10 @@ List<Menu> demoMenu = [
   ),
   Menu(
     id: 3,
-    images: [
-      "assets/images/tart.png"
-    ],
+    images: ["assets/images/tart.png"],
     title: "Portuguese Egg Tarts",
     rating: 4.8,
-    isFavourite: true,
+    isLike: true,
     isPopular: true,
   ),
   Menu(

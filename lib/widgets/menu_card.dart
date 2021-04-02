@@ -57,13 +57,13 @@ class MenuCard extends StatelessWidget {
                       height: 28,
                       width: 28,
                       decoration: BoxDecoration(
-                        color: menu.isFavourite
+                        color: menu.isLike
                             ? Colors.black.withOpacity(0.15)
                             : Colors.pink.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(Icons.favorite,
-                        color: menu.isFavourite
+                        color: menu.isLike
                             ? Color(0xFFFF4848)
                             : Color(0xFFDBDEE4),
                       ),
