@@ -31,15 +31,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.bookmark),
-              label: 'Bookmark',
+              title: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search),
-              label: 'Discover',
+              title: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              title: SizedBox.shrink(),
             ),
           ],
           currentIndex: navProvider.currentIndex,

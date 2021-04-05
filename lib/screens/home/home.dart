@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Body(),
-        bottomNavigationBar: new Navigation(navCallback: (i) => print("Navigating to $i"))
+        // bottomNavigationBar: new Navigation(navCallback: (i) => print("Navigating to $i"))
     );
   }
 }

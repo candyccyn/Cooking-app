@@ -1,4 +1,5 @@
 import 'package:cooking_app/routes.dart';
+import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 import 'package:cooking_app/view_models/navigaition_bar_provider.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
-      initialRoute: WelcomeScreen.routeName,
+      initialRoute: HomeScreen.routeName,
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),
       //   create: (BuildContext context) => NavigationBarProvider(),
