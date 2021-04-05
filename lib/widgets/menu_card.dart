@@ -56,15 +56,9 @@ class MenuCard extends StatelessWidget {
                       padding: EdgeInsets.all(8),
                       height: 28,
                       width: 28,
-                      decoration: BoxDecoration(
-                        color: menu.isLike
-                            ? Colors.black.withOpacity(0.15)
-                            : Colors.pink.withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
                       child: Icon(Icons.favorite,
                         color: menu.isLike
-                            ? Color(0xFFFF4848)
+                            ? Colors.red
                             : Color(0xFFDBDEE4),
                       ),
                     ),
