@@ -54,7 +54,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         text: "Get start",
                         press: () {
                           Navigator.pushNamed(context, SignInScreen.routeName);
-                          // Navigator.pushNamed(context, HomeScreen.routeName);
                         },
                       ),
                       Spacer(flex: 3),

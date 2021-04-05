@@ -1,5 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
+import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
 import 'screens/home/home.dart';
