@@ -12,7 +12,7 @@ class UserDetailService {
     this._uid = uid;
   }
 
-  Future<DocumentSnapshot> getUserDetails() async {
+  Future<DocumentSnapshot> getUserDetails() {
     return this._userDetails.doc(this._uid).get();
   }
 }
