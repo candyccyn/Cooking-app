@@ -34,12 +34,11 @@ class MenuCard extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(width),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                      fit: BoxFit.cover,
+                    ),
                     borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Container(
-                    // tag: menu.id.toString(),
-                    child: Image.asset(image),
                   ),
                 ),
               ),
@@ -54,21 +53,25 @@ class MenuCard extends StatelessWidget {
                 maxLines: 2,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     borderRadius: BorderRadius.circular(50),
                     onTap: () {},
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      height: 28,
-                      width: 28,
-                      // child: Icon(Icons.favorite,
-                      //   color: menu.isLike
-                      //       ? Colors.red
-                      //       : Color(0xFFDBDEE4),
-                      // ),
+                      height: 50,
+                      width: 50,
+                      child: Icon(Icons.thumb_up_off_alt),
                     ),
+                  ),
+                  Text(
+                    "95 likes",
+                    style: TextStyle(
+                        fontFamily: 'Century Gothic',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: Color.fromRGBO(255, 149, 24, 0.89)),
                   ),
                 ],
               )
