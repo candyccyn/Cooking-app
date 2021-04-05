@@ -56,3 +56,14 @@ flutter:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
 
+    - family: Century Gothic
+      fonts:
+        - asset: assets/fonts/Century Gothic.ttf
+        - asset: assets/fonts/CenturyGothic.ttf
+        - asset: assets/fonts/GOTHIC.TTF
+        - asset: assets/fonts/GOTHICB.TTF
+        - asset: assets/fonts/GOTHICB0.TTF
+        - asset: assets/fonts/GOTHICBI.TTF
+        - asset: assets/fonts/GOTHICI.TTF
+
+
