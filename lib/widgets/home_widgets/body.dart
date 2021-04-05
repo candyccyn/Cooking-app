@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
     var _aspectRatio = _width / cellHeight;
 
     CategoryViewModel categoryVM = CategoryViewModel();
-    // MenuViewModel menuViewModel = MenuViewModel();
+    MenuViewModel menuViewModel = MenuViewModel();
 
     return Scaffold(
         body: Container(
@@ -92,28 +92,6 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      // Container(
-                      //   // decoration: BoxDecoration(color: Colors.green),
-                      //     height: size.height * .25,
-                      //     child: MediaQuery.removePadding(
-                      //       context: context,
-                      //       removeTop: true,
-                      //       child: GridView.count(
-                      //         scrollDirection: Axis.horizontal,
-                      //         crossAxisCount: 1,
-                      //         mainAxisSpacing: 20,
-                      //         children: List.generate(
-                      //             menuViewModel.getMenuSize(), (index) {
-                      //           return Container(
-                      //             child: RecommendCard(
-                      //               image: menuViewModel.getImg(index),
-                      //               // title: menuViewModel.getText(index),
-                      //             ),
-                      //           );
-                      //         }),
-                      //       ),
-                      //     )
-                      // ),
                       RecommendCard(),
                       SizedBox(height: 10)
                     ],

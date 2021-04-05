@@ -2,8 +2,15 @@ import 'package:cooking_app/models/menu.dart';
 import 'package:flutter/material.dart';
 
 class MenuCard extends StatelessWidget {
+  final String image;
+  final String title;
+  final Function press;
+
   const MenuCard({
     Key key,
+    this.image,
+    this.title,
+    this.press,
     this.width = 140,
     this.aspectRetio = 1.02,
     @required this.menu,
@@ -30,15 +37,15 @@ class MenuCard extends StatelessWidget {
                     color: Colors.lightBlueAccent,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Hero(
-                    tag: menu.id.toString(),
-                    child: Image.asset(menu.images[0]),
+                  child: Container(
+                    // tag: menu.id.toString(),
+                    child: Image.asset(image),
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                menu.title,
+                title,
                 style: TextStyle(
                     fontFamily: 'Century Gothic',
                     fontWeight: FontWeight.bold,
@@ -56,11 +63,11 @@ class MenuCard extends StatelessWidget {
                       padding: EdgeInsets.all(8),
                       height: 28,
                       width: 28,
-                      child: Icon(Icons.favorite,
-                        color: menu.isLike
-                            ? Colors.red
-                            : Color(0xFFDBDEE4),
-                      ),
+                      // child: Icon(Icons.favorite,
+                      //   color: menu.isLike
+                      //       ? Colors.red
+                      //       : Color(0xFFDBDEE4),
+                      // ),
                     ),
                   ),
                 ],

@@ -1,58 +1,27 @@
 import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/view_models/menu_view_model.dart';
 import 'package:cooking_app/widgets/menu_card.dart';
 import 'package:flutter/material.dart';
 
 class RecommendCard extends StatelessWidget {
-  // final String image;
-  // final String title;
-  // final Function press;
-  // final bool isFavourite;
-  // final bool isLike;
-  // const RecommendCard({
-  //   Key key,
-  //   this.image,
-  //   this.title,
-  //   this.press,
-  //   this.isFavourite = false,
-  //   this.isLike = false,
-  // }) : super(key: key);
+  MenuViewModel menuViewModel = MenuViewModel();
 
   @override
   Widget build(BuildContext context) {
-    // return ClipRRect(
-    //   borderRadius: BorderRadius.circular(30),
-    //   child: Container(
-    //     decoration: BoxDecoration(
-    //       color: Colors.white,
-    //       borderRadius: BorderRadius.circular(30),
-    //     ),
-    //     child: InkWell(
-    //       onTap: press,
-    //       child: Material(
-    //         color: Colors.white,
-    //         borderRadius: BorderRadius.circular(30),
-    //         child: Image.asset(image,
-    //             height: 48,
-    //             width: 48),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            ...List.generate(demoMenu.length, (index) {
-              if (demoMenu[index].isPopular)
-                return MenuCard(menu: demoMenu[index]);
-
-              return SizedBox.shrink();
-            }
-            ),
-            SizedBox(width: 20),
-          ],
-        ),
+      child: Row(
+        children: [
+          ...List.generate(menuViewModel.getMenuSize(), (index) {
+            return Container(
+              child: MenuCard(
+                image: menuViewModel.getImg(index),
+                title: menuViewModel.getText(index),
+              ),
+            );
+          }),
+        ],
+      ),
     );
   }
 }
