@@ -1,4 +1,3 @@
-import 'package:cooking_app/models/menu.dart';
 import 'package:cooking_app/view_models/menu_view_model.dart';
 import 'package:cooking_app/widgets/menu_card.dart';
 import 'package:flutter/material.dart';
