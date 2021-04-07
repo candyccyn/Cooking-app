@@ -1,5 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
+import 'package:cooking_app/screens/category/category.dart';
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
@@ -13,4 +14,5 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (context) => SignUpScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
+  CategoryScreen.routeName: (context) => CategoryScreen(),
 };

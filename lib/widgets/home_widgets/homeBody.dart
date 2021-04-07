@@ -1,14 +1,14 @@
 import 'package:cooking_app/models/menu.dart';
 import 'package:cooking_app/view_models/category_view_model.dart';
 import 'package:cooking_app/view_models/menu_view_model.dart';
-import 'package:cooking_app/widgets/home_widgets/recommend.dart';
+import 'package:cooking_app/widgets/home_widgets/recommendCard.dart';
 import 'package:cooking_app/widgets/home_widgets/search_bar.dart';
-import 'package:cooking_app/widgets/home_widgets/category.dart';
+import 'package:cooking_app/widgets/home_widgets/categoriesCrad.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
-import 'header.dart';
+import 'categoriesCrad.dart';
+import 'homeHeader.dart';
 
-class Body extends StatelessWidget {
+class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Header(),
+                      HomeHeader(),
                       SizedBox(height: 10),
                       SearchBar(),
                       SizedBox(height: 10),
