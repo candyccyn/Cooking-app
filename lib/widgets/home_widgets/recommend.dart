@@ -10,16 +10,16 @@ class RecommendCard extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          ...List.generate(menuViewModel.getMenuSize(), (index) {
-            return Container(
-              child: MenuCard(
-                image: menuViewModel.getImg(index),
-                title: menuViewModel.getText(index),
-              ),
-            );
-          }),
-        ],
+        // children: [
+        //   ...List.generate(menuViewModel.getMenuSize(), (index) {
+        //     return Container(
+        //       child: MenuCard(
+        //         image: menuViewModel.getImg(index),
+        //         title: menuViewModel.getText(index),
+        //       ),
+        //     );
+        //   }),
+        //],
       ),
     );
   }

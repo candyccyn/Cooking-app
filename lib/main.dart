@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: WelcomeScreen.routeName,
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),
       //   create: (BuildContext context) => NavigationBarProvider(),
