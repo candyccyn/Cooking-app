@@ -1,6 +1,8 @@
 import 'package:cooking_app/routes.dart';
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/home/home.dart';
+import 'package:cooking_app/screens/home/test_service.dart';
+import 'package:cooking_app/screens/profile/profile.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 import 'package:cooking_app/view_models/navigaition_bar_provider.dart';
 import 'package:cooking_app/widgets/navigate_component.dart';
