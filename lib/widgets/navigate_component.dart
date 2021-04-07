@@ -1,3 +1,4 @@
+import 'package:cooking_app/screens/Timer/step_timer.dart';
 import 'package:cooking_app/screens/bookmarks/bookmarks.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
 import 'package:cooking_app/screens/home/home.dart';
@@ -14,6 +15,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   var currentTab = [
     BookmarkScreen(),
+    // TimerScreen(),
     HomeScreen(),
     ProfileScreen(),
   ];
