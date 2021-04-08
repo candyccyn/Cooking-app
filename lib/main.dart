@@ -1,4 +1,5 @@
 import 'package:cooking_app/routes.dart';
+import 'package:cooking_app/screens/recipe/add_recipe.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Poppins",),
       routes: routes,
-      initialRoute: WelcomeScreen.routeName,
+      home: AddRecipeScreen(),
+    //  initialRoute: WelcomeScreen.routeName,
     );
   }
 }
