@@ -1,9 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/models/category_data.dart';
 import 'package:cooking_app/models/menu.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 const menuCollection = 'test2';
+const categoriesCollection = 'categories';
 
-class MenuService {
+class MenuProvider extends ChangeNotifier {
+  List<Category> _categories = [];
+  List<Menu> _menus = [];
+
+  get getCategory => _categories;
+
+  get getRecommendedMenu => _menus;
+
+  void setCategory(List<Category> categories) {
+    _categories = categories;
+    notifyListeners();
+  }
+
+  void setRecommended(List<Menu> menus) {
+    _menus = menus;
+    notifyListeners();
+  }
+}
+
+class CategoryService {
+  CollectionReference _categoriesReference =
+      FirebaseFirestore.instance.collection(categoriesCollection);
+
+  Future<List<Category>> getAllCategories() async {
+    QuerySnapshot querySnapshot = await this._categoriesReference.get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs
+          .map((doc) =>
+              Category(doc.data()['categoryName'], doc.data()['image']))
+          .toList();
+    } else {
+      throw Exception("No document found");
+    }
+  }
+}
+
+class MenuService with ChangeNotifier {
   CollectionReference _menuReference =
       FirebaseFirestore.instance.collection(menuCollection);
 
