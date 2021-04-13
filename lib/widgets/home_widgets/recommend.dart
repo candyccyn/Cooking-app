@@ -1,5 +1,6 @@
 import 'package:cooking_app/models/menu.dart';
 import 'package:cooking_app/services/menu_service.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/menu_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

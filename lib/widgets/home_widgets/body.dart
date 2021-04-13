@@ -1,6 +1,6 @@
 import 'package:cooking_app/models/category_data.dart';
 import 'package:cooking_app/services/menu_service.dart';
-import 'package:cooking_app/view_models/menu_view_model.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/home_widgets/search_bar.dart';
 import 'package:cooking_app/widgets/home_widgets/category.dart';
@@ -27,6 +27,7 @@ class Body extends StatelessWidget {
     Future<List<Category>> allCategories = categoryService.getAllCategories();
     allCategories.then((categories) => menuProvider.setCategory(categories));
     List<Category> categories = menuProvider.getCategory;
+
     return Scaffold(
         body: Container(
             color: Colors.white,
@@ -35,7 +36,7 @@ class Body extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Header(),
+                      Header(username: menuProvider.getUsername),
                       SizedBox(height: 10),
                       SearchBar(),
                       SizedBox(height: 10),
@@ -96,10 +97,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      ChangeNotifierProvider<MenuProvider>(
-                        child: RecommendCard(),
-                        create: (BuildContext context) => MenuProvider(),
-                      ),
+                      RecommendCard(),
                       SizedBox(height: 10)
                     ],
                   ),
