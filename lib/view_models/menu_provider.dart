@@ -9,12 +9,15 @@ class MenuProvider extends ChangeNotifier {
   String _username = "";
   String _uid = "";
 
+  String _pickCategory = "";
+
   Future<DocumentSnapshot> _userDetail = null;
   List<Category> _categories = [];
   List<Menu> _menus = [];
 
   get getUid => _uid;
   get getUsername => _username;
+  get getPickCategory => _pickCategory;
   get getCategory => _categories;
   get getUserDetail => _userDetail;
   get getRecommendedMenu => _menus;
@@ -36,6 +39,11 @@ class MenuProvider extends ChangeNotifier {
 
   void setUsername(String username) {
     _username = username;
+    notifyListeners();
+  }
+
+  void setPickCategory(String pickCategories) {
+    _pickCategory = pickCategories;
     notifyListeners();
   }
 

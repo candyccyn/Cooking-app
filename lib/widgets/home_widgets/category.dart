@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class CategoryCard extends StatelessWidget {
   final String image;
   final String title;
-  final Function press;
+  //final Function press;
   const CategoryCard({
     Key key,
     this.image,
     this.title,
-    this.press,
+    //this.press,
   }) : super(key: key);
+
+  void press() => {print(title)};
 
   @override
   Widget build(BuildContext context) {
