@@ -5,6 +5,16 @@ import 'package:cooking_app/services/user_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+String findImagePathfromCategory(List<Category> menus, String category) {
+  for (var menu in menus) {
+    if (menu.categoryName == category) {
+      return menu.imageHeaderPath;
+    } else {
+      continue;
+    }
+  }
+}
+
 class MenuProvider extends ChangeNotifier {
   String _username = "";
   String _uid = "";
@@ -14,6 +24,7 @@ class MenuProvider extends ChangeNotifier {
   Future<DocumentSnapshot> _userDetail = null;
   List<Category> _categories = [];
   List<Menu> _menus = [];
+  List<Menu> _pickCategoryData = [];
 
   Color _boxColor = Color.fromRGBO(255, 255, 255, 1);
   Color _textColor = Color.fromRGBO(255, 149, 24, 0.89);
@@ -23,6 +34,7 @@ class MenuProvider extends ChangeNotifier {
   get getUid => _uid;
   get getUsername => _username;
   get getPickCategory => _pickCategory;
+  get getPickedCategoryData => _pickCategoryData;
   get getCategory => _categories;
   get getUserDetail => _userDetail;
   get getRecommendedMenu => _menus;
@@ -60,6 +72,11 @@ class MenuProvider extends ChangeNotifier {
 
   void setRecommended(List<Menu> menus) {
     _menus = menus;
+    notifyListeners();
+  }
+
+  void setPickedCategoryData(List<Menu> pickCategoryData) {
+    _pickCategoryData = pickCategoryData;
     notifyListeners();
   }
 

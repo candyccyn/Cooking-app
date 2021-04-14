@@ -1,5 +1,6 @@
 import 'package:cooking_app/screens/category/categoryPage.dart';
 import 'package:cooking_app/services/menu_service.dart';
+import 'package:cooking_app/widgets/category_widgets/categoryBody.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
@@ -20,12 +21,10 @@ class CategoryCard extends StatelessWidget {
     final menuProvider = Provider.of<MenuProvider>(context);
     void _press() {
       menuProvider.setPickCategory(title);
-      print(menuProvider.getPickCategory);
       Navigator.push(context,
-          new MaterialPageRoute(builder: (context) => new CategoryScreen()));
+          new MaterialPageRoute(builder: (context) => new CategoryBody()));
     }
 
-    ;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,

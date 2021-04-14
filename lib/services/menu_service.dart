@@ -15,8 +15,8 @@ class CategoryService {
 
     if (querySnapshot.docs.isNotEmpty) {
       return querySnapshot.docs
-          .map((doc) =>
-              Category(doc.data()['categoryName'], doc.data()['image']))
+          .map((doc) => Category(doc.data()['categoryName'],
+              doc.data()['image'], doc.data()['imageHeader']))
           .toList();
     } else {
       throw Exception("No document found");

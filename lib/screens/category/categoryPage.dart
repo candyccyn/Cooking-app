@@ -1,7 +1,5 @@
 import 'package:cooking_app/view_models/menu_provider.dart';
-
-import 'package:provider/provider.dart';
-
+import 'package:cooking_app/widgets/category_widgets/categoryBody.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -9,8 +7,8 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final menuProvider = Provider.of<MenuProvider>(context);
-
-    return Text(menuProvider.getPickCategory);
+    return Scaffold(
+      body: CategoryBody(),
+    );
   }
 }
