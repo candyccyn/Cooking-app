@@ -10,23 +10,28 @@ import 'package:provider/provider.dart';
 
 class CategoryBody extends StatelessWidget {
   MenuService menuService = MenuService();
-
   @override
   Widget build(BuildContext context) {
+    var _crossAxisSpacing = 30;
+    var _screenWidth = MediaQuery.of(context).size.width;
+    var _crossAxisCount = 2;
+    var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) /
+        _crossAxisCount;
+    var cellHeight = 295;
+    var _aspectRatio = _width / cellHeight;
     final menuProvider = Provider.of<MenuProvider>(context);
     Future<List<Menu>> recommendedMenu =
         menuService.getMenuByFilter(menuProvider.getPickCategory);
 
     recommendedMenu.then((value) => menuProvider.setPickedCategoryData(value));
     List<Menu> menus = menuProvider.getPickedCategoryData;
-
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
           children: <Widget>[
-            CategoryHeader(category: menuProvider.getPickCategory),
+            CategoryHeader(),
             DraggableScrollableSheet(
               maxChildSize: 1,
               initialChildSize: 0.7,
@@ -35,7 +40,9 @@ class CategoryBody extends StatelessWidget {
                 return SingleChildScrollView(
                   controller: controller,
                   child: Container(
-                    height: 2000,
+                    constraints: BoxConstraints(
+                      maxHeight: double.infinity,
+                    ),
                     // padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -56,15 +63,30 @@ class CategoryBody extends StatelessWidget {
                                 color: Color.fromRGBO(9, 29, 103, 1)),
                           ),
                           SizedBox(height: 40),
-                          ...List.generate(menus.length, (index) {
-                            return Container(
-                              // ignore: missing_required_param
-                              child: MenuCard(
-                                imagePath: menus[index].imagePath,
-                                title: menus[index].menuName,
+                          Container(
+                            // decoration: BoxDecoration(color: Colors.pink),
+                            child: MediaQuery.removePadding(
+                              context: context,
+                              removeTop: true,
+                              child: GridView.count(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 30,
+                                mainAxisSpacing: 20,
+                                childAspectRatio: _aspectRatio,
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                children: List.generate(menus.length, (index) {
+                                  return Container(
+                                    // ignore: missing_required_param
+                                    child: MenuCard(
+                                      imagePath: menus[index].imagePath,
+                                      title: menus[index].menuName,
+                                    ),
+                                  );
+                                }),
                               ),
-                            );
-                          })
+                            ),
+                          ),
                         ],
                       ),
                     ),

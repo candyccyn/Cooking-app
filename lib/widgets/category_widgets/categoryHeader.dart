@@ -1,7 +1,7 @@
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/services/menu_service.dart';
 import 'package:cooking_app/services/menu_service.dart';
-import 'package:cooking_app/view_models/category_header_view_model.dart';
+
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

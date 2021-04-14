@@ -22,7 +22,7 @@ class MenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20),
+      padding: EdgeInsets.zero,
       child: SizedBox(
         width: width,
         child: GestureDetector(
