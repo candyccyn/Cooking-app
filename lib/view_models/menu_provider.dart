@@ -15,12 +15,18 @@ class MenuProvider extends ChangeNotifier {
   List<Category> _categories = [];
   List<Menu> _menus = [];
 
+  Color _boxColor = Color.fromRGBO(255, 255, 255, 1);
+  Color _textColor = Color.fromRGBO(255, 149, 24, 0.89);
+
+  bool _isPress = false;
+
   get getUid => _uid;
   get getUsername => _username;
   get getPickCategory => _pickCategory;
   get getCategory => _categories;
   get getUserDetail => _userDetail;
   get getRecommendedMenu => _menus;
+  get getIsPress => _isPress;
 
   void setUid(String uid) {
     UserDetailService userDetailService = UserDetailService(uid);
@@ -54,6 +60,13 @@ class MenuProvider extends ChangeNotifier {
 
   void setRecommended(List<Menu> menus) {
     _menus = menus;
+    notifyListeners();
+  }
+
+  void setIsPress(bool isPress) {
+    _isPress = isPress;
+    _boxColor = Color.fromRGBO(255, 149, 24, 0.89);
+    _textColor = Color.fromRGBO(255, 255, 255, 1);
     notifyListeners();
   }
 }

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
-import 'package:cooking_app/view_models/profile_view_model.dart';
 
 import 'package:provider/provider.dart';
 
