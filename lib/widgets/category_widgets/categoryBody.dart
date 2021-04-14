@@ -1,18 +1,20 @@
+import 'package:cooking_app/view_models/category_view_model.dart';
 import 'package:cooking_app/view_models/menu_view_model.dart';
 import 'package:cooking_app/widgets/category_widgets/categoryHeader.dart';
+import 'package:cooking_app/widgets/home_widgets/categoriesCrad.dart';
 import 'package:cooking_app/widgets/menu_card.dart';
 import 'package:flutter/material.dart';
 
 class CategoryBody extends StatelessWidget {
-
   MenuViewModel menuViewModel = MenuViewModel();
+  CategoryViewModel categoryVM = CategoryViewModel();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
         child: Stack(
           children: <Widget>[
             CategoryHeader(),
@@ -24,7 +26,7 @@ class CategoryBody extends StatelessWidget {
                 return SingleChildScrollView(
                   controller: controller,
                   child: Container(
-                    height: 800,
+                    height: 2000,
                     // padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -44,26 +46,16 @@ class CategoryBody extends StatelessWidget {
                                 fontSize: 24,
                                 color: Color.fromRGBO(9, 29, 103, 1)),
                           ),
-                          Container(
-                            decoration: BoxDecoration(color: Colors.green),
-                              child: MediaQuery.removePadding(
-                                context: context,
-                                removeTop: true,
-                                child: GridView.count(
-                                  crossAxisCount: 2,
-                                  // crossAxisSpacing: 20,
-                                  // mainAxisSpacing: 20,
-                                  children: List.generate(
-                                      MenuCard.getMenuSize(), (index) {
-                                    return Container(
-                                      child: MenuCard(
-                                        image: menuViewModel.getImg(index),
-                                        title: menuViewModel.getText(index),
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              )),
+                          SizedBox(height: 40),
+                          ...List.generate(menuViewModel.getMenuSize(),
+                              (index) {
+                            return Container(
+                              child: MenuCard(
+                                image: menuViewModel.getImg(index),
+                                title: menuViewModel.getText(index),
+                              ),
+                            );
+                          }),
                         ],
                       ),
                     ),
