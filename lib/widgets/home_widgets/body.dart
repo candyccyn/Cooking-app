@@ -1,15 +1,19 @@
-import 'package:cooking_app/view_models/category_view_model.dart';
-import 'package:cooking_app/view_models/menu_view_model.dart';
+import 'package:cooking_app/models/category_data.dart';
+import 'package:cooking_app/services/menu_service.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/home_widgets/search_bar.dart';
 import 'package:cooking_app/widgets/home_widgets/category.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'category.dart';
 import 'header.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    CategoryService categoryService = CategoryService();
+
     var size = MediaQuery.of(context).size;
     var _crossAxisSpacing = 20;
     var _screenWidth = MediaQuery.of(context).size.width;
@@ -19,8 +23,10 @@ class Body extends StatelessWidget {
     var cellHeight = 80;
     var _aspectRatio = _width / cellHeight;
 
-    CategoryViewModel categoryVM = CategoryViewModel();
-    MenuViewModel menuViewModel = MenuViewModel();
+    final menuProvider = Provider.of<MenuProvider>(context);
+    Future<List<Category>> allCategories = categoryService.getAllCategories();
+    allCategories.then((categories) => menuProvider.setCategory(categories));
+    List<Category> categories = menuProvider.getCategory;
 
     return Scaffold(
         body: Container(
@@ -30,7 +36,7 @@ class Body extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Header(),
+                      Header(username: menuProvider.getUsername),
                       SizedBox(height: 10),
                       SearchBar(),
                       SizedBox(height: 10),
@@ -42,7 +48,7 @@ class Body extends StatelessWidget {
                             Text(
                               'Categories',
                               style: TextStyle(
-                                  fontFamily: 'Century Gothic',
+                                  fontFamily: 'Poppins',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Color.fromRGBO(9, 29, 103, 1)),
@@ -58,20 +64,20 @@ class Body extends StatelessWidget {
                             context: context,
                             removeTop: true,
                             child: GridView.count(
-                              crossAxisCount: 2,
-                              childAspectRatio: _aspectRatio,
-                              crossAxisSpacing: 20,
-                              mainAxisSpacing: 20,
-                              children: List.generate(
-                                  categoryVM.getCategorySize(), (index) {
-                                return Container(
-                                  child: CategoryCard(
-                                    image: categoryVM.getImg(index),
-                                    title: categoryVM.getText(index),
-                                  ),
-                                );
-                              }),
-                            ),
+                                crossAxisCount: 2,
+                                childAspectRatio: _aspectRatio,
+                                crossAxisSpacing: 20,
+                                mainAxisSpacing: 20,
+                                children: [
+                                  ...List.generate(categories.length, (index) {
+                                    return Container(
+                                      child: CategoryCard(
+                                        image: categories[index].imagePath,
+                                        title: categories[index].categoryName,
+                                      ),
+                                    );
+                                  }),
+                                ]),
                           )),
                       SizedBox(height: 10),
                       Container(
@@ -95,9 +101,6 @@ class Body extends StatelessWidget {
                       SizedBox(height: 10)
                     ],
                   ),
-                )
-            )
-        )
-    );
+                ))));
   }
 }

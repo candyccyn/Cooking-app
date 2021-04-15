@@ -2,13 +2,13 @@ import 'package:cooking_app/models/menu.dart';
 import 'package:flutter/material.dart';
 
 class MenuCard extends StatelessWidget {
-  final String image;
+  final String imagePath;
   final String title;
   final Function press;
 
   const MenuCard({
     Key key,
-    this.image,
+    this.imagePath,
     this.title,
     this.press,
     this.width = 140,
@@ -22,7 +22,7 @@ class MenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20),
+      padding: EdgeInsets.zero,
       child: SizedBox(
         width: width,
         child: GestureDetector(
@@ -35,7 +35,7 @@ class MenuCard extends StatelessWidget {
                   padding: EdgeInsets.all(width),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(image),
+                      image: NetworkImage(imagePath),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(30),
@@ -50,7 +50,8 @@ class MenuCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                     color: Color.fromRGBO(9, 29, 103, 1)),
-                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
               Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
