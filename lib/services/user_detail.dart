@@ -4,7 +4,7 @@ const userCollection = 'users';
 
 class UserDetailService {
   CollectionReference _userDetails =
-  FirebaseFirestore.instance.collection(userCollection);
+      FirebaseFirestore.instance.collection(userCollection);
 
   var _uid;
 
@@ -12,7 +12,7 @@ class UserDetailService {
     this._uid = uid;
   }
 
-  Future<DocumentSnapshot> getUserDetails() {
-    return this._userDetails.doc(this._uid).get();
+  Future<DocumentSnapshot> getUserDetails() async {
+    return await this._userDetails.doc(this._uid).get();
   }
 }
