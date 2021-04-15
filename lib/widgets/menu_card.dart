@@ -50,7 +50,8 @@ class MenuCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                     color: Color.fromRGBO(9, 29, 103, 1)),
-                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
               Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,

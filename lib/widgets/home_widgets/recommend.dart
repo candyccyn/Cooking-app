@@ -20,18 +20,19 @@ class RecommendCard extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          ...List.generate(menus.length, (index) {
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(menus.length, (index) {
             return Container(
+              // decoration: BoxDecoration(color: Colors.lightGreenAccent),
+              padding: EdgeInsets.only(right: 20),
               // ignore: missing_required_param
               child: MenuCard(
                 imagePath: menus[index].imagePath,
                 title: menus[index].menuName,
               ),
             );
-          })
-        ],
-      ),
+          })),
     );
   }
 }

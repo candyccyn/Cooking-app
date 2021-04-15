@@ -38,20 +38,24 @@ class CategoryCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Row(
             children: <Widget>[
-              Spacer(),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                style: TextStyle(
-                    fontFamily: 'Century Gothic',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: Color.fromRGBO(255, 149, 24, 0.89)),
+              // Spacer(),
+              Expanded(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  // overflow: TextOverflow.ellipsis,
+                  // maxLines: 1,
+                  style: TextStyle(
+                      fontFamily: 'Century Gothic',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Color.fromRGBO(255, 149, 24, 0.89)),
+                ),
               ),
-              Spacer(),
+              // Spacer(),
               Image.network(image, height: 48, width: 48),
-              Spacer(),
+              // Spacer(),
+              SizedBox(width: 10)
             ],
           ),
         ),
