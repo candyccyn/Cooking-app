@@ -19,7 +19,6 @@ class CategoryHeader extends StatelessWidget {
     final menus = menuProvider.getCategory;
     final imagePath =
         findImagePathfromCategory(menus, menuProvider.getPickCategory);
-    print(imagePath);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
