@@ -17,7 +17,7 @@ class ProfileBody extends StatelessWidget {
             Container(
               // color: Colors.pink,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(left: 35),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -35,11 +35,11 @@ class ProfileBody extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(top: 20, left: 45),
               child: MyRecipeCard(),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 45),
               child: SizedBox(
                 child: Container(
                   width: 135,
@@ -64,7 +64,10 @@ class ProfileBody extends StatelessWidget {
                             "Add more recipe",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: 15, color: Color(0xffFFA132)),
+                                fontFamily: 'Century Gothic',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Color(0xffFFA132)),
                           ),
                         ],
                       )),
