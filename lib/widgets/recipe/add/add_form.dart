@@ -10,32 +10,39 @@ class AddFrom extends StatefulWidget {
 class _AddFromState extends State<AddFrom> {
   String unit;
   String type;
+  int count = 1;
   List unitItem = ['grams', 'kilo'];
   List typeItem = ['Asian ', 'European ', 'Drinks', 'Desserts'];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
+    return SingleChildScrollView(
+        child: Container(
+            child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Menu name",
-          style: TextStyle(color: Color(0xff7C7C7C),fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: Color(0xff7C7C7C), fontWeight: FontWeight.bold),
         ),
         buildMenuNameFormField(),
         SizedBox(height: 10),
         Row(
           children: [
-            Text("Picture", style: TextStyle(color: Color(0xff7C7C7C),fontWeight: FontWeight.bold)),
+            Text("Picture",
+                style: TextStyle(
+                    color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
             Spacer(),
-            Text("Category", style: TextStyle(color: Color(0xff7C7C7C),fontWeight: FontWeight.bold)),
+            Text("Category",
+                style: TextStyle(
+                    color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
           ],
         ),
         Row(
           children: [
             Container(width: 230, child: buildPictureFormField()),
-             Spacer(flex: 2),
+            Spacer(flex: 2),
             Container(
               width: 120,
               decoration: BoxDecoration(
@@ -70,45 +77,54 @@ class _AddFromState extends State<AddFrom> {
             ),
           ],
         ),
-        Text("Ingredients", style: TextStyle(color: Color(0xff7C7C7C),fontWeight: FontWeight.bold)),
-        Row(
-          children: [
-            Container(width: 230, child: buildIngredientFormField()),
-            Spacer(flex: 2),
-            Container(
-              width: 120,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFFFC784)),
-                  borderRadius: BorderRadius.circular(25),
-                  color: Color(0xFFFFC784)),
-              child: Center(
-                child: DropdownButton(
-                  hint: Text(
-                    "Select unit",
-                    textAlign: TextAlign.center,
+        Text("Ingredients",
+            style: TextStyle(
+                color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
+        ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+            shrinkWrap: true,
+            itemCount: count,
+            itemBuilder: (BuildContext context, int index) {
+              return Row(
+                children: [
+                  Container(width: 230, child: buildIngredientFormField()),
+                  Spacer(flex: 2),
+                  Container(
+                    width: 120,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFFFFC784)),
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color(0xFFFFC784)),
+                    child: Center(
+                      child: DropdownButton(
+                        hint: Text(
+                          "Select unit",
+                          textAlign: TextAlign.center,
+                        ),
+                        dropdownColor: Color(0xFFFFC784),
+                        underline: SizedBox(),
+                        style: TextStyle(
+                          color: Color(0xff091D67),
+                        ),
+                        value: unit,
+                        onChanged: (newValue) {
+                          setState(() {
+                            unit = newValue;
+                          });
+                        },
+                        items: unitItem.map((valueItem) {
+                          return DropdownMenuItem(
+                            value: valueItem,
+                            child: Text(valueItem, textAlign: TextAlign.center),
+                          );
+                        }).toList(),
+                      ),
+                    ),
                   ),
-                  dropdownColor: Color(0xFFFFC784),
-                  underline: SizedBox(),
-                  style: TextStyle(
-                    color: Color(0xff091D67),
-                  ),
-                  value: unit,
-                  onChanged: (newValue) {
-                    setState(() {
-                      unit = newValue;
-                    });
-                  },
-                  items: unitItem.map((valueItem) {
-                    return DropdownMenuItem(
-                      value: valueItem,
-                      child: Text(valueItem, textAlign: TextAlign.center),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
+                ],
+              );
+            }),
         SizedBox(height: 20),
         SizedBox(
           width: double.infinity,
@@ -119,14 +135,18 @@ class _AddFromState extends State<AddFrom> {
                   side: BorderSide(
                       style: BorderStyle.solid, color: Color(0xffFFA132))),
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  count += 1;
+                });
+              },
               child: Text(
                 "+ Add ingredient",
                 style: TextStyle(fontSize: 15, color: Color(0xffFFA132)),
               )),
         ),
       ],
-    ));
+    )));
   }
 }
 

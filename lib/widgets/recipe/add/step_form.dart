@@ -10,6 +10,7 @@ class StepForm extends StatefulWidget {
 
 class _StepFormState extends State<StepForm> {
   String unit;
+
   List unitList = ['Hours', 'Minutes', 'Seconds'];
   @override
   Widget build(BuildContext context) {

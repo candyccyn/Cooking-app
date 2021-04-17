@@ -1,5 +1,6 @@
 import 'package:cooking_app/routes.dart';
-import 'package:cooking_app/screens/recipe/add_recipe.dart';
+
+import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -18,11 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Poppins",),
+      theme: ThemeData(
+        fontFamily: "Poppins",
+      ),
       routes: routes,
       home: AddRecipeScreen(),
-    //  initialRoute: WelcomeScreen.routeName,
+      //  initialRoute: WelcomeScreen.routeName,
     );
   }
 }
-

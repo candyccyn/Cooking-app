@@ -3,16 +3,24 @@ import 'package:cooking_app/widgets/recipe/add/step_form.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
 
-class AddRecipeScreen extends StatelessWidget {
-  static String routeName = "/add_recipe";
-  @override
+class AddStep extends StatefulWidget {
+  _AddStepState createState() => _AddStepState();
+}
+
+@override
+class _AddStepState extends State<AddStep> {
+  // TODO: implement createState
+  int countStep = 1;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         textTheme: TextTheme(
             headline6: TextStyle(color: Color(0xff091D67), fontSize: 18)),
-        title: Text("Add New Recipe",style: TextStyle(fontWeight: FontWeight.bold,)),
+        title: Text("Add New Recipe",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -38,8 +46,17 @@ class AddRecipeScreen extends StatelessWidget {
                 ),
                 AddFrom(),
                 SizedBox(height: 20),
-                Text("Steps", style: TextStyle(color: Color(0xff7C7C7C),fontWeight: FontWeight.bold)),
-                StepForm(),
+                Text("Steps",
+                    style: TextStyle(
+                        color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
+                ListView.separated(
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const Divider(),
+                    shrinkWrap: true,
+                    itemCount: countStep,
+                    itemBuilder: (BuildContext context, int index) {
+                      return StepForm();
+                    }),
                 SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
@@ -51,7 +68,11 @@ class AddRecipeScreen extends StatelessWidget {
                               style: BorderStyle.solid,
                               color: Color(0xffFFA132))),
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          countStep += 1;
+                        });
+                      },
                       child: Text(
                         "+ Add more step",
                         style:
@@ -59,18 +80,21 @@ class AddRecipeScreen extends StatelessWidget {
                       )),
                 ),
                 SizedBox(height: 20),
-                SizedBox(
-                  width: double.infinity,
-                  height: 34,
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      color: Color(0xFFFFB448),
-                      onPressed: () {},
-                      child: Text(
-                        "Save",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      )),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 40),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 34,
+                    child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        color: Color(0xFFFFB448),
+                        onPressed: () {},
+                        child: Text(
+                          "Save",
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        )),
+                  ),
                 ),
               ],
             ),
