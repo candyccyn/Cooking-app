@@ -55,7 +55,7 @@ class _AddStepState extends State<AddStep> {
                     shrinkWrap: true,
                     itemCount: countStep,
                     itemBuilder: (BuildContext context, int index) {
-                      return StepForm();
+                      return StepForm(countStep.toString());
                     }),
                 SizedBox(height: 20),
                 SizedBox(

@@ -4,13 +4,20 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:flutter_spinbox/material.dart';
 
 class StepForm extends StatefulWidget {
+  String countStep;
+  StepForm(String countStep) {
+    this.countStep = countStep;
+  }
   @override
-  _StepFormState createState() => _StepFormState();
+  _StepFormState createState() => _StepFormState(this.countStep);
 }
 
 class _StepFormState extends State<StepForm> {
   String unit;
-
+  String countStep;
+  _StepFormState(String countStep) {
+    this.countStep = countStep;
+  }
   List unitList = ['Hours', 'Minutes', 'Seconds'];
   @override
   Widget build(BuildContext context) {
@@ -34,11 +41,7 @@ class _StepFormState extends State<StepForm> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      DrawCircle(),
-                      // Text(
-                      //   "1",
-                      //   style: TextStyle(fontSize: 20, color: Colors.black),
-                      // ),
+                      DrawCircle(this.countStep),
                       Container(
                           width: 250,
                           height: 30,
@@ -95,18 +98,6 @@ class _StepFormState extends State<StepForm> {
                           ),
                         ),
                       ),
-                      // Container(
-                      //   height: 30,
-                      //   width: 150,
-                      //   child: CupertinoSpinBox(
-                      //     min: 1,
-                      //     max: 100,
-                      //     value: 50,
-                      //     cursorColor: Colors.orange,
-                      //     // direction: Axis.vertical,
-                      //     onChanged: (value) => print(value),
-                      //   ),
-                      // ),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -176,6 +167,10 @@ TextFormField buildPictureFormField() {
 }
 
 class DrawCircle extends StatelessWidget {
+  String countStep;
+  DrawCircle(String countStep) {
+    this.countStep = countStep;
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -186,7 +181,7 @@ class DrawCircle extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: Text(
-        "1",
+        countStep,
         style: TextStyle(fontSize: 20, color: Color(0xff091D67)),
         textAlign: TextAlign.center,
       ),
