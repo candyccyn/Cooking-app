@@ -1,4 +1,5 @@
 import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/widgets/delete_popup.dart';
 import 'package:flutter/material.dart';
 
 class MyCard extends StatelessWidget {
@@ -51,7 +52,13 @@ class MyCard extends StatelessWidget {
                       height: 30,
                       child: FloatingActionButton(
                         backgroundColor: Color(0xffFFA132),
-                        onPressed: () {},
+                        onPressed: () async {
+                          final action = Dialogs.yesAbortDialog(
+                              context,
+                              "Delete recipe",
+                              "Are you sure to delete your recipe?");
+
+                        },
                         child: Icon(
                           Icons.remove,
                           color: Colors.white,
