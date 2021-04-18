@@ -12,7 +12,26 @@ class _EditProfileHeaderState extends State<EditProfileHeader> {
     var size = MediaQuery.of(context).size;
     return Container(
       height: size.height * 0.35,
-      child: EditProfilePicture(),
+      child: Column(
+        children: [
+          SizedBox(height:50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Color(0xFFFFFB448),
+                ),
+                onPressed: () {
+                    Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+          EditProfilePicture(),
+        ],
+      ),
     );
   }
 }
@@ -34,13 +53,13 @@ class EditProfilePicture extends StatelessWidget {
         'Change Profile Photo ',
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontFamily: 'Century Gothic',
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Color(0xfffFFB448),
-             decoration: TextDecoration.underline,),
+          fontFamily: 'Century Gothic',
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          color: Color(0xfffFFB448),
+          decoration: TextDecoration.underline,
+        ),
       ),
-     
     ]);
   }
 }
