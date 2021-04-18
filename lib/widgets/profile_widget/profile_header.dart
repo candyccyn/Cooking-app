@@ -1,4 +1,4 @@
-import 'package:cooking_app/widgets/recipe/add/step_form.dart';
+import 'package:cooking_app/screens/profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatefulWidget {
@@ -11,7 +11,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-   //   color: Colors.green,
+      //   color: Colors.green,
       height: size.height * 0.35,
       child: Center(
         child: Stack(fit: StackFit.expand, children: [
@@ -31,7 +31,11 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       icon: const Icon(Icons.edit),
                       color: Colors.white,
                       onPressed: () {
-                        setState(() {});
+                     //    Navigator.pushNamed(context, EditProfileScreen.routeName);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfileScreen()));
                       },
                     ),
                   )),
@@ -41,38 +45,6 @@ class _ProfileHeaderState extends State<ProfileHeader> {
         ]),
       ),
     );
-
-    // return Scaffold(
-    //   body: Container(
-    //       color: Colors.green,
-    //       height: size.height * 0.35,
-    //       child: Row(
-    //         mainAxisAlignment: MainAxisAlignment.end,
-    //         children: [
-    //           SizedBox(
-    //               height: 44,
-    //               child: Container(
-    //                 decoration: ShapeDecoration(
-    //                     color: Color.fromRGBO(255, 161, 50, 1),
-    //                     shape: RoundedRectangleBorder(
-    //                         borderRadius: BorderRadius.only(
-    //                             topLeft: Radius.circular(30),
-    //                             bottomLeft: Radius.circular(30)))),
-    //                 child: IconButton(
-    //                   icon: const Icon(Icons.edit),
-    //                   color: Colors.white,
-    //                   onPressed: () {
-    //                     setState(() {});
-    //                   },
-    //                 ),
-    //               )),
-
-    //         ],
-    //       ),
-
-    //     ),
-
-    // );
   }
 }
 
