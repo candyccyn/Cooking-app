@@ -57,7 +57,11 @@ class MyCard extends StatelessWidget {
                               context,
                               "Delete recipe",
                               "Are you sure to delete your recipe?");
-
+                          // if (action == DialogAction.yes) {
+                          //   setState() {
+                             
+                          //   }
+                         // }
                         },
                         child: Icon(
                           Icons.remove,
