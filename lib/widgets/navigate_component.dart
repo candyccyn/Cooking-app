@@ -24,10 +24,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     var navProvider = Provider.of<NavigationBarProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hello'),
-        backgroundColor: Colors.orange,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Hello'),
+      //   backgroundColor: Colors.orange,
+      // ),
       body: currentTab[navProvider.currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
