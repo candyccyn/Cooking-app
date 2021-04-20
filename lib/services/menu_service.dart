@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 const menuCollection = 'test2';
 const categoriesCollection = 'categories';
+const ALL_MENU_DISPLAY = 5;
 
 class CategoryService {
   CollectionReference _categoriesReference =
@@ -42,10 +43,14 @@ class MenuService with ChangeNotifier {
   }
 
   Future<List<Menu>> getAllMenu() async {
-    this._menuReference.get().then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        print(doc["first_name"]);
-      });
-    });
+    QuerySnapshot querySnapshot = await _menuReference.limit(ALL_MENU_DISPLAY).get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs
+          .map((doc) => Menu(doc.data()['name'], doc.data()['image']))
+          .toList();
+    } else {
+      throw Exception("No document found");
+    }
   }
 }

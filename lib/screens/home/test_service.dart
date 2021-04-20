@@ -20,7 +20,7 @@ class _TestServiceScreenState extends State<TestServiceScreen> {
       body: Center(child: Text('You have pressed the button x times.')),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await mS.getMenuByFilter('asian-food');
+          await mS.getAllMenu();
         },
         child: const Icon(Icons.add),
       ),
