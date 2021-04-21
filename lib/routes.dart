@@ -1,3 +1,4 @@
+import 'package:cooking_app/screens/Timer/step_timer.dart';
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 
@@ -24,6 +25,9 @@ final Map<String, WidgetBuilder> routes = {
   EditProfileScreen.routeName:(context)=>EditProfileScreen(),
 
   HomeScreen.routeName: (context) => HomeScreen(),
+
+  TimerScreen.routeName: (context) => TimerScreen(),
+
   CategoryScreen.routeName: (context) => CategoryScreen(),
   TestServiceScreen.routeName: (context) => TestServiceScreen(),
 

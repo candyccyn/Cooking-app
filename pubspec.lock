@@ -74,6 +74,7 @@ packages:
     version: "1.0.2"
   dotted_line:
 
+
     dependency: "direct main"
     description:
       name: dotted_line
@@ -277,6 +278,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
+  simple_timer:
+    dependency: "direct main"
+    description:
+      name: simple_timer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

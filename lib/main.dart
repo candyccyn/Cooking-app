@@ -1,8 +1,12 @@
 import 'package:cooking_app/routes.dart';
 
+import 'package:cooking_app/screens/Timer/step_timer.dart';
+
+
 
 
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
+
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/home/test_service.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
@@ -36,6 +40,9 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
+
+      //initialRoute: TimerScreen.routeName,
+
 
      // initialRoute: RecipeDetailScreen.routeName,
 
