@@ -72,7 +72,6 @@ class SignUpComponent extends StatelessWidget {
                       await (vmCooking.signInEmail(
                           "oranichbest@gmail.com", "abc123"));
                       menuProvider.setUid(vmCooking.uid);
-                      // menuProvider.getUserDetail((vmCooking.uid));
                       Navigator.push(
                           context,
                           MaterialPageRoute(

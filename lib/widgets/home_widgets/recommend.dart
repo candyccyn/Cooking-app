@@ -12,7 +12,7 @@ class RecommendCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
     Future<List<Menu>> recommendedMenu =
-        menuService.getMenuByFilter("Asian Food");
+        menuService.getAllMenu();
 
     recommendedMenu.then((value) => menuProvider.setRecommended(value));
 
