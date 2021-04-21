@@ -70,7 +70,7 @@ class SignUpComponent extends StatelessWidget {
                     text: "Login",
                     press: () async {
                       await (vmCooking.signInEmail(
-                          "teevisit_kn@hotmail.com", "abc123"));
+                          "oranichbest@gmail.com", "abc123"));
                       menuProvider.setUid(vmCooking.uid);
                       Navigator.push(
                           context,
