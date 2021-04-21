@@ -28,6 +28,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   flutter_svg: ^0.20.0-nullsafety.3
+
   flutter_spinbox: ^0.4.0
   dotted_line: ^3.0.0
 
@@ -38,7 +39,7 @@ dependencies:
 
   provider: ^4.3.3
   hexcolor: ^1.0.6
-
+  simple_timer: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,3 +56,13 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
+
+    - family: Century Gothic
+      fonts:
+        - asset: assets/fonts/Century Gothic.ttf
+        - asset: assets/fonts/CenturyGothic.ttf
+        - asset: assets/fonts/GOTHIC.TTF
+        - asset: assets/fonts/GOTHICB.TTF
+        - asset: assets/fonts/GOTHICB0.TTF
+        - asset: assets/fonts/GOTHICBI.TTF
+        - asset: assets/fonts/GOTHICI.TTF

@@ -1,8 +1,8 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
+import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/view_models/welcome_view_model.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:cooking_app/widgets/welcome_widgets/welcome_content.dart';
-
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -47,7 +47,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(welcomeVM.getDataLength(),
-                              (index) => buildDot(index: index))),
+                              (index) => buildDot(index: index))
+                      ),
                       Spacer(flex: 3),
                       RoundedButton(
                         text: "Get start",

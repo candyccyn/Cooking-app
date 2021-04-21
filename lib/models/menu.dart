@@ -1,6 +1,9 @@
 class Menu {
-  final String menuName;
+  String menuName;
+  String imagePath;
 
-  Menu({this.menuName});
-
+  Menu(String menuName, String imagePath) {
+    this.menuName = menuName;
+    this.imagePath = imagePath;
+  }
 }
