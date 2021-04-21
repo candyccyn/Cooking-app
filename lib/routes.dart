@@ -2,6 +2,7 @@ import 'package:cooking_app/screens/Timer/step_timer.dart';
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 
+import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
 import 'package:cooking_app/screens/category/category.dart';
 
 import 'package:cooking_app/screens/home/home.dart';
@@ -22,16 +23,11 @@ final Map<String, WidgetBuilder> routes = {
   SignInScreen.routeName: (context) => SignInScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
-  EditProfileScreen.routeName:(context)=>EditProfileScreen(),
-
+  EditProfileScreen.routeName: (context) => EditProfileScreen(),
+  AddRecipeScreen.routeName: (context) => AddRecipeScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
-
   TimerScreen.routeName: (context) => TimerScreen(),
-
   CategoryScreen.routeName: (context) => CategoryScreen(),
   TestServiceScreen.routeName: (context) => TestServiceScreen(),
-
   RecipeDetailScreen.routeName: (context) => RecipeDetailScreen(),
-
-
 };

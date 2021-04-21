@@ -1,9 +1,7 @@
 import 'package:cooking_app/routes.dart';
 
+import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
 import 'package:cooking_app/screens/Timer/step_timer.dart';
-
-
-
 
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 
@@ -43,18 +41,15 @@ class MyApp extends StatelessWidget {
 
       //initialRoute: TimerScreen.routeName,
 
-
-     // initialRoute: RecipeDetailScreen.routeName,
-
+      // initialRoute: RecipeDetailScreen.routeName,
 
       initialRoute: WelcomeScreen.routeName,
-     // home: ProfileScreen(),
+      // home: ProfileScreen(),
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),
       //   create: (BuildContext context) => NavigationBarProvider(),
       // ),
-
     );
   }
 }
