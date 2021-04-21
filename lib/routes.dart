@@ -5,6 +5,9 @@ import 'package:cooking_app/screens/category/category.dart';
 
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/home/test_service.dart';
+
+import 'package:cooking_app/screens/recipe_detail/recipeDetailPage.dart';
+
 import 'package:cooking_app/screens/profile/edit_profile.dart';
 
 import 'package:cooking_app/screens/welcome/welcome.dart';
@@ -23,5 +26,8 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
   CategoryScreen.routeName: (context) => CategoryScreen(),
   TestServiceScreen.routeName: (context) => TestServiceScreen(),
+
+  RecipeDetailScreen.routeName: (context) => RecipeDetailScreen(),
+
 
 };

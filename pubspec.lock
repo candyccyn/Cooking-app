@@ -65,6 +65,7 @@ packages:
     source: hosted
     version: "1.15.0"
   cupertino_icons:
+
     dependency: "direct main"
     description:
       name: cupertino_icons
@@ -72,6 +73,7 @@ packages:
     source: hosted
     version: "1.0.2"
   dotted_line:
+
     dependency: "direct main"
     description:
       name: dotted_line
