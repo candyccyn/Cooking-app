@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cooking_app/screens/recipe/add_recipe.dart';
+import 'package:cooking_app/widgets/recipe/add/add_recipe.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:provider/provider.dart';
