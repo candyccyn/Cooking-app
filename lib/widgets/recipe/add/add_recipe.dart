@@ -27,7 +27,7 @@ class _AddStepState extends State<AddStep> {
           color: Color(0xffFFA132),
           iconSize: 20.0,
           onPressed: () {
-            // _goBack(context);
+            Navigator.pop(context);
           },
         ),
       ),

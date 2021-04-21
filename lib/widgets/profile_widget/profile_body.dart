@@ -1,6 +1,8 @@
+import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
 import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/profile_widget/myRecipe_card.dart';
 import 'package:cooking_app/widgets/profile_widget/profile_header.dart';
+import 'package:cooking_app/widgets/recipe/add/add_recipe.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -51,7 +53,14 @@ class ProfileBody extends StatelessWidget {
                               style: BorderStyle.solid,
                               color: Color(0xffFFA132))),
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                            builder: (context) => new AddStep(),
+                          ),
+                        );
+                      },
                       child: Column(
                         children: [
                           SizedBox(height: 20),
