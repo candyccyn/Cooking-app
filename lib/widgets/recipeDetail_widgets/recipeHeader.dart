@@ -1,4 +1,4 @@
-import 'package:cooking_app/screens/category/categoryPage.dart';
+import 'package:cooking_app/screens/category/category.dart';
 import 'package:flutter/material.dart';
 
 class RecipeHeaderData {
@@ -47,33 +47,31 @@ class _RecipeDetailHeaderState extends State<RecipeDetailHeader> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-        children: [
+          children: [
             SizedBox(
-              height: 44,
-              child: Container(
-                decoration: ShapeDecoration(
-                  color: Color.fromRGBO(255, 161, 50, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomLeft: Radius.circular(30)
-                    )
+                height: 44,
+                child: Container(
+                  decoration: ShapeDecoration(
+                    color: Color.fromRGBO(255, 161, 50, 1),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomLeft: Radius.circular(30))),
                   ),
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.bookmark_rounded),
-                  color: _hasBeenPressed ? Color.fromRGBO(9, 29, 103, 1) : Colors.white,
-                  onPressed: () {
-                    setState(() {
-                      _hasBeenPressed = !_hasBeenPressed;
-                    });
-                  },
-                ),
-              )
-            ),
+                  child: IconButton(
+                    icon: const Icon(Icons.bookmark_rounded),
+                    color: _hasBeenPressed
+                        ? Color.fromRGBO(9, 29, 103, 1)
+                        : Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        _hasBeenPressed = !_hasBeenPressed;
+                      });
+                    },
+                  ),
+                )),
           ],
         ),
-
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: FloatingActionButton(
