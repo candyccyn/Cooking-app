@@ -1,9 +1,11 @@
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
+import 'package:cooking_app/services/user_detail.dart';
 import 'package:cooking_app/view_models/cooking_user_view_model.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/view_models/navigaition_bar_provider.dart';
-import 'package:cooking_app/view_models/provider_viewmodel.dart';
+// import 'package:cooking_app/view_models/provider_viewmodel.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/sign_form.dart';
 import 'package:cooking_app/widgets/authentication_widgets/signin_widgets/social.dart';
 import 'package:cooking_app/screens/profile/profile.dart';
@@ -19,7 +21,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => ProviderData(),
+        create: (context) => MenuProvider(),
         child: MaterialApp(
           home: SignUpComponent(),
         ));
@@ -30,7 +32,7 @@ class SignUpComponent extends StatelessWidget {
   var vmCooking = CookingUserViewModel();
   @override
   Widget build(BuildContext context) {
-    final providerData = Provider.of<ProviderData>(context);
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Scaffold(
       body: Container(
           color: Colors.white,
@@ -68,12 +70,11 @@ class SignUpComponent extends StatelessWidget {
                     text: "Login",
                     press: () async {
                       await (vmCooking.signInEmail(
-                          "teevisit_kn@hotmail.com", "abc123"));
-                      providerData.changeString(vmCooking.uid);
+                          "oranichbest@gmail.com", "abc123"));
+                      menuProvider.setUid(vmCooking.uid);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-
                               builder: (context) =>
                                   ChangeNotifierProvider<NavigationBarProvider>(
                                     child: MyStatefulWidget(),

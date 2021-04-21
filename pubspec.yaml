@@ -29,6 +29,11 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_svg: ^0.20.0-nullsafety.3
 
+
+  flutter_spinbox: ^0.4.0
+  dotted_line: ^3.0.0
+
+
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
   cloud_firestore: ^0.16.0
@@ -53,3 +58,14 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
+
+    - family: Century Gothic
+      fonts:
+        - asset: assets/fonts/Century Gothic.ttf
+        - asset: assets/fonts/CenturyGothic.ttf
+        - asset: assets/fonts/GOTHIC.TTF
+        - asset: assets/fonts/GOTHICB.TTF
+        - asset: assets/fonts/GOTHICB0.TTF
+        - asset: assets/fonts/GOTHICBI.TTF
+        - asset: assets/fonts/GOTHICI.TTF
+
