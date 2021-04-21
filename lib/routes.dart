@@ -1,6 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/screens/authenticate/sign_up.dart';
-import 'package:cooking_app/screens/category/categoryPage.dart';
+import 'package:cooking_app/screens/category/category.dart';
 import 'package:cooking_app/screens/home/home.dart';
 import 'package:cooking_app/screens/home/test_service.dart';
 import 'package:cooking_app/screens/welcome/welcome.dart';

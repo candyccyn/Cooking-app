@@ -7,12 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CategoryHeader extends StatelessWidget {
-  final String category;
-  @override
-  const CategoryHeader({
-    Key key,
-    this.category,
-  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
@@ -36,8 +30,6 @@ class CategoryHeader extends StatelessWidget {
         backgroundColor: Colors.black54.withOpacity(0.5),
         onPressed: () {
           Navigator.pop(context);
-          // Navigator.push(
-          //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
         },
       ),
     );

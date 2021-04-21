@@ -1,4 +1,4 @@
-import 'package:cooking_app/screens/category/categoryPage.dart';
+import 'package:cooking_app/screens/category/category.dart';
 import 'package:cooking_app/services/menu_service.dart';
 import 'package:cooking_app/widgets/category_widgets/categoryBody.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class CategoryCard extends StatelessWidget {
     void _press() {
       menuProvider.setPickCategory(title);
       Navigator.push(context,
-          new MaterialPageRoute(builder: (context) => new CategoryBody()));
+          new MaterialPageRoute(builder: (context) => new CategoryScreen()));
     }
 
     return Container(
