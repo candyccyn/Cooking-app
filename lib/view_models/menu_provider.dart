@@ -22,12 +22,10 @@ class MenuProvider extends ChangeNotifier {
   String _pickCategory = "";
 
   Future<DocumentSnapshot> _userDetail = null;
+
   List<Category> _categories = [];
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
-
-  Color _boxColor = Color.fromRGBO(255, 255, 255, 1);
-  Color _textColor = Color.fromRGBO(255, 149, 24, 0.89);
 
   bool _isPress = false;
 
@@ -45,6 +43,7 @@ class MenuProvider extends ChangeNotifier {
     _userDetail = userDetailService.getUserDetails();
 
     setUserDetail(_userDetail);
+
     _userDetail
         .then((value) => setUsername(value.data()["username"].toString()));
     notifyListeners();
@@ -77,13 +76,6 @@ class MenuProvider extends ChangeNotifier {
 
   void setPickedCategoryData(List<Menu> pickCategoryData) {
     _pickCategoryData = pickCategoryData;
-    notifyListeners();
-  }
-
-  void setIsPress(bool isPress) {
-    _isPress = isPress;
-    _boxColor = Color.fromRGBO(255, 149, 24, 0.89);
-    _textColor = Color.fromRGBO(255, 255, 255, 1);
     notifyListeners();
   }
 }

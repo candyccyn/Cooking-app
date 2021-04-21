@@ -1,20 +1,23 @@
-import 'package:cooking_app/widgets/bookmark_widgets/bookmarkHeader.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/category_widgets/categoryBody.dart';
 import 'package:cooking_app/widgets/category_widgets/categoryHeader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
-class BookmarkScreen extends StatelessWidget {
+class CategoryScreen extends StatelessWidget {
+  static String routeName = "/category";
+
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
           children: <Widget>[
-            BookmarkHeader(),
-            CategoryBody(textHeader: ""),
+            CategoryHeader(),
+            CategoryBody(textHeader: menuProvider.getPickCategory),
           ],
         ),
       ),
