@@ -1,3 +1,4 @@
+import 'package:cooking_app/services/menu_detail_service.dart';
 import 'package:cooking_app/services/menu_service.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class TestServiceScreen extends StatefulWidget {
 
 class _TestServiceScreenState extends State<TestServiceScreen> {
   MenuService mS = MenuService();
+  MenuDetailService mD = MenuDetailService("None");
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class _TestServiceScreenState extends State<TestServiceScreen> {
       body: Center(child: Text('You have pressed the button x times.')),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await mS.getAllMenu();
+          await mD.assignMenuData();
         },
         child: const Icon(Icons.add),
       ),
