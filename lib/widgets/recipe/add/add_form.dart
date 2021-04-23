@@ -1,3 +1,4 @@
+import 'package:cooking_app/widgets/recipe/add/ingredient.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_line/dotted_line.dart';
@@ -8,10 +9,9 @@ class AddFrom extends StatefulWidget {
 }
 
 class _AddFromState extends State<AddFrom> {
-  String unit;
+
   String type;
   int count = 1;
-  List unitItem = ['grams', 'kilo'];
   List typeItem = ['Asian ', 'European ', 'Drinks', 'Desserts'];
 
   @override
@@ -24,7 +24,7 @@ class _AddFromState extends State<AddFrom> {
         Text(
           "Menu name",
           style:
-              TextStyle(color: Color(0xff7C7C7C), fontWeight: FontWeight.bold),
+              TextStyle(color: Color(0xff7C7C7C), fontWeight: FontWeight.bold,),
         ),
         buildMenuNameFormField(),
         SizedBox(height: 10),
@@ -46,16 +46,16 @@ class _AddFromState extends State<AddFrom> {
             Container(
               width: 120,
               decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFFFC784)),
+                  border: Border.all(color: Color(0xFFFFFE4C4)),
                   borderRadius: BorderRadius.circular(25),
-                  color: Color(0xFFFFC784)),
+                  color: Color(0xFFFFFE4C4)),
               child: Center(
                 child: DropdownButton(
                   hint: Text(
                     "Select type",
                     textAlign: TextAlign.center,
                   ),
-                  dropdownColor: Color(0xFFFFC784),
+                  dropdownColor: Color(0xFFFFFE4C4),
                   underline: SizedBox(),
                   style: TextStyle(
                     color: Color(0xff091D67),
@@ -86,44 +86,7 @@ class _AddFromState extends State<AddFrom> {
             shrinkWrap: true,
             itemCount: count,
             itemBuilder: (BuildContext context, int index) {
-              return Row(
-                children: [
-                  Container(width: 230, child: buildIngredientFormField()),
-                  Spacer(flex: 2),
-                  Container(
-                    width: 120,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFFFC784)),
-                        borderRadius: BorderRadius.circular(25),
-                        color: Color(0xFFFFC784)),
-                    child: Center(
-                      child: DropdownButton(
-                        hint: Text(
-                          "Select unit",
-                          textAlign: TextAlign.center,
-                        ),
-                        dropdownColor: Color(0xFFFFC784),
-                        underline: SizedBox(),
-                        style: TextStyle(
-                          color: Color(0xff091D67),
-                        ),
-                        value: unit,
-                        onChanged: (newValue) {
-                          setState(() {
-                            unit = newValue;
-                          });
-                        },
-                        items: unitItem.map((valueItem) {
-                          return DropdownMenuItem(
-                            value: valueItem,
-                            child: Text(valueItem, textAlign: TextAlign.center),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                ],
-              );
+              return Ingredient(this.count.toString());
             }),
         SizedBox(height: 20),
         SizedBox(
@@ -154,20 +117,20 @@ TextFormField buildMenuNameFormField() {
   return TextFormField(
     decoration: InputDecoration(
       filled: true,
-      fillColor: Color(0xFFFFC784),
+      fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
         gapPadding: 10,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
       ),
     ),
@@ -178,44 +141,20 @@ TextFormField buildPictureFormField() {
   return TextFormField(
     decoration: InputDecoration(
       filled: true,
-      fillColor: Color(0xFFFFC784),
+      fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
         gapPadding: 10,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
-        ),
-      ),
-    ),
-  );
-}
-
-TextFormField buildIngredientFormField() {
-  return TextFormField(
-    decoration: InputDecoration(
-      filled: true,
-      fillColor: Color(0xFFFFC784),
-      floatingLabelBehavior: FloatingLabelBehavior.always,
-      contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Color(0xFFFFC784),
-        ),
-        gapPadding: 10,
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
       ),
     ),

@@ -27,7 +27,7 @@ class _StepFormState extends State<StepForm> {
       width: MediaQuery.of(context).size.width,
       height: 200,
       decoration: BoxDecoration(
-        color: Color(0xfffFFC784),
+        color: Color(0xFFFFFE4C4),
         borderRadius: BorderRadius.circular(30),
       ),
       child: SingleChildScrollView(
@@ -127,14 +127,14 @@ TextFormField buildDescriptionFormField() {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
         gapPadding: 10,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
       ),
     ),
@@ -152,14 +152,14 @@ TextFormField buildPictureFormField() {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
         gapPadding: 10,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: Color(0xFFFFC784),
+          color: Color(0xFFFFFE4C4),
         ),
       ),
     ),
