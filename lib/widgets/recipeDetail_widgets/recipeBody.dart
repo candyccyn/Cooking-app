@@ -1,3 +1,7 @@
+import 'package:cooking_app/models/menu_detail_data.dart';
+import 'package:cooking_app/models/review.dart';
+import 'package:cooking_app/services/menu_detail_service.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/recipeDetail_widgets/breif_info.dart';
 import 'package:cooking_app/widgets/recipeDetail_widgets/clock_button.dart';
 import 'package:cooking_app/widgets/recipeDetail_widgets/comment_bar.dart';
@@ -6,6 +10,7 @@ import 'package:cooking_app/widgets/recipeDetail_widgets/reviewPost.dart';
 import 'package:cooking_app/widgets/recipeDetail_widgets/steps.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'ingredients.dart';
 
@@ -57,10 +62,20 @@ class StepsViewModel {
 
 class ReviewsData {
   List<Map<String, String>> data = [
-    {"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-        "Donec imperdiet nunc risus, ac rutrum enim sodales vitae. Aliquam condimentum lacinia lorem, "
-        "id laoreet turpis commodo nec.", "username": "cooking mama", "image": "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"},
-    {"description": "Very good", "username": "ornorn__", "image": "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.6435-9/98056120_2963912283657166_6163160628174258176_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeGz1WmYYz0ZvbZO9YWv4WOhHz8x5_9Bar0fPzHn_0FqvXY3q-BB1JCQeok9c4DYT_CJxfDAJZlKcNzTvcEE7ElU&_nc_ohc=7S1hyQFBtnMAX-sl-r6&_nc_ht=scontent.fbkk5-6.fna&oh=030b723bda6eba0835f83b22b2ce56ce&oe=60A1D4F0"},
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+          "Donec imperdiet nunc risus, ac rutrum enim sodales vitae. Aliquam condimentum lacinia lorem, "
+          "id laoreet turpis commodo nec.",
+      "username": "cooking mama",
+      "image":
+          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"
+    },
+    {
+      "description": "Very good",
+      "username": "ornorn__",
+      "image":
+          "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.6435-9/98056120_2963912283657166_6163160628174258176_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeGz1WmYYz0ZvbZO9YWv4WOhHz8x5_9Bar0fPzHn_0FqvXY3q-BB1JCQeok9c4DYT_CJxfDAJZlKcNzTvcEE7ElU&_nc_ohc=7S1hyQFBtnMAX-sl-r6&_nc_ht=scontent.fbkk5-6.fna&oh=030b723bda6eba0835f83b22b2ce56ce&oe=60A1D4F0"
+    },
   ];
 }
 
@@ -82,7 +97,6 @@ class ReviewsViewModel {
   String getImage(int index) {
     return _item.data[index]["image"];
   }
-
 }
 
 class RecipeBody extends StatefulWidget {
@@ -105,12 +119,14 @@ class _RecipeBodyState extends State<RecipeBody> {
     var cellHeight = 295;
     var _aspectRatio = _width / cellHeight;
     var size = MediaQuery.of(context).size;
-    // final menuProvider = Provider.of<MenuProvider>(context);
-    // Future<List<Menu>> recommendedMenu =
-    // menuService.getMenuByFilter(menuProvider.getPickCategory);
-    //
-    // recommendedMenu.then((value) => menuProvider.setPickedCategoryData(value));
-    // List<Menu> menus = menuProvider.getPickedCategoryData;
+    final menuProvider = Provider.of<MenuProvider>(context);
+    MenuDetailService menuDetailService =
+        MenuDetailService(menuProvider.getPickReciepe);
+
+    Future<MenuDetail> menuDetail = menuDetailService.assignMenuData();
+
+    menuDetail.then((value) => menuProvider.setMenuDetail(value));
+    print(menuProvider.getReviewList);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -140,13 +156,13 @@ class _RecipeBodyState extends State<RecipeBody> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Tok pok ki',
+                          Text(menuProvider.getPickReciepe,
                               style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromRGBO(9, 29, 103, 1))),
                           SizedBox(height: 5),
-                          Text('by ' + 'Aj_Veera',
+                          Text('by ' + menuProvider.getMenuOwner,
                               style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
@@ -182,18 +198,18 @@ class _RecipeBodyState extends State<RecipeBody> {
                             );
                           }),
                           Heading(text: 'Reviews'),
-                          ...List.generate(reviewsViewModel.getReviewsSize(),
-                                  (index) {
-                                return Container(
-                                  child: ReviewPost(
-                                    description: reviewsViewModel.getDescription(index),
-                                    username: reviewsViewModel.getUsername(index),
-                                    image: reviewsViewModel.getImage(index),
-                                  ),
-                                );
-                              }),
+                          ...List.generate(menuProvider.getReviewList.length,
+                              (index) {
+                            return Container(
+                              child: ReviewPost(
+                                description:
+                                    menuProvider.getReviewList[index].text,
+                                username: reviewsViewModel.getUsername(index),
+                                image: reviewsViewModel.getImage(index),
+                              ),
+                            );
+                          }),
                           CommentBar(),
-
                         ],
                       ),
                     ),

@@ -78,8 +78,7 @@ class _RecipeDetailHeaderState extends State<RecipeDetailHeader> {
         child: Icon(Icons.arrow_back_rounded, size: 30),
         backgroundColor: Colors.black54.withOpacity(0.5),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => CategoryScreen()));
+          Navigator.pop(context);
         },
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/models/category_data.dart';
 import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/models/menu_detail_data.dart';
+import 'package:cooking_app/models/review.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +28,10 @@ class MenuProvider extends ChangeNotifier {
   List<Category> _categories = [];
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
+  List<Review> _reviewList = [];
 
-  bool _isPress = false;
+  String _pickRecipe = "";
+  String _menuOwner = "";
 
   get getUid => _uid;
   get getUsername => _username;
@@ -36,7 +40,9 @@ class MenuProvider extends ChangeNotifier {
   get getCategory => _categories;
   get getUserDetail => _userDetail;
   get getRecommendedMenu => _menus;
-  get getIsPress => _isPress;
+  get getPickReciepe => _pickRecipe;
+  get getMenuOwner => _menuOwner;
+  get getReviewList => _reviewList;
 
   void setUid(String uid) {
     UserDetailService userDetailService = UserDetailService(uid);
@@ -77,5 +83,25 @@ class MenuProvider extends ChangeNotifier {
   void setPickedCategoryData(List<Menu> pickCategoryData) {
     _pickCategoryData = pickCategoryData;
     notifyListeners();
+  }
+
+  void setPickedRecipe(String menuName) {
+    _pickRecipe = menuName;
+    notifyListeners();
+  }
+
+  void setReviewList(List<Review> reviewList) {
+    _reviewList = reviewList;
+    notifyListeners();
+  }
+
+  void setMenuOwner(String menuOwner) {
+    _menuOwner = menuOwner;
+    notifyListeners();
+  }
+
+  void setMenuDetail(MenuDetail menuDetail) {
+    setMenuOwner(menuDetail.menuOwner);
+    setReviewList(menuDetail.reviewList);
   }
 }
