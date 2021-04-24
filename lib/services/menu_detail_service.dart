@@ -16,6 +16,8 @@ class MenuDetailService {
   String _menuName;
 
   String _menuOwner = "";
+  String _imagePath = "";
+  String _menuType = "";
   List<Review> _commentList;
   List<Steps> _stepList;
   List<Ingredient> _ingredientList;
@@ -31,16 +33,16 @@ class MenuDetailService {
     if (querySnapshot.docs.isNotEmpty) {
       var data = querySnapshot.docs[0].data();
       var menuId = querySnapshot.docs[0].id;
+
+      this._imagePath = data['image'];
       this._menuOwner = data['menuOwner'];
+      this._menuType = data['type'];
       this._commentList = await fetchReview(menuId);
       this._stepList = await fetchStep(menuId);
       this._ingredientList = await fetchIngredient(menuId);
 
-      print(this._stepList[0].text);
-      print(this._ingredientList[0].name);
-
-      return MenuDetail(this._menuOwner, this._commentList, this._stepList,
-          this._ingredientList);
+      return MenuDetail(this._menuOwner, this._imagePath, this._menuType,
+          this._commentList, this._stepList, this._ingredientList);
     } else {
       throw Exception("No document found");
     }

@@ -27,6 +27,7 @@ class MenuProvider extends ChangeNotifier {
 
   Future<DocumentSnapshot> _userDetail = null;
 
+  String _menuType = "";
   List<Category> _categories = [];
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
@@ -36,6 +37,7 @@ class MenuProvider extends ChangeNotifier {
 
   String _pickRecipe = "";
   String _menuOwner = "";
+  String _imagePath = "";
 
   get getUid => _uid;
   get getUsername => _username;
@@ -49,6 +51,8 @@ class MenuProvider extends ChangeNotifier {
   get getReviewList => _reviewList;
   get getIngredientList => _ingredientList;
   get getStepList => _stepList;
+  get getMenuType => _menuType;
+  get getMenuImagePath => _imagePath;
 
   void setUid(String uid) {
     UserDetailService userDetailService = UserDetailService(uid);
@@ -116,11 +120,23 @@ class MenuProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setMenuType(String menuType) {
+    _menuType = menuType;
+    notifyListeners();
+  }
+
+  void setMenuImagePath(String imagePath) {
+    _imagePath = imagePath;
+    notifyListeners();
+  }
+
   void setMenuDetail(MenuDetail menuDetail) {
     setMenuOwner(menuDetail.menuOwner);
     setReviewList(menuDetail.reviewList);
     setIngredientList(menuDetail.ingredientList);
     setStepList(menuDetail.stepList);
+    setMenuImagePath(menuDetail.imagePath);
+    setMenuType(menuDetail.menuType);
   }
 
   String setAlltime(List<Steps> stepList) {
@@ -128,7 +144,6 @@ class MenuProvider extends ChangeNotifier {
     for (Steps step in stepList) {
       allTime += step.time;
     }
-    //print(allTime);
     return allTime.toString();
   }
 }

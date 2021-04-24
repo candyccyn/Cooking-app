@@ -1,38 +1,26 @@
 import 'package:cooking_app/screens/category/category.dart';
 import 'package:flutter/material.dart';
 
-class RecipeHeaderData {
-  List<Map<String, String>> data = [
-    {"text": "Asian Food", "image": "assets/images/tokpokki.jpg"},
-  ];
-}
-
-class RecipeHeaderViewModel {
-  RecipeHeaderData _item = RecipeHeaderData();
-
-  int getCategorySize() {
-    return _item.data.length;
-  }
-
-  String getText(int index) {
-    return _item.data[index]["text"];
-  }
-
-  String getImg(int index) {
-    return _item.data[index]["image"];
-  }
-}
-
 class RecipeDetailHeader extends StatefulWidget {
+  const RecipeDetailHeader({
+    Key key,
+    this.imagePath,
+  }) : super(key: key);
+
+  final String imagePath;
+
   @override
-  _RecipeDetailHeaderState createState() => _RecipeDetailHeaderState();
+  _RecipeDetailHeaderState createState() =>
+      _RecipeDetailHeaderState(this.imagePath);
 }
 
 class _RecipeDetailHeaderState extends State<RecipeDetailHeader> {
-  RecipeHeaderViewModel recipeHeaderViewModel = RecipeHeaderViewModel();
+  String imagePath;
+  _RecipeDetailHeaderState(String imagePath) {
+    this.imagePath = imagePath;
+  }
 
   bool _hasBeenPressed = false;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -41,7 +29,7 @@ class _RecipeDetailHeaderState extends State<RecipeDetailHeader> {
         height: size.height * 0.35,
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            image: new AssetImage(recipeHeaderViewModel.getImg(0)),
+            image: new NetworkImage(this.imagePath.toString()),
             fit: BoxFit.cover,
           ),
         ),

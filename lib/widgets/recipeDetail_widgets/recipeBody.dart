@@ -46,7 +46,7 @@ class _RecipeBodyState extends State<RecipeBody> {
         height: double.infinity,
         child: Stack(
           children: <Widget>[
-            RecipeDetailHeader(),
+            RecipeDetailHeader(imagePath: menuProvider.getMenuImagePath),
             DraggableScrollableSheet(
               maxChildSize: 1,
               initialChildSize: 0.7,
@@ -82,7 +82,7 @@ class _RecipeBodyState extends State<RecipeBody> {
                                   color: Color.fromRGBO(255, 149, 24, 0.89))),
                           SizedBox(height: 20),
                           BreifInfo(
-                            type: "Asian Food",
+                            type: menuProvider.getMenuType,
                             time: allTime + " MINS",
                             ingredient: menuProvider.getIngredientList.length
                                     .toString() +

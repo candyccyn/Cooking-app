@@ -14,15 +14,15 @@ class _CommentBarState extends State<CommentBar> {
         width: double.infinity,
         child: Row(
           children: [
-            Container(
-                width: 40,
-                height: 40,
-                decoration: new BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: new DecorationImage(
-                        fit: BoxFit.cover,
-                        image: new NetworkImage(
-                            "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg")))),
+            // Container(
+            //     width: 40,
+            //     height: 40,
+            //     decoration: new BoxDecoration(
+            //         shape: BoxShape.circle,
+            //         image: new DecorationImage(
+            //             fit: BoxFit.cover,
+            //             image: new NetworkImage(
+            //                 "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg")))),
             SizedBox(width: 10),
             Expanded(
               child: Container(
