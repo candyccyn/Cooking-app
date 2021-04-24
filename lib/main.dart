@@ -38,11 +38,6 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
-
-      //initialRoute: TimerScreen.routeName,
-
-      // initialRoute: RecipeDetailScreen.routeName,
-
       initialRoute: WelcomeScreen.routeName,
       // home: ProfileScreen(),
 

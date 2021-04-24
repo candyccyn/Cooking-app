@@ -26,8 +26,8 @@ class _CommentBarState extends State<CommentBar> {
             SizedBox(width: 10),
             Expanded(
               child: Container(
-                // width: MediaQuery.of(context).size.width/2-30.0,
-              height: 30,
+                  // width: MediaQuery.of(context).size.width/2-30.0,
+                  height: 30,
                   padding: EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(242, 141, 22, 0.35),

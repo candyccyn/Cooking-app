@@ -14,101 +14,12 @@ import 'package:provider/provider.dart';
 
 import 'ingredients.dart';
 
-class IngredientsData {
-  List<Map<String, String>> data = [
-    {"name": "Tok pok ki", "gram": "20 grams"},
-    {"name": "Goshujang", "gram": "8 grams"},
-  ];
-}
-
-class IngredientsViewModel {
-  IngredientsData _item = IngredientsData();
-
-  int getIngredientsSize() {
-    return _item.data.length;
-  }
-
-  String getName(int index) {
-    return _item.data[index]["name"];
-  }
-
-  String getGrams(int index) {
-    return _item.data[index]["gram"];
-  }
-}
-
-class StepsData {
-  List<Map<String, String>> data = [
-    {"description": "1. Boil Tok pok ki for ", "time": "10 minutes"},
-    {"description": "2. Make Goshujang sauce for ", "time": "10 minutes"},
-  ];
-}
-
-class StepsViewModel {
-  StepsData _item = StepsData();
-
-  int getStepsSize() {
-    return _item.data.length;
-  }
-
-  String getName(int index) {
-    return _item.data[index]["description"];
-  }
-
-  String getTimes(int index) {
-    return _item.data[index]["time"];
-  }
-}
-
-class ReviewsData {
-  List<Map<String, String>> data = [
-    {
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          "Donec imperdiet nunc risus, ac rutrum enim sodales vitae. Aliquam condimentum lacinia lorem, "
-          "id laoreet turpis commodo nec.",
-      "username": "cooking mama",
-      "image":
-          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"
-    },
-    {
-      "description": "Very good",
-      "username": "ornorn__",
-      "image":
-          "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.6435-9/98056120_2963912283657166_6163160628174258176_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeGz1WmYYz0ZvbZO9YWv4WOhHz8x5_9Bar0fPzHn_0FqvXY3q-BB1JCQeok9c4DYT_CJxfDAJZlKcNzTvcEE7ElU&_nc_ohc=7S1hyQFBtnMAX-sl-r6&_nc_ht=scontent.fbkk5-6.fna&oh=030b723bda6eba0835f83b22b2ce56ce&oe=60A1D4F0"
-    },
-  ];
-}
-
-class ReviewsViewModel {
-  ReviewsData _item = ReviewsData();
-
-  int getReviewsSize() {
-    return _item.data.length;
-  }
-
-  String getUsername(int index) {
-    return _item.data[index]["username"];
-  }
-
-  String getDescription(int index) {
-    return _item.data[index]["description"];
-  }
-
-  String getImage(int index) {
-    return _item.data[index]["image"];
-  }
-}
-
 class RecipeBody extends StatefulWidget {
   @override
   _RecipeBodyState createState() => _RecipeBodyState();
 }
 
 class _RecipeBodyState extends State<RecipeBody> {
-  IngredientsViewModel ingredientsViewModel = IngredientsViewModel();
-  StepsViewModel stepsViewModel = StepsViewModel();
-  ReviewsViewModel reviewsViewModel = ReviewsViewModel();
-
   @override
   Widget build(BuildContext context) {
     var _crossAxisSpacing = 30;
@@ -123,10 +34,12 @@ class _RecipeBodyState extends State<RecipeBody> {
     MenuDetailService menuDetailService =
         MenuDetailService(menuProvider.getPickReciepe);
 
+    String allTime = menuProvider.setAlltime(menuProvider.getStepList);
+
     Future<MenuDetail> menuDetail = menuDetailService.assignMenuData();
 
     menuDetail.then((value) => menuProvider.setMenuDetail(value));
-    print(menuProvider.getReviewList);
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -168,15 +81,25 @@ class _RecipeBodyState extends State<RecipeBody> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromRGBO(255, 149, 24, 0.89))),
                           SizedBox(height: 20),
-                          BreifInfo(),
+                          BreifInfo(
+                            type: "Asian Food",
+                            time: allTime + " MINS",
+                            ingredient: menuProvider.getIngredientList.length
+                                    .toString() +
+                                " Ingredients",
+                          ),
                           Heading(text: 'Ingredients'),
                           ...List.generate(
-                              ingredientsViewModel.getIngredientsSize(),
-                              (index) {
+                              menuProvider.getIngredientList.length, (index) {
                             return Container(
                               child: Ingredients(
-                                name: ingredientsViewModel.getName(index),
-                                gram: ingredientsViewModel.getGrams(index),
+                                name:
+                                    menuProvider.getIngredientList[index].name,
+                                amount: menuProvider
+                                    .getIngredientList[index].amount
+                                    .toString(),
+                                gram:
+                                    menuProvider.getIngredientList[index].units,
                               ),
                             );
                           }),
@@ -188,12 +111,16 @@ class _RecipeBodyState extends State<RecipeBody> {
                               SizedBox(width: 20),
                             ],
                           ),
-                          ...List.generate(stepsViewModel.getStepsSize(),
+                          ...List.generate(menuProvider.getStepList.length,
                               (index) {
                             return Container(
                               child: Steps(
-                                description: stepsViewModel.getName(index),
-                                time: stepsViewModel.getTimes(index),
+                                number: index + 1,
+                                description:
+                                    menuProvider.getStepList[index].text,
+                                time: menuProvider.getStepList[index].time
+                                    .toString(),
+                                unit: menuProvider.getStepList[index].unit,
                               ),
                             );
                           }),
@@ -202,11 +129,12 @@ class _RecipeBodyState extends State<RecipeBody> {
                               (index) {
                             return Container(
                               child: ReviewPost(
-                                description:
-                                    menuProvider.getReviewList[index].text,
-                                username: reviewsViewModel.getUsername(index),
-                                image: reviewsViewModel.getImage(index),
-                              ),
+                                  description:
+                                      menuProvider.getReviewList[index].text,
+                                  username:
+                                      menuProvider.getReviewList[index].reviewer
+                                  // image: reviewsViewModel.getImage(index),
+                                  ),
                             );
                           }),
                           CommentBar(),

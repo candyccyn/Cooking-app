@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/models/category_data.dart';
+import 'package:cooking_app/models/ingredient.dart';
 import 'package:cooking_app/models/menu.dart';
 import 'package:cooking_app/models/menu_detail_data.dart';
+import 'package:cooking_app/models/step.dart';
 import 'package:cooking_app/models/review.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,8 @@ class MenuProvider extends ChangeNotifier {
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
   List<Review> _reviewList = [];
+  List<Ingredient> _ingredientList = [];
+  List<Steps> _stepList = [];
 
   String _pickRecipe = "";
   String _menuOwner = "";
@@ -43,6 +47,8 @@ class MenuProvider extends ChangeNotifier {
   get getPickReciepe => _pickRecipe;
   get getMenuOwner => _menuOwner;
   get getReviewList => _reviewList;
+  get getIngredientList => _ingredientList;
+  get getStepList => _stepList;
 
   void setUid(String uid) {
     UserDetailService userDetailService = UserDetailService(uid);
@@ -100,8 +106,29 @@ class MenuProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setIngredientList(List<Ingredient> ingredientList) {
+    _ingredientList = ingredientList;
+    notifyListeners();
+  }
+
+  void setStepList(List<Steps> stepList) {
+    _stepList = stepList;
+    notifyListeners();
+  }
+
   void setMenuDetail(MenuDetail menuDetail) {
     setMenuOwner(menuDetail.menuOwner);
     setReviewList(menuDetail.reviewList);
+    setIngredientList(menuDetail.ingredientList);
+    setStepList(menuDetail.stepList);
+  }
+
+  String setAlltime(List<Steps> stepList) {
+    int allTime = 0;
+    for (Steps step in stepList) {
+      allTime += step.time;
+    }
+    //print(allTime);
+    return allTime.toString();
   }
 }

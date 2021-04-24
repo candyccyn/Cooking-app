@@ -11,13 +11,13 @@ const ingredientCollection = 'ingredients';
 
 class MenuDetailService {
   CollectionReference _menuReference =
-  FirebaseFirestore.instance.collection(menuCollection);
+      FirebaseFirestore.instance.collection(menuCollection);
 
   String _menuName;
 
   String _menuOwner = "";
   List<Review> _commentList;
-  List<Step> _stepList;
+  List<Steps> _stepList;
   List<Ingredient> _ingredientList;
 
   MenuDetailService(String menuName) {
@@ -26,7 +26,7 @@ class MenuDetailService {
 
   Future<MenuDetail> assignMenuData() async {
     QuerySnapshot querySnapshot =
-    await this._menuReference.where('name', isEqualTo: 'food__3').get();
+        await this._menuReference.where('name', isEqualTo: 'food__3').get();
 
     if (querySnapshot.docs.isNotEmpty) {
       var data = querySnapshot.docs[0].data();
@@ -39,7 +39,8 @@ class MenuDetailService {
       print(this._stepList[0].text);
       print(this._ingredientList[0].name);
 
-      return MenuDetail(this._menuOwner, this._commentList, this._stepList, this._ingredientList);
+      return MenuDetail(this._menuOwner, this._commentList, this._stepList,
+          this._ingredientList);
     } else {
       throw Exception("No document found");
     }
@@ -47,7 +48,7 @@ class MenuDetailService {
 
   Future<List<Review>> fetchReview(var docId) async {
     QuerySnapshot reviewSnapshot =
-    await _menuReference.doc(docId).collection(reviewCollection).get();
+        await _menuReference.doc(docId).collection(reviewCollection).get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs
@@ -58,13 +59,14 @@ class MenuDetailService {
     }
   }
 
-  Future<List<Step>> fetchStep(var docId) async {
+  Future<List<Steps>> fetchStep(var docId) async {
     QuerySnapshot reviewSnapshot =
-    await _menuReference.doc(docId).collection(stepCollection).get();
+        await _menuReference.doc(docId).collection(stepCollection).get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs
-          .map((doc) => Step(doc.data()['text']))
+          .map((doc) =>
+              Steps(doc.data()['text'], doc.data()['time'], doc.data()['unit']))
           .toList();
     } else {
       throw Exception("No steps found");
@@ -73,16 +75,15 @@ class MenuDetailService {
 
   Future<List<Ingredient>> fetchIngredient(var docId) async {
     QuerySnapshot reviewSnapshot =
-    await _menuReference.doc(docId).collection(ingredientCollection).get();
+        await _menuReference.doc(docId).collection(ingredientCollection).get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs
-          .map((doc) => Ingredient(doc.data()['name'], doc.data()['units'], doc.data()['amount']))
+          .map((doc) => Ingredient(
+              doc.data()['name'], doc.data()['units'], doc.data()['amount']))
           .toList();
     } else {
       throw Exception("No ingredients found");
     }
   }
-
 }
-

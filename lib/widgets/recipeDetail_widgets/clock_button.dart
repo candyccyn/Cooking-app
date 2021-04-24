@@ -1,10 +1,14 @@
+import 'package:cooking_app/screens/Timer/step_timer.dart';
 import 'package:flutter/material.dart';
 
 class ClockButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => {
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new TimerScreen()))
+      },
       child: Container(
         constraints: BoxConstraints(
           maxWidth: double.infinity,

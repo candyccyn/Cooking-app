@@ -1,7 +1,10 @@
-class Step {
-  String text;
+class Steps {
+  String text, unit;
+  int time;
 
-  Step(String text) {
+  Steps(String text, int time, String unit) {
     this.text = text;
+    this.time = time;
+    this.unit = unit;
   }
 }

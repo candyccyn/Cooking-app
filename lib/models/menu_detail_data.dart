@@ -5,10 +5,10 @@ import 'package:cooking_app/models/step.dart';
 class MenuDetail {
   String menuOwner;
   List<Review> reviewList;
-  List<Step> stepList;
+  List<Steps> stepList;
   List<Ingredient> ingredientList;
 
-  MenuDetail(String menuOwner, List<Review> reviewList, List<Step> stepList,
+  MenuDetail(String menuOwner, List<Review> reviewList, List<Steps> stepList,
       List<Ingredient> ingredientList) {
     this.menuOwner = menuOwner;
     this.reviewList = reviewList;
