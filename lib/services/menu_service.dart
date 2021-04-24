@@ -43,7 +43,8 @@ class MenuService with ChangeNotifier {
   }
 
   Future<List<Menu>> getAllMenu() async {
-    QuerySnapshot querySnapshot = await _menuReference.limit(ALL_MENU_DISPLAY).get();
+    QuerySnapshot querySnapshot =
+        await _menuReference.limit(ALL_MENU_DISPLAY).get();
 
     if (querySnapshot.docs.isNotEmpty) {
       return querySnapshot.docs

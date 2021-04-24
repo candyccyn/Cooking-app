@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/models/category_data.dart';
+import 'package:cooking_app/models/ingredient.dart';
 import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/models/menu_detail_data.dart';
+import 'package:cooking_app/models/step.dart';
+import 'package:cooking_app/models/review.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +27,17 @@ class MenuProvider extends ChangeNotifier {
 
   Future<DocumentSnapshot> _userDetail = null;
 
+  String _menuType = "";
   List<Category> _categories = [];
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
+  List<Review> _reviewList = [];
+  List<Ingredient> _ingredientList = [];
+  List<Steps> _stepList = [];
 
-  bool _isPress = false;
+  String _pickRecipe = "";
+  String _menuOwner = "";
+  String _imagePath = "";
 
   get getUid => _uid;
   get getUsername => _username;
@@ -36,7 +46,13 @@ class MenuProvider extends ChangeNotifier {
   get getCategory => _categories;
   get getUserDetail => _userDetail;
   get getRecommendedMenu => _menus;
-  get getIsPress => _isPress;
+  get getPickReciepe => _pickRecipe;
+  get getMenuOwner => _menuOwner;
+  get getReviewList => _reviewList;
+  get getIngredientList => _ingredientList;
+  get getStepList => _stepList;
+  get getMenuType => _menuType;
+  get getMenuImagePath => _imagePath;
 
   void setUid(String uid) {
     UserDetailService userDetailService = UserDetailService(uid);
@@ -77,5 +93,57 @@ class MenuProvider extends ChangeNotifier {
   void setPickedCategoryData(List<Menu> pickCategoryData) {
     _pickCategoryData = pickCategoryData;
     notifyListeners();
+  }
+
+  void setPickedRecipe(String menuName) {
+    _pickRecipe = menuName;
+    notifyListeners();
+  }
+
+  void setReviewList(List<Review> reviewList) {
+    _reviewList = reviewList;
+    notifyListeners();
+  }
+
+  void setMenuOwner(String menuOwner) {
+    _menuOwner = menuOwner;
+    notifyListeners();
+  }
+
+  void setIngredientList(List<Ingredient> ingredientList) {
+    _ingredientList = ingredientList;
+    notifyListeners();
+  }
+
+  void setStepList(List<Steps> stepList) {
+    _stepList = stepList;
+    notifyListeners();
+  }
+
+  void setMenuType(String menuType) {
+    _menuType = menuType;
+    notifyListeners();
+  }
+
+  void setMenuImagePath(String imagePath) {
+    _imagePath = imagePath;
+    notifyListeners();
+  }
+
+  void setMenuDetail(MenuDetail menuDetail) {
+    setMenuOwner(menuDetail.menuOwner);
+    setReviewList(menuDetail.reviewList);
+    setIngredientList(menuDetail.ingredientList);
+    setStepList(menuDetail.stepList);
+    setMenuImagePath(menuDetail.imagePath);
+    setMenuType(menuDetail.menuType);
+  }
+
+  String setAlltime(List<Steps> stepList) {
+    int allTime = 0;
+    for (Steps step in stepList) {
+      allTime += step.time;
+    }
+    return allTime.toString();
   }
 }

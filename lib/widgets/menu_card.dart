@@ -1,5 +1,9 @@
 import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/screens/recipe_detail/recipeDetailPage.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
+import 'package:cooking_app/widgets/recipeDetail_widgets/recipeBody.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MenuCard extends StatelessWidget {
   final String imagePath;
@@ -21,11 +25,21 @@ class MenuCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Padding(
       padding: EdgeInsets.zero,
       child: SizedBox(
         width: width,
         child: GestureDetector(
+          onTap: () {
+            menuProvider.setPickedRecipe(title);
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => new RecipeBody(),
+              ),
+            );
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,7 +72,6 @@ class MenuCard extends StatelessWidget {
                 children: [
                   InkWell(
                     borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
                     child: Container(
                       padding: EdgeInsets.all(8),
                       height: 50,

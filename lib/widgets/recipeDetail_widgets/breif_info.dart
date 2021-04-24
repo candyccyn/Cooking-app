@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
 
 class BreifInfo extends StatelessWidget {
+  const BreifInfo({
+    Key key,
+    this.type,
+    this.time,
+    this.ingredient,
+  }) : super(key: key);
+
+  final String type, time, ingredient;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          Info(text: 'Asian food'),
+          Info(text: type),
           SizedBox(width: 10),
-          Info(text: '30 MINS'),
+          Info(text: time),
+          // Info(text: '30 MINS'),
           SizedBox(width: 10),
-          Info(text: '5 Ingredients'),
+          Info(text: ingredient),
+          // Info(text: '5 Ingredients'),
         ],
       ),
     );
   }
 }
-
 
 class Info extends StatelessWidget {
   const Info({
@@ -35,8 +45,7 @@ class Info extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Color.fromRGBO(242, 181, 22, 0.44),
-        borderRadius:
-        BorderRadius.all(Radius.circular(30)),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),

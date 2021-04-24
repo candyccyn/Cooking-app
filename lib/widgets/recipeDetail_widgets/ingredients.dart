@@ -4,10 +4,11 @@ class Ingredients extends StatelessWidget {
   const Ingredients({
     Key key,
     this.name,
+    this.amount,
     this.gram,
   }) : super(key: key);
 
-  final String name, gram;
+  final String name, amount, gram;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class Ingredients extends StatelessWidget {
                           fontSize: 14, color: Color.fromRGBO(9, 29, 103, 1))),
                 ),
                 Spacer(),
-                Text(gram,
+                Text(amount + " " + gram,
                     style: TextStyle(
                         fontSize: 14, color: Color.fromRGBO(9, 29, 103, 1))),
               ],

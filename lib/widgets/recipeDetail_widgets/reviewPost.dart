@@ -5,10 +5,11 @@ class ReviewPost extends StatelessWidget {
     Key key,
     this.description,
     this.username,
-    this.image,
+    // this.image,
   }) : super(key: key);
 
-  final String description, username, image;
+  final String description, username;
+  //final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +26,14 @@ class ReviewPost extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    width: 40,
-                    height: 40,
-                    decoration: new BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: new DecorationImage(
-                            fit: BoxFit.cover,
-                            image: new NetworkImage(image)))),
+                // Container(
+                //     width: 40,
+                //     height: 40,
+                //     decoration: new BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         image: new DecorationImage(
+                //             fit: BoxFit.cover,
+                //             image: new NetworkImage(image)))),
                 SizedBox(width: 10),
                 Expanded(
                   child: Column(

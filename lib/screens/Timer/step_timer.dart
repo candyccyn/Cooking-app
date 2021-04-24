@@ -46,7 +46,7 @@ class _TimerScreenState extends State<TimerScreen>
           color: Color(0xffFFA132),
           iconSize: 20.0,
           onPressed: () {
-            // _goBack(context);
+            Navigator.pop(context);
           },
         ),
       ),

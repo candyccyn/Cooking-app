@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class Steps extends StatelessWidget {
   const Steps({
     Key key,
+    this.number,
     this.description,
     this.time,
+    this.unit,
   }) : super(key: key);
 
-  final String description, time;
+  final String description, time, unit;
+  final number;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,12 @@ class Steps extends StatelessWidget {
           children: [
             RichText(
               text: TextSpan(
-                text: description,
+                text: number.toString() + ".  " + description + " for  ",
                 style: TextStyle(
                     fontSize: 15, color: Color.fromRGBO(9, 29, 103, 1)),
                 children: <TextSpan>[
                   TextSpan(
-                      text: time,
+                      text: time + "  " + unit,
                       style: TextStyle(
                           fontSize: 15,
                           color: Color.fromRGBO(255, 149, 24, 0.89))),
