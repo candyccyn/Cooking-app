@@ -31,6 +31,7 @@ class MenuProvider extends ChangeNotifier {
   List<Category> _categories = [];
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
+  List<Menu> _bookmarkData = [];
   List<Review> _reviewList = [];
   List<Ingredient> _ingredientList = [];
   List<Steps> _stepList = [];
@@ -53,8 +54,10 @@ class MenuProvider extends ChangeNotifier {
   get getStepList => _stepList;
   get getMenuType => _menuType;
   get getMenuImagePath => _imagePath;
+  get getBookmarkData => _bookmarkData;
 
   void setUid(String uid) {
+    this._uid = uid;
     UserDetailService userDetailService = UserDetailService(uid);
     _userDetail = userDetailService.getUserDetails();
 
@@ -128,6 +131,10 @@ class MenuProvider extends ChangeNotifier {
   void setMenuImagePath(String imagePath) {
     _imagePath = imagePath;
     notifyListeners();
+  }
+
+  void setBookmarkData(List<Menu> bookmarkData) {
+    _bookmarkData = bookmarkData;
   }
 
   void setMenuDetail(MenuDetail menuDetail) {

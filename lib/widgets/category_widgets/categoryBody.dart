@@ -10,13 +10,14 @@ import 'package:provider/provider.dart';
 
 class CategoryBody extends StatelessWidget {
   final String textHeader;
+  final List<Menu> menus;
 
   CategoryBody({
     Key key,
     this.textHeader,
+    this.menus,
   }) : super(key: key);
 
-  MenuService menuService = MenuService();
   @override
   Widget build(BuildContext context) {
     var _crossAxisSpacing = 30;
@@ -26,12 +27,7 @@ class CategoryBody extends StatelessWidget {
         _crossAxisCount;
     var cellHeight = 295;
     var _aspectRatio = _width / cellHeight;
-    final menuProvider = Provider.of<MenuProvider>(context);
-    Future<List<Menu>> recommendedMenu =
-        menuService.getMenuByFilter(menuProvider.getPickCategory);
 
-    recommendedMenu.then((value) => menuProvider.setPickedCategoryData(value));
-    List<Menu> menus = menuProvider.getPickedCategoryData;
     return DraggableScrollableSheet(
       maxChildSize: 1,
       initialChildSize: 0.7,
@@ -75,12 +71,12 @@ class CategoryBody extends StatelessWidget {
                         childAspectRatio: _aspectRatio,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        children: List.generate(menus.length, (index) {
+                        children: List.generate(this.menus.length, (index) {
                           return Container(
                             // ignore: missing_required_param
                             child: MenuCard(
-                              imagePath: menus[index].imagePath,
-                              title: menus[index].menuName,
+                              imagePath: this.menus[index].imagePath.toString(),
+                              title: this.menus[index].menuName.toString(),
                             ),
                           );
                         }),
