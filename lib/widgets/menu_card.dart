@@ -57,6 +57,7 @@ class MenuCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
+
               Text(
                 title,
                 style: TextStyle(
@@ -67,28 +68,28 @@ class MenuCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      height: 50,
-                      width: 50,
-                      child: Icon(Icons.thumb_up_off_alt),
-                    ),
-                  ),
-                  Text(
-                    "95 likes",
-                    style: TextStyle(
-                        fontFamily: 'Century Gothic',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: Color.fromRGBO(255, 149, 24, 0.89)),
-                  ),
-                ],
-              )
+              Text(
+                "by " + menuProvider.getMenuOwner,
+                style: TextStyle(
+                    fontFamily: 'Century Gothic',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                    color: Color.fromRGBO(255, 149, 24, 0.89)),
+              ),
+              // Row(
+              //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     // InkWell(
+              //     //   borderRadius: BorderRadius.circular(50),
+              //     //   child: Container(
+              //     //     padding: EdgeInsets.all(8),
+              //     //     height: 50,
+              //     //     width: 50,
+              //     //     child: Icon(Icons.create),
+              //     //   ),
+              //     // ),
+              //   ],
+              // )
             ],
           ),
         ),
