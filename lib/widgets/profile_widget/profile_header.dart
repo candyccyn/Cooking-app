@@ -1,5 +1,7 @@
 import 'package:cooking_app/screens/profile/edit_profile.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileHeader extends StatefulWidget {
   @override
@@ -31,7 +33,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       icon: const Icon(Icons.edit),
                       color: Colors.white,
                       onPressed: () {
-                     //    Navigator.pushNamed(context, EditProfileScreen.routeName);
+                        //    Navigator.pushNamed(context, EditProfileScreen.routeName);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -51,6 +53,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
 class ProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         width: 76,
@@ -62,7 +65,7 @@ class ProfilePicture extends StatelessWidget {
       ),
       SizedBox(height: 15),
       Text(
-        'username',
+        menuProvider.getUsername,
         textAlign: TextAlign.center,
         style: TextStyle(
             fontFamily: 'Century Gothic',

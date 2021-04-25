@@ -1,3 +1,5 @@
+import 'package:cooking_app/models/menu.dart';
+import 'package:cooking_app/services/bookmark_service.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,9 +7,6 @@ import 'package:provider/provider.dart';
 class BookmarkHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final menuProvider = Provider.of<MenuProvider>(context);
-    final menus = menuProvider.getCategory;
-
     var size = MediaQuery.of(context).size;
     return Scaffold(
         body: Center(

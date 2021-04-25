@@ -6,8 +6,11 @@ class ClockButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => {
-        Navigator.push(context,
-            new MaterialPageRoute(builder: (context) => new TimerScreen()))
+        //Navigator.pushNamed(context, TimerScreen.routeName)
+        Navigator.push(
+            context,
+            new MaterialPageRoute(
+                builder: (context) => new TimerScreen(currentStep: 1)))
       },
       child: Container(
         constraints: BoxConstraints(

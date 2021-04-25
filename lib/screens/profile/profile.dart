@@ -12,22 +12,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body:  ProfileBody(),
+      body: ProfileBody(),
     );
   }
 }
-// class ProfileScreen extends StatefulWidget {
-//   static String routeName = "/profile";
-
-//   @override
-//   _ProfileScreenState createState() => _ProfileScreenState();
-// }
-
-// class _ProfileScreenState extends State<ProfileScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final menuProvider = Provider.of<MenuProvider>(context);
-
-//     return Text(menuProvider.getUsername);
-//   }
-// }

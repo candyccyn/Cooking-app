@@ -1,11 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_timer/simple_timer.dart';
 
 class TimerScreen extends StatefulWidget {
   static String routeName = "/timer";
+
+  final int currentStep;
+  const TimerScreen({
+    Key key,
+    this.currentStep,
+  }) : super(key: key);
+
   @override
-  _TimerScreenState createState() => _TimerScreenState();
+  _TimerScreenState createState() => _TimerScreenState(this.currentStep);
 }
 
 class _TimerScreenState extends State<TimerScreen>
@@ -17,7 +26,12 @@ class _TimerScreenState extends State<TimerScreen>
   TimerProgressTextCountDirection _progressTextCountDirection =
       TimerProgressTextCountDirection.count_down;
 
-  final FirebaseFirestore fb = FirebaseFirestore.instance;
+  int currentStep = 0;
+  _TimerScreenState(
+    this.currentStep,
+  );
+
+  //final FirebaseFirestore fb = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -27,13 +41,17 @@ class _TimerScreenState extends State<TimerScreen>
 
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         textTheme: TextTheme(
             headline6: TextStyle(color: Color(0xff091D67), fontSize: 18)),
         title: Text(
-          "Steps " + "1" + "/" + "6",
+          "Steps " +
+              this.currentStep.toString() +
+              "/" +
+              menuProvider.getStepList.length.toString(),
           style: TextStyle(
               fontFamily: 'Century Gothic',
               fontWeight: FontWeight.bold,
@@ -54,18 +72,17 @@ class _TimerScreenState extends State<TimerScreen>
         child: Center(
             child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: FutureBuilder(
-                future: getImage(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Image.network(snapshot.data.docs[0].data()["image"],
-                        fit: BoxFit.fill);
-                  } else if (snapshot.connectionState == ConnectionState.none) {
-                    return Text("No data");
-                  }
-                },
+            AspectRatio(
+              aspectRatio: 1.02,
+              child: Container(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(menuProvider.getMenuImagePath),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
               ),
             ),
             Padding(
@@ -75,7 +92,8 @@ class _TimerScreenState extends State<TimerScreen>
                 alignment: Alignment.topLeft,
                 child: RichText(
                   text: TextSpan(
-                    text: "1. Boil Tok pok ki for ",
+                    text: menuProvider.getStepList[currentStep - 1].text
+                        .toString(),
                     style: TextStyle(
                         fontFamily: 'Century Gothic',
                         fontSize: 16,
@@ -148,15 +166,22 @@ class _TimerScreenState extends State<TimerScreen>
                 )),
             SizedBox(height: 30),
             Padding(
-              padding: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(right: 20, bottom: 30),
               child: Column(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       FlatButton(
-                        onPressed: () => _setProgressIndicatorDirection(
-                            TimerProgressIndicatorDirection.counter_clockwise),
+                        // onPressed: () => _setProgressIndicatorDirection(
+                        //     TimerProgressIndicatorDirection.counter_clockwise),
+                        onPressed: () => {
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (context) =>
+                                      new TimerScreen(currentStep: 2)))
+                        },
                         color: Colors.orange,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
@@ -212,9 +237,5 @@ class _TimerScreenState extends State<TimerScreen>
 
   void handleTimerOnEnd() {
     print("timer has ended");
-  }
-
-  Future<QuerySnapshot> getImage() {
-    return fb.collection("test").get();
   }
 }

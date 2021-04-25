@@ -1,9 +1,11 @@
 import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/profile_widget/myRecipe_card.dart';
 import 'package:cooking_app/widgets/profile_widget/profile_header.dart';
 import 'package:cooking_app/widgets/recipe/add/add_recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileBody extends StatelessWidget {
   @override
