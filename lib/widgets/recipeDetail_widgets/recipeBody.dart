@@ -39,6 +39,8 @@ class _RecipeBodyState extends State<RecipeBody> {
     Future<MenuDetail> menuDetail = menuDetailService.assignMenuData();
 
     menuDetail.then((value) => menuProvider.setMenuDetail(value));
+    bool hasBeenPressed = menuProvider.isSetBookmark(
+        menuProvider.getPickReciepe, menuProvider.getBookmarkData);
 
     return Scaffold(
       body: Container(
@@ -46,7 +48,10 @@ class _RecipeBodyState extends State<RecipeBody> {
         height: double.infinity,
         child: Stack(
           children: <Widget>[
-            RecipeDetailHeader(imagePath: menuProvider.getMenuImagePath),
+            RecipeDetailHeader(
+                imagePath: menuProvider.getMenuImagePath,
+                menuName: menuProvider.getPickReciepe,
+                hasBeenPressed: hasBeenPressed),
             DraggableScrollableSheet(
               maxChildSize: 1,
               initialChildSize: 0.7,

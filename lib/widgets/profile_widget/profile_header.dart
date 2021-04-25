@@ -76,7 +76,7 @@ class ProfilePicture extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.all(15),
         child: Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget iaculis dolor. Etiam arcu tortor, feugiat nec feugiat nec, maximus vitae mi.',
+          menuProvider.getProfileDescription.toString(),
           textAlign: TextAlign.center,
           style: TextStyle(
               fontFamily: 'Century Gothic',

@@ -33,7 +33,6 @@ class MenuDetailService {
     if (querySnapshot.docs.isNotEmpty) {
       var data = querySnapshot.docs[0].data();
       var menuId = querySnapshot.docs[0].id;
-
       this._imagePath = data['image'];
       this._menuOwner = data['menuOwner'];
       this._menuType = data['type'];
