@@ -17,7 +17,6 @@ class BookmarkService {
 
   BookmarkService(String uid) {
     this._uid = uid;
-    print(this._uid);
   }
 
   Future<List<Menu>> getBookmarkMenu() async {

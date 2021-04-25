@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
-      initialRoute: WelcomeScreen.routeName,
+      initialRoute: TestServiceScreen.routeName,
       // home: ProfileScreen(),
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(
