@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/models/menu.dart';
-import 'package:flutter/cupertino.dart';
 
 const userCollection = 'users';
 const menuCollection = 'test2';
