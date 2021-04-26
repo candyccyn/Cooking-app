@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: routes,
 
-      initialRoute: TestServiceScreen.routeName,
+      //initialRoute: TestServiceScreen.routeName,
       home: WelcomeScreen(),
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(

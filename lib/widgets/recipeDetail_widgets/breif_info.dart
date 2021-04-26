@@ -16,12 +16,12 @@ class BreifInfo extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          Info(text: type),
+          Info(text: type.toString()),
           SizedBox(width: 10),
-          Info(text: time),
+          Info(text: time.toString()),
           // Info(text: '30 MINS'),
           SizedBox(width: 10),
-          Info(text: ingredient),
+          Info(text: ingredient.toString()),
           // Info(text: '5 Ingredients'),
         ],
       ),
