@@ -71,8 +71,14 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "password",
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         suffixIcon: Icon(Icons.lock),
         hintText: "enter password",
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -120,7 +126,13 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "email",
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         hintText: "enter email",
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         suffixIcon: Icon(Icons.mail),

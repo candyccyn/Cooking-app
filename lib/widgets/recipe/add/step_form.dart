@@ -79,6 +79,9 @@ class _StepFormState extends State<StepForm> {
                             hint: Text(
                               "unit",
                               textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: "Century Gothic",
+                              ),
                             ),
                             dropdownColor: Colors.white,
                             underline: SizedBox(),
@@ -91,8 +94,13 @@ class _StepFormState extends State<StepForm> {
                             items: unitList.map((valueItem) {
                               return DropdownMenuItem(
                                 value: valueItem,
-                                child: Text(valueItem,
-                                    textAlign: TextAlign.center),
+                                child: Text(
+                                  valueItem,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: "Century Gothic",
+                                  ),
+                                ),
                               );
                             }).toList(),
                           ),
@@ -120,6 +128,9 @@ TextFormField buildDescriptionFormField() {
   return TextFormField(
     decoration: InputDecoration(
       hintText: "Description",
+      hintStyle: TextStyle(
+        fontFamily: "Century Gothic",
+      ),
       filled: true,
       fillColor: Colors.white,
       floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -145,6 +156,9 @@ TextFormField buildPictureFormField() {
   return TextFormField(
     decoration: InputDecoration(
       hintText: "Picture",
+      hintStyle: TextStyle(
+        fontFamily: "Century Gothic",
+      ),
       filled: true,
       fillColor: Colors.white,
       floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -182,7 +196,10 @@ class DrawCircle extends StatelessWidget {
       ),
       child: Text(
         countStep,
-        style: TextStyle(fontSize: 20, color: Color(0xff091D67)),
+        style: TextStyle(
+            fontFamily: "Century Gothic",
+            fontSize: 20,
+            color: Color(0xff091D67)),
         textAlign: TextAlign.center,
       ),
     );
