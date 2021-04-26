@@ -1,7 +1,10 @@
+import 'package:cooking_app/models/category_data.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/recipe/add/ingredient.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_line/dotted_line.dart';
+import 'package:provider/provider.dart';
 
 class AddFrom extends StatefulWidget {
   @override
@@ -9,13 +12,15 @@ class AddFrom extends StatefulWidget {
 }
 
 class _AddFromState extends State<AddFrom> {
-
   String type;
   int count = 1;
-  List typeItem = ['Asian ', 'European ', 'Drinks', 'Desserts'];
-
+  TextEditingController menuNameController = new TextEditingController();
+  TextEditingController menuPicController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
+    List<Category> allCategory = menuProvider.getCategory;
+    print(allCategory);
     return SingleChildScrollView(
         child: Container(
             child: Column(
@@ -23,10 +28,12 @@ class _AddFromState extends State<AddFrom> {
       children: [
         Text(
           "Menu name",
-          style:
-              TextStyle(color: Color(0xff7C7C7C), fontWeight: FontWeight.bold,),
+          style: TextStyle(
+            color: Color(0xff7C7C7C),
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        buildMenuNameFormField(),
+        buildMenuNameFormField(menuNameController, menuProvider),
         SizedBox(height: 10),
         Row(
           children: [
@@ -41,7 +48,9 @@ class _AddFromState extends State<AddFrom> {
         ),
         Row(
           children: [
-            Container(width: 230, child: buildPictureFormField()),
+            Container(
+                width: 230,
+                child: buildPictureFormField(menuPicController, menuProvider)),
             Spacer(flex: 2),
             Container(
               width: 120,
@@ -64,12 +73,14 @@ class _AddFromState extends State<AddFrom> {
                   onChanged: (newValue) {
                     setState(() {
                       type = newValue;
+                      menuProvider.setMenuCategoryPost(type);
                     });
                   },
-                  items: typeItem.map((valueItem) {
+                  items: allCategory.map((valueItem) {
                     return DropdownMenuItem(
-                      value: valueItem,
-                      child: Text(valueItem, textAlign: TextAlign.center),
+                      value: valueItem.categoryName,
+                      child: Text(valueItem.categoryName,
+                          textAlign: TextAlign.center),
                     );
                   }).toList(),
                 ),
@@ -86,7 +97,7 @@ class _AddFromState extends State<AddFrom> {
             shrinkWrap: true,
             itemCount: count,
             itemBuilder: (BuildContext context, int index) {
-              return Ingredient(this.count.toString());
+              return Ingredients(this.count.toString());
             }),
         SizedBox(height: 20),
         SizedBox(
@@ -113,8 +124,13 @@ class _AddFromState extends State<AddFrom> {
   }
 }
 
-TextFormField buildMenuNameFormField() {
+TextFormField buildMenuNameFormField(
+    TextEditingController menuNameController, MenuProvider menuProvider) {
   return TextFormField(
+    onChanged: (value) {
+      menuProvider.setMenuNamePost(value);
+    },
+    controller: menuNameController,
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),
@@ -137,8 +153,13 @@ TextFormField buildMenuNameFormField() {
   );
 }
 
-TextFormField buildPictureFormField() {
+TextFormField buildPictureFormField(
+    TextEditingController menuPicController, MenuProvider menuProvider) {
   return TextFormField(
+    controller: menuPicController,
+    onChanged: (value) {
+      menuProvider.setMenuImagePost(value);
+    },
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),

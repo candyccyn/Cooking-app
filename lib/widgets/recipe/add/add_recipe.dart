@@ -1,7 +1,11 @@
+import 'package:cooking_app/models/ingredient.dart';
+import 'package:cooking_app/services/post_services/menu_post.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/recipe/add/add_form.dart';
 import 'package:cooking_app/widgets/recipe/add/step_form.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddStep extends StatefulWidget {
   _AddStepState createState() => _AddStepState();
@@ -9,9 +13,11 @@ class AddStep extends StatefulWidget {
 
 @override
 class _AddStepState extends State<AddStep> {
-  // TODO: implement createState
   int countStep = 1;
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
+    MenuPost menuPost = MenuPost(menuProvider.getUid);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -89,7 +95,20 @@ class _AddStepState extends State<AddStep> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         color: Color(0xFFFFB448),
-                        onPressed: () {},
+                        onPressed: () {
+                          for (Ingredient a in menuProvider.getIngredientPost) {
+                            print(a.name +
+                                ": " +
+                                a.amount.toString() +
+                                ": " +
+                                a.units);
+                          }
+                          // print(menuProvider.getMenuCategoryPost +
+                          //     ":  " +
+                          //     menuProvider.getMenuImagePost +
+                          //     " ::: : " +
+                          //     menuProvider.getMenuNamePost);
+                        },
                         child: Text(
                           "Save",
                           style: TextStyle(fontSize: 15, color: Colors.white),

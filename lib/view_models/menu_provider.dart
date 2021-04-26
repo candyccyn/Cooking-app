@@ -48,9 +48,11 @@ class MenuProvider extends ChangeNotifier {
   int _currentStep = 0;
   int _duration = 0;
 
-  String _userNamePost = "";
-  String _userBioPost = "";
-  String _userImageLinkPost = "";
+  String _menuNamePost = "";
+  String _menuImagePost = "";
+  String _menuCategoryPost = "";
+
+  List<Ingredient> _ingredientPost = [];
 
   get getUid => _uid;
   get getUsername => _username;
@@ -76,9 +78,11 @@ class MenuProvider extends ChangeNotifier {
 
   get getOwnMenu => _ownMenu;
 
-  get getUserUserName => _userNamePost;
-  get getUserBioPost => _userBioPost;
-  get getUserImagePost => _userImageLinkPost;
+  get getMenuNamePost => _menuNamePost;
+  get getMenuImagePost => _menuImagePost;
+  get getMenuCategoryPost => _menuCategoryPost;
+
+  get getIngredientPost => _ingredientPost;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -198,16 +202,24 @@ class MenuProvider extends ChangeNotifier {
     _ownMenu = ownMenu;
   }
 
-  void setUserNamePost(String userNamePost) {
-    _userNamePost = userNamePost;
+  void setMenuNamePost(String menuNamePost) {
+    _menuNamePost = menuNamePost;
   }
 
-  void setUserBioPost(String userBioPost) {
-    _userBioPost = userBioPost;
+  void setMenuImagePost(String menuImagePost) {
+    _menuImagePost = menuImagePost;
   }
 
-  void setUserImageLinkPost(String userImageLinkPost) {
-    _userImageLinkPost = userImageLinkPost;
+  void setMenuCategoryPost(String menuCategoryPost) {
+    _menuCategoryPost = menuCategoryPost;
+  }
+
+  void addIngredient(int index, Ingredient newIngredient) {
+    _ingredientPost.insert(index, newIngredient);
+  }
+
+  void updateIngredient(int index, Ingredient newDataIngredient) {
+    _ingredientPost[index] = newDataIngredient;
   }
 
   bool isSetBookmark(menuName, bookmarkData) {
