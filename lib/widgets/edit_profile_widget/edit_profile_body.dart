@@ -5,6 +5,8 @@ import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+String name, bio, imagePath;
+
 class EditProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,10 @@ class EditProfileBody extends StatelessWidget {
     TextEditingController usernameController = new TextEditingController();
     TextEditingController bioController = new TextEditingController();
     TextEditingController profilePicController = new TextEditingController();
-    usernameController.text = menuProvider.getUsername;
-    bioController.text = menuProvider.getProfileDescription;
-    profilePicController.text = menuProvider.getProfilePathImage;
+    String nameOld, bioOld, imagePathOld;
+    nameOld = menuProvider.getUsername;
+    bioOld = menuProvider.getProfileDescription;
+    imagePathOld = menuProvider.getProfilePathImage;
     return Scaffold(
         body: Container(
       width: double.infinity,
@@ -40,8 +43,7 @@ class EditProfileBody extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: buildEditUsernameFormField(
-                      usernameController, menuProvider),
+                  child: buildEditUsernameFormField(nameOld),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, bottom: 10),
@@ -56,9 +58,8 @@ class EditProfileBody extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Container(
-                      height: 130,
-                      child: buildBioFormField(bioController, menuProvider)),
+                  child:
+                      Container(height: 130, child: buildBioFormField(bioOld)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, bottom: 10),
@@ -73,8 +74,7 @@ class EditProfileBody extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: buildEditImagePathFormField(
-                      profilePicController, menuProvider),
+                  child: buildEditImagePathFormField(imagePathOld),
                 ),
                 SizedBox(height: 40),
                 Padding(
@@ -90,11 +90,15 @@ class EditProfileBody extends StatelessWidget {
                                 color: Color(0xffFFA132))),
                         color: Color(0xfffFFB448),
                         onPressed: () {
-                          userDetailPost
-                              .updateUsername(usernameController.text);
-                          userDetailPost.updateUserBio(bioController.text);
-                          userDetailPost
-                              .updateUserImage(profilePicController.text);
+                          userDetailPost.updateUsername(name);
+                          userDetailPost.updateUserBio(bio);
+                          userDetailPost.updateUserImage(imagePath);
+                          print(name + bio + imagePath);
+                          // userDetailPost
+                          //     .updateUsername(usernameController.text);
+                          // userDetailPost.updateUserBio(bioController.text);
+                          // userDetailPost
+                          //     .updateUserImage(profilePicController.text);
                         },
                         child: Text(
                           "Save",
@@ -115,12 +119,15 @@ class EditProfileBody extends StatelessWidget {
   }
 }
 
-TextFormField buildEditUsernameFormField(
-    TextEditingController usernameController, MenuProvider menuProvider) {
+TextFormField buildEditUsernameFormField(String name) {
   return TextFormField(
-    controller: usernameController,
+    // controller: usernameController,
+    onChanged: (value) {
+      name = value;
+    },
     decoration: InputDecoration(
       filled: true,
+      hintText: name,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
@@ -141,13 +148,17 @@ TextFormField buildEditUsernameFormField(
   );
 }
 
-TextFormField buildBioFormField(
-    TextEditingController bioFormController, MenuProvider menuProvider) {
+TextFormField buildBioFormField(String bio) {
   return TextFormField(
-    controller: bioFormController,
+    // controller: bioFormController,
+    //
+    onChanged: (value) {
+      bio = value;
+    },
     maxLines: 8,
     decoration: InputDecoration(
       filled: true,
+      hintText: bio,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
@@ -168,12 +179,16 @@ TextFormField buildBioFormField(
   );
 }
 
-TextFormField buildEditImagePathFormField(
-    TextEditingController profilePicController, MenuProvider menuProvider) {
+TextFormField buildEditImagePathFormField(String imagePath) {
   return TextFormField(
-    controller: profilePicController,
+    // controller: profilePicController,
+
+    onChanged: (value) {
+      imagePath = value;
+    },
     decoration: InputDecoration(
       filled: true,
+      hintText: imagePath,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),

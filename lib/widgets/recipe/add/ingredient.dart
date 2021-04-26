@@ -53,19 +53,21 @@ class _IngredientState extends State<Ingredients> {
               color: Color(0xFFFFFE4C4)),
           child: Center(
             child: DropdownButton(
-              hint: Text(
-                "Select unit",
-                textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",)
-              ),
+              hint: Text("Select unit",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "Century Gothic",
+                  )),
               dropdownColor: Color(0xFFFFFE4C4),
               underline: SizedBox(),
-              style: TextStyle(fontFamily: "Century Gothic",
+              style: TextStyle(
+                fontFamily: "Century Gothic",
                 color: Color(0xff091D67),
               ),
               value: unit,
               onTap: () {
-                Ingredient ingredient = Ingredient(textController.text, unit,
-                    double.tryParse(amountController.text));
+                Ingredient ingredient = Ingredient(
+                    textController.text, unit, amountController.text);
                 if (menuProvider.getIngredientPost.length <=
                     int.parse(countLine) - 1) {
                   menuProvider.addIngredient(
@@ -83,7 +85,13 @@ class _IngredientState extends State<Ingredients> {
               items: unitItem.map((valueItem) {
                 return DropdownMenuItem(
                   value: valueItem,
-                  child: Text(valueItem, textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",),),
+                  child: Text(
+                    valueItem,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Century Gothic",
+                    ),
+                  ),
                 );
               }).toList(),
             ),
