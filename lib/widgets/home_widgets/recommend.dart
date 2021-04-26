@@ -22,17 +22,19 @@ class RecommendCard extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(menus.length, (index) {
-        return Container(
-          // decoration: BoxDecoration(color: Colors.lightGreenAccent),
-          padding: EdgeInsets.only(right: 20),
-          // ignore: missing_required_param
-          child: MenuCard(
-            imagePath: menus[index].imagePath,
-            title: menus[index].menuName,
-            menuOwner: menus[index].menuOwner.toString(),
-          ),
-        );
-      })),
+
+            return Container(
+              // decoration: BoxDecoration(color: Colors.lightGreenAccent),
+              padding: EdgeInsets.only(right: 20),
+              // ignore: missing_required_param
+              child: MenuCard(
+                imagePath: menus[index].imagePath,
+                title: menus[index].menuName,
+                menuOwner: menus[index].menuOwner
+              ),
+            );
+          })),
+
     );
   }
 }

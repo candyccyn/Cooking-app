@@ -47,6 +47,7 @@ class MenuPost {
         await this._menuReference.where('name', isEqualTo: menuName).get();
 
     var menuId = menuSnapshot.docs[0].id;
+    var ingredientIterator = 1;
     // adding data to second level of collection (step and ingredient)
     // ----> ingredients
     ingredientList.forEach((element) {
@@ -63,8 +64,10 @@ class MenuPost {
           .add({
         'text': element.text,
         'time': element.time,
-        'unit': element.unit
+        'unit': element.unit,
+        'order': ingredientIterator
       });
+      ingredientIterator = ingredientIterator + 1;
     });
     // end of add to menu reference
 

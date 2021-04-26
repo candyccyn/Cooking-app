@@ -49,7 +49,8 @@ class SignUpComponent extends StatelessWidget {
                   ),
                   Text(
                     "Sign in",
-                    style: TextStyle( fontFamily: "Century Gothic",
+                    style: TextStyle(
+                      fontFamily: "Century Gothic",
                       fontSize: 30,
                       color: Color(0xFF012060),
                       decoration: TextDecoration.none,
@@ -60,7 +61,10 @@ class SignUpComponent extends StatelessWidget {
                   ),
                   Text(
                     "Sign in email and password \nor continue with social media",
-                    textAlign: TextAlign.center,style: TextStyle( fontFamily: "Century Gothic",),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Century Gothic",
+                    ),
                   ),
                   SizedBox(
                     height: 30.0,
@@ -117,14 +121,18 @@ class SignUpComponent extends StatelessWidget {
                     children: [
                       Text(
                         "Don't have an account ? ",
-                        style: TextStyle( fontFamily: "Century Gothic",fontSize: 15),
+                        style: TextStyle(
+                            fontFamily: "Century Gothic", fontSize: 15),
                       ),
                       GestureDetector(
-                          onTap: () => Navigator.pushNamed(
-                              context, SignUpScreen.routeName),
+                          onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUpScreen()),
+                              ),
                           child: Text("Sign up ",
                               style: TextStyle(
-                                 fontFamily: "Century Gothic",
+                                  fontFamily: "Century Gothic",
                                   fontSize: 15,
                                   color: Color(0xFFFFA925),
                                   fontWeight: FontWeight.bold))),
