@@ -18,7 +18,6 @@ class MenuDetailService {
     this._menuName = menuName;
   }
 
-
   Future<List<Review>> fetchReview() async {
     QuerySnapshot querySnapshot = await _menuReference.where(
         'name', isEqualTo: _menuName).get();
