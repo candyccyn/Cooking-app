@@ -53,7 +53,7 @@ class CategoryCard extends StatelessWidget {
                 ),
               ),
               // Spacer(),
-              Image.network(image, height: 48, width: 48),
+              Image.network(image.toString(), height: 48, width: 48),
               // Spacer(),
               SizedBox(width: 10)
             ],

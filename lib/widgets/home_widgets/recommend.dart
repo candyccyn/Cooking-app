@@ -11,8 +11,7 @@ class RecommendCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
-    Future<List<Menu>> recommendedMenu =
-        menuService.getAllMenu();
+    Future<List<Menu>> recommendedMenu = menuService.getAllMenu();
 
     recommendedMenu.then((value) => menuProvider.setRecommended(value));
 
@@ -23,16 +22,17 @@ class RecommendCard extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(menus.length, (index) {
-            return Container(
-              // decoration: BoxDecoration(color: Colors.lightGreenAccent),
-              padding: EdgeInsets.only(right: 20),
-              // ignore: missing_required_param
-              child: MenuCard(
-                imagePath: menus[index].imagePath,
-                title: menus[index].menuName,
-              ),
-            );
-          })),
+        return Container(
+          // decoration: BoxDecoration(color: Colors.lightGreenAccent),
+          padding: EdgeInsets.only(right: 20),
+          // ignore: missing_required_param
+          child: MenuCard(
+            imagePath: menus[index].imagePath,
+            title: menus[index].menuName,
+            menuOwner: menus[index].menuOwner.toString(),
+          ),
+        );
+      })),
     );
   }
 }

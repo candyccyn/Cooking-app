@@ -1,4 +1,7 @@
+import 'package:cooking_app/services/post_services/menu_post.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CommentBar extends StatefulWidget {
   @override
@@ -6,8 +9,11 @@ class CommentBar extends StatefulWidget {
 }
 
 class _CommentBarState extends State<CommentBar> {
+  TextEditingController textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
+    MenuPost menuPost = MenuPost(menuProvider.getUid);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
@@ -34,6 +40,7 @@ class _CommentBarState extends State<CommentBar> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: TextFormField(
+                    controller: textController,
                     decoration: InputDecoration(
                       hintStyle: TextStyle(
                           fontFamily: 'Century Gothic',
@@ -41,7 +48,10 @@ class _CommentBarState extends State<CommentBar> {
                           color: Color.fromRGBO(9, 29, 103, 1)),
                       hintText: 'Comment here',
                       suffixIcon: IconButton(
-                        onPressed: () => {},
+                        onPressed: () => {
+                          menuPost.createReview(menuProvider.getUsername,
+                              menuProvider.getPickReciepe, textController.text)
+                        },
                         icon: Icon(
                           Icons.send,
                           color: Colors.white,

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MenuCard extends StatelessWidget {
-  final String imagePath;
+  final String imagePath, menuOwner;
   final String title;
   final Function press;
 
@@ -15,6 +15,7 @@ class MenuCard extends StatelessWidget {
     this.imagePath,
     this.title,
     this.press,
+    this.menuOwner,
     this.width = 140,
     this.aspectRetio = 1.02,
     @required this.menu,
@@ -33,11 +34,10 @@ class MenuCard extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             menuProvider.setPickedRecipe(title);
+
             Navigator.push(
               context,
-              new MaterialPageRoute(
-                builder: (context) => new RecipeBody(),
-              ),
+              new MaterialPageRoute(builder: (context) => new RecipeBody()),
             );
           },
           child: Column(
@@ -49,7 +49,7 @@ class MenuCard extends StatelessWidget {
                   padding: EdgeInsets.all(width),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(imagePath),
+                      image: NetworkImage(imagePath.toString()),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(30),
@@ -69,7 +69,7 @@ class MenuCard extends StatelessWidget {
                 maxLines: 1,
               ),
               Text(
-                "by " + menuProvider.getMenuOwner ,
+                "by " + menuOwner,
                 style: TextStyle(
                     fontFamily: 'Century Gothic',
                     fontWeight: FontWeight.bold,
