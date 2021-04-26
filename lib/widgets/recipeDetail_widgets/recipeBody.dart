@@ -36,7 +36,7 @@ class _RecipeBodyState extends State<RecipeBody> {
 
     String allTime = menuProvider.setAlltime(menuProvider.getStepList);
 
-    Future<MenuDetail> menuDetail = menuDetailService.assignMenuData();
+    Future<MenuDetail> menuDetail = null;//menuDetailService.assignMenuData();
 
     menuDetail.then((value) => menuProvider.setMenuDetail(value));
     bool hasBeenPressed = menuProvider.isSetBookmark(

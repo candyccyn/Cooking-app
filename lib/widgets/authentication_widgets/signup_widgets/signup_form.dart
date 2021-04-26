@@ -2,6 +2,7 @@ import 'package:cooking_app/screens/authenticate/sign_in.dart';
 import 'package:cooking_app/services/auth.dart';
 import 'package:cooking_app/services/post_services/auth_post.dart';
 import 'package:cooking_app/widgets/authentication_widgets/error.dart';
+import 'package:cooking_app/widgets/delete_popup.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
 import 'package:flutter/material.dart';
@@ -19,6 +20,11 @@ class _SignUpFormState extends State<SignUpForm> {
   String confirm_password;
   final List<String> errors = [];
   AuthService authService = AuthService();
+
+  TextEditingController usernameController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  TextEditingController confirmController = new TextEditingController();
 
   void addError({String error}) {
     if (!errors.contains(error))
@@ -53,28 +59,43 @@ class _SignUpFormState extends State<SignUpForm> {
               SizedBox(height: 30),
               RoundedButton(
                 text: "Sign up",
-                press: () async {
-                  authService.createAccountFromEmail(email, username, password);
+                press: () {
+                  if (confirmController.text.toString() !=
+                      passwordController.text.toString()) {
+                    final action = Dialogs.yesAbortDialog(
+                        context,
+                        "OK",
+                        "Cancel");
+                  } else {
+                    authService.createAccountFromEmail(
+                        emailController.text.toString(),
+                        usernameController.text.toString(),
+                        confirmController.text.toString());
+                    print("registration done");
+                  }
                 },
               ),
-              SizedBox(height:30),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Already have an account ? ",
-                    style: TextStyle(fontSize: 15,fontFamily: "Century Gothic",),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: "Century Gothic",
+                    ),
                   ),
                   GestureDetector(
-                      onTap: () =>
-                          Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignInScreen()),
-                              ),
+                      onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignInScreen()),
+                          ),
                       child: Text("Sign in ",
                           style: TextStyle(
-                              fontSize: 15,fontFamily: "Century Gothic",
+                              fontSize: 15,
+                              fontFamily: "Century Gothic",
                               color: Color(0xFFFFA925),
                               fontWeight: FontWeight.bold))),
                 ],
@@ -86,6 +107,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildUsernameFormField() {
     return TextFormField(
+      controller: usernameController,
       onSaved: (newValue) => username = newValue,
       onChanged: (value) {
         username = value;
@@ -104,8 +126,12 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
         labelText: "username",
         hintText: "enter username",
-        labelStyle: TextStyle(fontFamily: "Century Gothic",),
-        hintStyle: TextStyle(fontFamily: "Century Gothic",),
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -129,6 +155,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildConfirmPasswordFormField() {
     return TextFormField(
+      controller: confirmController,
       obscureText: true,
       onSaved: (newValue) => confirm_password = newValue,
       onChanged: (value) {
@@ -151,8 +178,12 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         labelText: "Confirm password",
         hintText: "Re-entered a password",
-        labelStyle: TextStyle(fontFamily: "Century Gothic",),
-        hintStyle: TextStyle(fontFamily: "Century Gothic",),
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
         enabledBorder: OutlineInputBorder(
@@ -174,6 +205,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller: passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -199,8 +231,12 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
         labelText: "Password",
         hintText: "enter a password",
-        labelStyle: TextStyle(fontFamily: "Century Gothic",),
-        hintStyle: TextStyle(fontFamily: "Century Gothic",),
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -225,6 +261,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      controller: emailController,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         email = value;
@@ -252,8 +289,12 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         labelText: "Email",
         hintText: "enter an email",
-        labelStyle: TextStyle(fontFamily: "Century Gothic",),
-        hintStyle: TextStyle(fontFamily: "Century Gothic",),
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.mail),
         enabledBorder: OutlineInputBorder(

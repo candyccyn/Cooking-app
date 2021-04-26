@@ -30,7 +30,7 @@ class _TestServiceScreenState extends State<TestServiceScreen> {
       body: Center(child: Text('Service Test')),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await testFn();
+          await m.fetchReview();
         },
         child: const Icon(Icons.add),
       ),

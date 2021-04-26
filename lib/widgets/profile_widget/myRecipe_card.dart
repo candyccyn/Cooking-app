@@ -39,6 +39,7 @@ class MyRecipeCard extends StatelessWidget {
           child: MenuCard(
             imagePath: menus[index].imagePath,
             title: menus[index].menuName,
+            menuOwner: menus[index].menuOwner,
           ),
         );
       })),
