@@ -23,7 +23,7 @@ class BookmarkService {
         await _userReference.doc(_uid).collection(bookmarkCollection).get();
     if (bookmarkSnapshot.docs.isNotEmpty) {
       return bookmarkSnapshot.docs
-          .map((doc) => Menu(doc.data()['menuName'], doc.data()['image']))
+          .map((doc) => Menu(doc.data()['menuName'], doc.data()['image'], doc.data()['menuOwner']))
           .toList();
     } else {
       throw Exception("No review found");

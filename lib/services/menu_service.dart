@@ -35,7 +35,7 @@ class MenuService with ChangeNotifier {
 
     if (querySnapshot.docs.isNotEmpty) {
       return querySnapshot.docs
-          .map((doc) => Menu(doc.data()['name'], doc.data()['image']))
+          .map((doc) => Menu(doc.data()['name'], doc.data()['image'], doc.data()['menuOwner']))
           .toList();
     } else {
       throw Exception("No document found");
@@ -48,7 +48,7 @@ class MenuService with ChangeNotifier {
 
     if (querySnapshot.docs.isNotEmpty) {
       return querySnapshot.docs
-          .map((doc) => Menu(doc.data()['name'], doc.data()['image']))
+          .map((doc) => Menu(doc.data()['name'], doc.data()['image'], doc.data()['menuOwner']))
           .toList();
     } else {
       throw Exception("No document found");

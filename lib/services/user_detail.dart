@@ -32,7 +32,7 @@ class UserDetailService {
     QuerySnapshot menuOwnedSnapshot = await _userReference.doc(_uid).collection(menuOwnedCollection).get();
     if (menuOwnedSnapshot.docs.isNotEmpty) {
       return menuOwnedSnapshot.docs
-          .map((doc) => Menu(doc.data()['menuName'], doc.data()['image']))
+          .map((doc) => Menu(doc.data()['menuName'], doc.data()['image'], doc.data()['menuOwner']))
           .toList();
     } else {
       throw Exception("No review found");
