@@ -16,9 +16,9 @@ class _AddStepState extends State<AddStep> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         textTheme: TextTheme(
-            headline6: TextStyle(color: Color(0xff091D67), fontSize: 18)),
+            headline6: TextStyle(fontFamily: "Century Gothic",color: Color(0xff091D67), fontSize: 18)),
         title: Text("Add New Recipe",
-            style: TextStyle(
+            style: TextStyle(fontFamily: "Century Gothic",
               fontWeight: FontWeight.bold,
             )),
         centerTitle: true,
@@ -47,7 +47,7 @@ class _AddStepState extends State<AddStep> {
                 AddFrom(),
                 SizedBox(height: 20),
                 Text("Steps",
-                    style: TextStyle(
+                    style: TextStyle(fontFamily: "Century Gothic",
                         color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
                 ListView.separated(
                     separatorBuilder: (BuildContext context, int index) =>
@@ -76,7 +76,7 @@ class _AddStepState extends State<AddStep> {
                       child: Text(
                         "+ Add more step",
                         style:
-                            TextStyle(fontSize: 15, color: Color(0xffFFA132)),
+                            TextStyle(fontFamily: "Century Gothic",fontSize: 15, color: Color(0xffFFA132)),
                       )),
                 ),
                 SizedBox(height: 20),
@@ -92,7 +92,7 @@ class _AddStepState extends State<AddStep> {
                         onPressed: () {},
                         child: Text(
                           "Save",
-                          style: TextStyle(fontSize: 15, color: Colors.white),
+                          style: TextStyle(fontFamily: "Century Gothic",fontSize: 15, color: Colors.white),
                         )),
                   ),
                 ),

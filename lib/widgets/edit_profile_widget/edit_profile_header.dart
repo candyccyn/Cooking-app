@@ -11,10 +11,10 @@ class _EditProfileHeaderState extends State<EditProfileHeader> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.35,
+      height: size.height * 0.1,
       child: Column(
         children: [
-          SizedBox(height:50),
+          // SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -24,12 +24,12 @@ class _EditProfileHeaderState extends State<EditProfileHeader> {
                   color: Color(0xFFFFFB448),
                 ),
                 onPressed: () {
-                    Navigator.pop(context);
+                  Navigator.pop(context);
                 },
               ),
             ],
           ),
-          EditProfilePicture(),
+          // EditProfilePicture(),
         ],
       ),
     );
@@ -48,18 +48,18 @@ class EditProfilePicture extends StatelessWidget {
           shape: BoxShape.circle,
         ),
       ),
-      SizedBox(height: 15),
-      Text(
-        'Change Profile Photo ',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontFamily: 'Century Gothic',
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
-          color: Color(0xfffFFB448),
-          decoration: TextDecoration.underline,
-        ),
-      ),
+      //SizedBox(height: 15),
+      // Text(
+      //   'Change Profile Photo ',
+      //   textAlign: TextAlign.center,
+      //   style: TextStyle(
+      //     fontFamily: 'Century Gothic',
+      //     fontWeight: FontWeight.bold,
+      //     fontSize: 18,
+      //     color: Color(0xfffFFB448),
+      //     decoration: TextDecoration.underline,
+      //   ),
+      // ),
     ]);
   }
 }

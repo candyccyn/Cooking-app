@@ -33,11 +33,11 @@ class _IngredientState extends State<Ingredient> {
             child: DropdownButton(
               hint: Text(
                 "Select unit",
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",)
               ),
               dropdownColor: Color(0xFFFFFE4C4),
               underline: SizedBox(),
-              style: TextStyle(
+              style: TextStyle(fontFamily: "Century Gothic",
                 color: Color(0xff091D67),
               ),
               value: unit,
@@ -49,7 +49,7 @@ class _IngredientState extends State<Ingredient> {
               items: unitItem.map((valueItem) {
                 return DropdownMenuItem(
                   value: valueItem,
-                  child: Text(valueItem, textAlign: TextAlign.center),
+                  child: Text(valueItem, textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",),),
                 );
               }).toList(),
             ),

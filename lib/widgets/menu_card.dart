@@ -69,13 +69,16 @@ class MenuCard extends StatelessWidget {
                 maxLines: 1,
               ),
               Text(
-                "by " + menuProvider.getMenuOwner,
+                "by " + menuProvider.getMenuOwner ,
                 style: TextStyle(
                     fontFamily: 'Century Gothic',
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                     color: Color.fromRGBO(255, 149, 24, 0.89)),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
               ),
+              const SizedBox(height: 10),
               // Row(
               //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               //   children: [

@@ -35,13 +35,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: "Poppins",
+        fontFamily: "Century Gothic",
       ),
       routes: routes,
 
-      initialRoute: WelcomeScreen.routeName,
-      // home: ProfileScreen(),
-
+      //initialRoute: WelcomeScreen.routeName,
+      home: WelcomeScreen(),
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),

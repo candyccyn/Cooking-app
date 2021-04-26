@@ -24,18 +24,18 @@ class _AddFromState extends State<AddFrom> {
         Text(
           "Menu name",
           style:
-              TextStyle(color: Color(0xff7C7C7C), fontWeight: FontWeight.bold,),
+              TextStyle(fontFamily: "Century Gothic",color: Color(0xff7C7C7C), fontWeight: FontWeight.bold,),
         ),
         buildMenuNameFormField(),
         SizedBox(height: 10),
         Row(
           children: [
             Text("Picture",
-                style: TextStyle(
+                style: TextStyle(fontFamily: "Century Gothic",
                     color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
             Spacer(),
             Text("Category",
-                style: TextStyle(
+                style: TextStyle(fontFamily: "Century Gothic",
                     color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
           ],
         ),
@@ -52,13 +52,14 @@ class _AddFromState extends State<AddFrom> {
               child: Center(
                 child: DropdownButton(
                   hint: Text(
-                    "Select type",
+                    "Select type",style: TextStyle(fontFamily: "Century Gothic",),
                     textAlign: TextAlign.center,
                   ),
                   dropdownColor: Color(0xFFFFFE4C4),
                   underline: SizedBox(),
                   style: TextStyle(
                     color: Color(0xff091D67),
+                    fontFamily: "Century Gothic",
                   ),
                   value: type,
                   onChanged: (newValue) {
@@ -69,7 +70,7 @@ class _AddFromState extends State<AddFrom> {
                   items: typeItem.map((valueItem) {
                     return DropdownMenuItem(
                       value: valueItem,
-                      child: Text(valueItem, textAlign: TextAlign.center),
+                      child: Text(valueItem, textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",),),
                     );
                   }).toList(),
                 ),
@@ -78,7 +79,7 @@ class _AddFromState extends State<AddFrom> {
           ],
         ),
         Text("Ingredients",
-            style: TextStyle(
+            style: TextStyle(fontFamily: "Century Gothic",
                 color: Color(0xff7C7C7C), fontWeight: FontWeight.bold)),
         ListView.separated(
             separatorBuilder: (BuildContext context, int index) =>
@@ -105,7 +106,7 @@ class _AddFromState extends State<AddFrom> {
               },
               child: Text(
                 "+ Add ingredient",
-                style: TextStyle(fontSize: 15, color: Color(0xffFFA132)),
+                style: TextStyle(fontFamily: "Century Gothic",fontSize: 15, color: Color(0xffFFA132)),
               )),
         ),
       ],

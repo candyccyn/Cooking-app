@@ -11,7 +11,6 @@ class _SignFormState extends State<SignForm> {
   final _formkey = GlobalKey<FormState>();
   String email;
   String password;
-  bool remember = false;
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -41,26 +40,6 @@ class _SignFormState extends State<SignForm> {
           buildPasswordFormField(),
           SizedBox(
             height: 20,
-          ),
-          Row(
-            children: [
-              Checkbox(
-                  value: remember,
-                  activeColor: Color(0xFFFF7643),
-                  onChanged: (value) {
-                    setState(() {
-                      remember = value;
-                    });
-                  }),
-              Text("Remeber me"),
-              Spacer(),
-              GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Forgot pasword",
-                    style: TextStyle(color:Color(0xff091D67),decoration: TextDecoration.underline),
-                  )),
-            ],
           ),
           FormError(errors: errors),
         ],
@@ -92,8 +71,14 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "password",
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         suffixIcon: Icon(Icons.lock),
         hintText: "enter password",
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -141,7 +126,13 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "email",
+        labelStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         hintText: "enter email",
+        hintStyle: TextStyle(
+          fontFamily: "Century Gothic",
+        ),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         suffixIcon: Icon(Icons.mail),

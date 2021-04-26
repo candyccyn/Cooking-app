@@ -22,7 +22,7 @@ class RoundedButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                fontSize: 20, color: Color(0xff091D67)),
+                fontSize: 20, fontFamily: "Century Gothic", color: Color(0xff091D67)),
           )),
     );
   }
