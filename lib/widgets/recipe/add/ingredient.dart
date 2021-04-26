@@ -13,7 +13,7 @@ class Ingredients extends StatefulWidget {
 }
 
 class _IngredientState extends State<Ingredients> {
-  List unitItem = ['grams', 'kilo'];
+  List unitItem = ['grams', 'kilo', 'tbsp', 'tsp', 'oz', 'L', 'mL', 'cup'];
 
   String countLine;
 
@@ -32,14 +32,21 @@ class _IngredientState extends State<Ingredients> {
     final menuProvider = Provider.of<MenuProvider>(context);
     return Row(
       children: [
-        Container(width: 140, child: buildIngredientFormField(textController)),
+        Expanded(
+            child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                ),
+                child: buildIngredientFormField(textController))),
         // child: buildIngredientFormField(menuProvider, countLine)),
-        Spacer(flex: 2),
-        Container(width: 100, child: buildAmountFormField(amountController)),
+        SizedBox(width: 10),
+        Container(width: 80, child: buildAmountFormField(amountController)),
         // width: 100, child: buildAmountFormField(menuProvider, countLine)),
-        Spacer(flex: 1),
+        SizedBox(width: 10),
         Container(
-          width: 120,
+          constraints: BoxConstraints(
+            maxWidth: double.infinity,
+          ),
           decoration: BoxDecoration(
               border: Border.all(color: Color(0xFFFFFE4C4)),
               borderRadius: BorderRadius.circular(25),

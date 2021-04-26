@@ -32,7 +32,9 @@ class _StepFormState extends State<StepForm> {
       padding: EdgeInsets.only(right: 5),
       margin: EdgeInsets.symmetric(vertical: 5),
       width: MediaQuery.of(context).size.width,
-      height: 200,
+      constraints: BoxConstraints(
+        maxHeight: double.infinity,
+      ),
       decoration: BoxDecoration(
         color: Color(0xFFFFFE4C4),
         borderRadius: BorderRadius.circular(30),
@@ -41,7 +43,7 @@ class _StepFormState extends State<StepForm> {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 35, left: 30),
+              padding: EdgeInsets.only(top: 35, left: 30, bottom: 25),
               child: Column(
                 children: [
                   Row(
@@ -49,18 +51,24 @@ class _StepFormState extends State<StepForm> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       DrawCircle(this.countStep),
-                      Container(
-                          width: 250,
-                          height: 30,
-                          child:
-                              buildDescriptionFormField(descriptionController)),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Container(
+                            constraints: BoxConstraints(
+                              maxWidth: double.infinity,
+                            ),
+                            //width: 250,
+                            height: 30,
+                            child: buildDescriptionFormField(
+                                descriptionController)),
+                      ),
                     ],
                   ),
                   SizedBox(height: 20),
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 55),
+                        padding: EdgeInsets.only(left: 10),
                         child: Container(
                           height: 30,
                           width: 150,
@@ -75,9 +83,12 @@ class _StepFormState extends State<StepForm> {
                           ),
                         ),
                       ),
-                      Spacer(flex: 2),
+                      SizedBox(width: 10),
                       Container(
-                        width: 100,
+                        constraints: BoxConstraints(
+                          maxWidth: double.infinity,
+                        ),
+                        //width: 100,
                         height: 30,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),

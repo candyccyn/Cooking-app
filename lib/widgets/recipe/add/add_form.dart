@@ -48,41 +48,50 @@ class _AddFromState extends State<AddFrom> {
         ),
         Row(
           children: [
-            Container(
-                width: 230,
-                child: buildPictureFormField(menuPicController, menuProvider)),
-            Spacer(flex: 2),
-            Container(
-              width: 120,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFFFFE4C4)),
-                  borderRadius: BorderRadius.circular(25),
-                  color: Color(0xFFFFFE4C4)),
-              child: Center(
-                child: DropdownButton(
-                  hint: Text(
-                    "Select type",
-                    textAlign: TextAlign.center,
+            Expanded(
+              child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: double.infinity,
                   ),
-                  dropdownColor: Color(0xFFFFFE4C4),
-                  underline: SizedBox(),
-                  style: TextStyle(
-                    color: Color(0xff091D67),
+                  child:
+                      buildPictureFormField(menuPicController, menuProvider)),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                ),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFFFFE4C4)),
+                    borderRadius: BorderRadius.circular(25),
+                    color: Color(0xFFFFFE4C4)),
+                child: Center(
+                  child: DropdownButton(
+                    hint: Text(
+                      "Select type",
+                      textAlign: TextAlign.center,
+                    ),
+                    dropdownColor: Color(0xFFFFFE4C4),
+                    underline: SizedBox(),
+                    style: TextStyle(
+                      color: Color(0xff091D67),
+                    ),
+                    value: type,
+                    onChanged: (newValue) {
+                      setState(() {
+                        type = newValue;
+                        menuProvider.setMenuCategoryPost(type);
+                      });
+                    },
+                    items: allCategory.map((valueItem) {
+                      return DropdownMenuItem(
+                        value: valueItem.categoryName,
+                        child: Text(valueItem.categoryName,
+                            textAlign: TextAlign.center),
+                      );
+                    }).toList(),
                   ),
-                  value: type,
-                  onChanged: (newValue) {
-                    setState(() {
-                      type = newValue;
-                      menuProvider.setMenuCategoryPost(type);
-                    });
-                  },
-                  items: allCategory.map((valueItem) {
-                    return DropdownMenuItem(
-                      value: valueItem.categoryName,
-                      child: Text(valueItem.categoryName,
-                          textAlign: TextAlign.center),
-                    );
-                  }).toList(),
                 ),
               ),
             ),
