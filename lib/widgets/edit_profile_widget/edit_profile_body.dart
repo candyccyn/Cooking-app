@@ -90,10 +90,12 @@ class EditProfileBody extends StatelessWidget {
                                 color: Color(0xffFFA132))),
                         color: Color(0xfffFFB448),
                         onPressed: () {
-                          userDetailPost.updateUsername(name);
-                          userDetailPost.updateUserBio(bio);
-                          userDetailPost.updateUserImage(imagePath);
-                          print(name + bio + imagePath);
+                          // userDetailPost.updateUsername(name);
+                          // userDetailPost.updateUserBio(bio);
+                          // userDetailPost.updateUserImage(imagePath);
+
+                          // menuProvider.setUsername(name);
+                          // print(name + bio + imagePath);
                           // userDetailPost
                           //     .updateUsername(usernameController.text);
                           // userDetailPost.updateUserBio(bioController.text);

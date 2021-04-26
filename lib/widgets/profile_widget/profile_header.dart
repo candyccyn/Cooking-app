@@ -75,7 +75,7 @@ class ProfilePicture extends StatelessWidget {
                       menuProvider.getProfilePathImage.toString())))),
       SizedBox(height: 15),
       Text(
-        menuProvider.getUsername,
+        menuProvider.getUsername.toString(),
         textAlign: TextAlign.center,
         style: TextStyle(
             fontFamily: 'Century Gothic',
