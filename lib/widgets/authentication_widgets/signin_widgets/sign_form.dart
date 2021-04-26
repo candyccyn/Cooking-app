@@ -11,7 +11,6 @@ class _SignFormState extends State<SignForm> {
   final _formkey = GlobalKey<FormState>();
   String email;
   String password;
-  bool remember = false;
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -41,26 +40,6 @@ class _SignFormState extends State<SignForm> {
           buildPasswordFormField(),
           SizedBox(
             height: 20,
-          ),
-          Row(
-            children: [
-              Checkbox(
-                  value: remember,
-                  activeColor: Color(0xFFFF7643),
-                  onChanged: (value) {
-                    setState(() {
-                      remember = value;
-                    });
-                  }),
-              Text("Remeber me"),
-              Spacer(),
-              GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Forgot pasword",
-                    style: TextStyle(color:Color(0xff091D67),decoration: TextDecoration.underline),
-                  )),
-            ],
           ),
           FormError(errors: errors),
         ],
