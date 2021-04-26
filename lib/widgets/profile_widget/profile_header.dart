@@ -1,4 +1,5 @@
 import 'package:cooking_app/screens/profile/edit_profile.dart';
+import 'package:cooking_app/services/user_detail.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,6 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       icon: const Icon(Icons.edit),
                       color: Colors.white,
                       onPressed: () {
-                        //    Navigator.pushNamed(context, EditProfileScreen.routeName);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -54,15 +54,25 @@ class ProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
+    UserDetailService userDetailService =
+        UserDetailService(menuProvider.getUid);
+    userDetailService
+        .getBio()
+        .then((value) => menuProvider.setProfileDescription(value));
+
+    userDetailService
+        .getUserImage()
+        .then((value) => menuProvider.setProfileImagePath(value));
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
-        width: 76,
-        height: 76,
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          shape: BoxShape.circle,
-        ),
-      ),
+          width: 76,
+          height: 76,
+          decoration: new BoxDecoration(
+              shape: BoxShape.circle,
+              image: new DecorationImage(
+                  fit: BoxFit.cover,
+                  image: new NetworkImage(
+                      menuProvider.getProfilePathImage.toString())))),
       SizedBox(height: 15),
       Text(
         menuProvider.getUsername,
