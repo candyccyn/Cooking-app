@@ -34,10 +34,13 @@ class MenuCard extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             menuProvider.setPickedRecipe(title);
-
+            menuProvider.setMenuOwner(menuOwner);
+            menuProvider.setMenuImagePath(imagePath);
             Navigator.push(
               context,
-              new MaterialPageRoute(builder: (context) => new RecipeBody()),
+              new MaterialPageRoute(
+                  builder: (context) =>
+                      new RecipeBody(type: menuOwner, imagePath: imagePath)),
             );
           },
           child: Column(
@@ -69,9 +72,7 @@ class MenuCard extends StatelessWidget {
                 maxLines: 1,
               ),
               Text(
-
                 "by " + menuOwner,
-
                 style: TextStyle(
                     fontFamily: 'Century Gothic',
                     fontWeight: FontWeight.bold,

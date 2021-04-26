@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Steps extends StatelessWidget {
-  const Steps({
+class Stepps extends StatelessWidget {
+  const Stepps({
     Key key,
     this.number,
     this.description,

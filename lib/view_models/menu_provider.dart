@@ -5,6 +5,7 @@ import 'package:cooking_app/models/menu.dart';
 import 'package:cooking_app/models/menu_detail_data.dart';
 import 'package:cooking_app/models/step.dart';
 import 'package:cooking_app/models/review.dart';
+import 'package:cooking_app/services/menu_service.dart';
 import 'package:cooking_app/services/user_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -130,6 +131,7 @@ class MenuProvider extends ChangeNotifier {
 
   void setPickedRecipe(String menuName) {
     _pickRecipe = menuName;
+
     notifyListeners();
   }
 

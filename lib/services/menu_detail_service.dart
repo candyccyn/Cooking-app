@@ -5,26 +5,34 @@ import 'package:cooking_app/models/step.dart';
 
 const menuCollection = 'test2';
 const reviewCollection = 'reviews';
-const stepCollection = 'reviews';
-const ingredientCollection = 'reviews';
+const stepCollection = 'steps';
+const ingredientCollection = 'ingredients';
 
 class MenuDetailService {
   String _menuName;
 
   CollectionReference _menuReference =
-  FirebaseFirestore.instance.collection(menuCollection);
+      FirebaseFirestore.instance.collection(menuCollection);
 
   MenuDetailService(String menuName) {
     this._menuName = menuName;
   }
 
+  Future<String> fetchMenuType() async {
+    QuerySnapshot querySnapshot =
+        await _menuReference.where('name', isEqualTo: _menuName).get();
+
+    return querySnapshot.docs[0].data()['type'];
+  }
+
+
   Future<List<Review>> fetchReview() async {
-    QuerySnapshot querySnapshot = await _menuReference.where(
-        'name', isEqualTo: _menuName).get();
+    QuerySnapshot querySnapshot =
+        await _menuReference.where('name', isEqualTo: _menuName).get();
 
     var id = querySnapshot.docs[0].id;
-    QuerySnapshot reviewSnapshot = await _menuReference.doc(id).collection(
-        reviewCollection).get();
+    QuerySnapshot reviewSnapshot =
+        await _menuReference.doc(id).collection(reviewCollection).get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs
@@ -35,19 +43,17 @@ class MenuDetailService {
     }
   }
 
-
   Future<List<Ingredient>> fetchIngredient() async {
-    QuerySnapshot querySnapshot = await _menuReference.where(
-        'name', isEqualTo: _menuName).get();
+    QuerySnapshot querySnapshot =
+        await _menuReference.where('name', isEqualTo: _menuName).get();
 
     var id = querySnapshot.docs[0].id;
-    QuerySnapshot ingredientSnapshot = await _menuReference.doc(id).collection(
-        reviewCollection).get();
-
+    QuerySnapshot ingredientSnapshot =
+        await _menuReference.doc(id).collection(ingredientCollection).get();
+    // print(ingredientSnapshot.docs.);
     if (ingredientSnapshot.docs.isNotEmpty) {
       return ingredientSnapshot.docs
-          .map((doc) =>
-          Ingredient(
+          .map((doc) => Ingredient(
               doc.data()['name'], doc.data()['units'], doc.data()['amount']))
           .toList();
     } else {
@@ -56,17 +62,27 @@ class MenuDetailService {
   }
 
   Future<List<Steps>> fetchStep() async {
-    QuerySnapshot querySnapshot = await _menuReference.where(
-        'name', isEqualTo: _menuName).orderBy('order').get();
+    QuerySnapshot querySnapshot =
+        await _menuReference.where('name', isEqualTo: _menuName).get();
 
     var id = querySnapshot.docs[0].id;
-    QuerySnapshot stepSnapshot = await _menuReference.doc(id).collection(
-        reviewCollection).get();
+    QuerySnapshot stepSnapshot = await _menuReference
+        .doc(id)
+        .collection(stepCollection)
+        .orderBy('order')
+        .get();
+
+    stepSnapshot.docs.forEach((element) {
+      print(element.data());
+    });
 
     if (stepSnapshot.docs.isNotEmpty) {
       return stepSnapshot.docs
-          .map((doc) =>
-          Steps(doc.data()['text'], doc.data()['time'], doc.data()['unit']));
+          .map((doc) => Steps(
+              doc.data()['name'], doc.data()['amount'], doc.data()['units']))
+          .toList();
+    } else {
+      throw Exception("No steps found");
     }
   }
 }
