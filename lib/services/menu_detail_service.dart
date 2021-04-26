@@ -28,7 +28,7 @@ class MenuDetailService {
 
   Future<MenuDetail> assignMenuData() async {
     QuerySnapshot querySnapshot =
-        await this._menuReference.where('name', isEqualTo: 'food__3').get();
+        await this._menuReference.where('name', isEqualTo: this._menuName).get();
 
     if (querySnapshot.docs.isNotEmpty) {
       var data = querySnapshot.docs[0].data();
@@ -62,7 +62,7 @@ class MenuDetailService {
 
   Future<List<Steps>> fetchStep(var docId) async {
     QuerySnapshot reviewSnapshot =
-        await _menuReference.doc(docId).collection(stepCollection).get();
+        await _menuReference.doc(docId).collection(stepCollection).orderBy('order').get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs

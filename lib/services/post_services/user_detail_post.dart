@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cooking_app/services/post_services/menu_post.dart';
-import 'package:cooking_app/services/user_detail.dart';
 
 const userCollection = 'users';
 const menuOwnedCollection = 'menuOwned';

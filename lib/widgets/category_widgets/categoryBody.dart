@@ -77,6 +77,7 @@ class CategoryBody extends StatelessWidget {
                             child: MenuCard(
                               imagePath: this.menus[index].imagePath.toString(),
                               title: this.menus[index].menuName.toString(),
+                              menuOwner: this.menus[index].menuOwner.toString(),
                             ),
                           );
                         }),
