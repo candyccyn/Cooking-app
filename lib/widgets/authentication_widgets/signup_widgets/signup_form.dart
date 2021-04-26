@@ -1,4 +1,6 @@
 import 'package:cooking_app/screens/authenticate/sign_in.dart';
+import 'package:cooking_app/services/auth.dart';
+import 'package:cooking_app/services/post_services/auth_post.dart';
 import 'package:cooking_app/widgets/authentication_widgets/error.dart';
 import 'package:cooking_app/widgets/shared/roundedbutton.dart';
 
@@ -16,6 +18,7 @@ class _SignUpFormState extends State<SignUpForm> {
   String password;
   String confirm_password;
   final List<String> errors = [];
+  AuthService authService = AuthService();
 
   void addError({String error}) {
     if (!errors.contains(error))
@@ -29,7 +32,7 @@ class _SignUpFormState extends State<SignUpForm> {
       setState(() {
         errors.remove(error);
       });
-  }     // TODO delete these 2 function and implement them in viewmodel
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +53,8 @@ class _SignUpFormState extends State<SignUpForm> {
               SizedBox(height: 30),
               RoundedButton(
                 text: "Sign up",
-                press: () {
-                  // if (_formKey.currentState.validate()) {
-                  //   //valid
-                   
-                  // }
+                press: () async {
+                  authService.createAccountFromEmail(email, username, password);
                 },
               ),
               SizedBox(height:30),
@@ -84,11 +84,11 @@ class _SignUpFormState extends State<SignUpForm> {
         ));
   }
 
-  // TODO reduce redundant
   TextFormField buildUsernameFormField() {
     return TextFormField(
       onSaved: (newValue) => username = newValue,
       onChanged: (value) {
+        username = value;
         if (value.isNotEmpty) {
           removeError(error: "Please Enter your username");
         }
@@ -177,6 +177,7 @@ class _SignUpFormState extends State<SignUpForm> {
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
+        password = value;
         if (value.isNotEmpty) {
           removeError(error: "Please Enter your password");
         } else if (value.length >= 8) {
@@ -226,6 +227,7 @@ class _SignUpFormState extends State<SignUpForm> {
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
+        email = value;
         if (value.isNotEmpty) {
           removeError(error: "Please Enter your email");
         } else if (RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")

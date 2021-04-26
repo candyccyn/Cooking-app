@@ -19,7 +19,7 @@ class TestServiceScreen extends StatefulWidget {
 
 class _TestServiceScreenState extends State<TestServiceScreen> {
   DataTransfer d = DataTransfer();
-
+  MenuDetailService m = MenuDetailService('Chocolate Chip Cookies');
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,7 @@ class _TestServiceScreenState extends State<TestServiceScreen> {
       body: Center(child: Text('Service Test')),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          // var data = await d.getAsianFood('Spaghetti and Meatballs', 14, 5);
-          // await d.transferCollection(data);
+          await testFn();
         },
         child: const Icon(Icons.add),
       ),
@@ -44,13 +43,11 @@ Future<void> testFn() async {
   FirebaseFirestore.instance.collection('test2');
 
   QuerySnapshot querySnapshot =
-  await _menuReference.where('name', isEqualTo: 'Pasta').get();
+  await _menuReference.where('name', isEqualTo: 'Spaghetti Pasta Carbonara').get();
 
-  var menuId = querySnapshot.docs[0].id;
+  var img = querySnapshot.docs[0].data()['image'];
+  print(img);
 
-  _menuReference.doc(menuId).collection('steps').orderBy('order').get()
-  .then((value) => value.docs.forEach((element) {
-    print(element.data()['text']);
-  }));
+  //var menuId = querySnapshot.docs[0].id;
 }
 

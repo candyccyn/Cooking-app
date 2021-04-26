@@ -79,7 +79,7 @@ class DataTransfer {
         });
         stepIterator = stepIterator + 1;
       });
-    } catch (e) {print("error steps"); }
+    } catch (e) { print("error steps"); }
 
     print("-------- Transfer Done --------");
   }
