@@ -23,6 +23,9 @@ class MenuProvider extends ChangeNotifier {
   String _username = "";
   String _uid = "";
 
+  String _profileDescription = "";
+  String _profilePathImage = "";
+
   String _pickCategory = "";
 
   Future<DocumentSnapshot> _userDetail = null;
@@ -40,6 +43,9 @@ class MenuProvider extends ChangeNotifier {
   String _menuOwner = "";
   String _imagePath = "";
 
+  int _currentStep = 0;
+  int _duration = 0;
+
   get getUid => _uid;
   get getUsername => _username;
   get getPickCategory => _pickCategory;
@@ -55,6 +61,12 @@ class MenuProvider extends ChangeNotifier {
   get getMenuType => _menuType;
   get getMenuImagePath => _imagePath;
   get getBookmarkData => _bookmarkData;
+
+  get getProfilePathImage => _profilePathImage;
+  get getProfileDescription => _profileDescription;
+
+  get getDuration => _duration;
+  get getCurrentStep => _currentStep;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -146,11 +158,38 @@ class MenuProvider extends ChangeNotifier {
     setMenuType(menuDetail.menuType);
   }
 
+  void setDuration(int duration) {
+    _duration = duration;
+  }
+
+  void setCurrentStep(int currentStep) {
+    _currentStep = currentStep;
+  }
+
   String setAlltime(List<Steps> stepList) {
     int allTime = 0;
     for (Steps step in stepList) {
       allTime += step.time;
     }
     return allTime.toString();
+  }
+
+  void setProfileDescription(String profileDescription) {
+    _profileDescription = profileDescription;
+  }
+
+  void setProfileImagePath(String profileImagePath) {
+    _profilePathImage = profileImagePath;
+  }
+
+  bool isSetBookmark(menuName, bookmarkData) {
+    for (Menu bData in bookmarkData) {
+      if (bData.menuName == menuName) {
+        return true;
+      } else {
+        continue;
+      }
+    }
+    return false;
   }
 }
