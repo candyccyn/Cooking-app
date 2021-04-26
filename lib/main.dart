@@ -39,9 +39,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: routes,
 
-      initialRoute: WelcomeScreen.routeName,
-      // home: ProfileScreen(),
-
+      //initialRoute: WelcomeScreen.routeName,
+      home: WelcomeScreen(),
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),

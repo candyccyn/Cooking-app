@@ -1,4 +1,5 @@
 import 'package:cooking_app/screens/recipe/add_recipe_page.dart';
+import 'package:cooking_app/services/user_detail.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/home_widgets/recommend.dart';
 import 'package:cooking_app/widgets/profile_widget/myRecipe_card.dart';
@@ -10,6 +11,9 @@ import 'package:provider/provider.dart';
 class ProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
+    UserDetailService userDetailService =
+        UserDetailService(menuProvider.getUid);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -40,7 +44,7 @@ class ProfileBody extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(top: 20, left: 45),
-              child: MyRecipeCard(),
+              child: MyRecipeCard(userDetailService: userDetailService),
             ),
             Padding(
               padding: EdgeInsets.only(left: 45),

@@ -35,6 +35,8 @@ class MenuProvider extends ChangeNotifier {
   List<Menu> _menus = [];
   List<Menu> _pickCategoryData = [];
   List<Menu> _bookmarkData = [];
+  List<Menu> _ownMenu = [];
+
   List<Review> _reviewList = [];
   List<Ingredient> _ingredientList = [];
   List<Steps> _stepList = [];
@@ -67,6 +69,8 @@ class MenuProvider extends ChangeNotifier {
 
   get getDuration => _duration;
   get getCurrentStep => _currentStep;
+
+  get getOwnMenu => _ownMenu;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -180,6 +184,10 @@ class MenuProvider extends ChangeNotifier {
 
   void setProfileImagePath(String profileImagePath) {
     _profilePathImage = profileImagePath;
+  }
+
+  void setOwnMenu(List<Menu> ownMenu) {
+    _ownMenu = ownMenu;
   }
 
   bool isSetBookmark(menuName, bookmarkData) {
