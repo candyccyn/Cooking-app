@@ -36,7 +36,7 @@ class _RecipeDetailHeaderState extends State<RecipeDetailHeader> {
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
-    print(this.hasBeenPressed);
+
     MenuService mS = MenuService();
     MenuDetailService mD = MenuDetailService("None");
     BookmarkService bS = BookmarkService(menuProvider.getUid);

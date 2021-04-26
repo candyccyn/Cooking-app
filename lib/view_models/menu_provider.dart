@@ -43,6 +43,9 @@ class MenuProvider extends ChangeNotifier {
   String _menuOwner = "";
   String _imagePath = "";
 
+  int _currentStep = 0;
+  int _duration = 0;
+
   get getUid => _uid;
   get getUsername => _username;
   get getPickCategory => _pickCategory;
@@ -61,6 +64,9 @@ class MenuProvider extends ChangeNotifier {
 
   get getProfilePathImage => _profilePathImage;
   get getProfileDescription => _profileDescription;
+
+  get getDuration => _duration;
+  get getCurrentStep => _currentStep;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -150,6 +156,14 @@ class MenuProvider extends ChangeNotifier {
     setStepList(menuDetail.stepList);
     setMenuImagePath(menuDetail.imagePath);
     setMenuType(menuDetail.menuType);
+  }
+
+  void setDuration(int duration) {
+    _duration = duration;
+  }
+
+  void setCurrentStep(int currentStep) {
+    _currentStep = currentStep;
   }
 
   String setAlltime(List<Steps> stepList) {
