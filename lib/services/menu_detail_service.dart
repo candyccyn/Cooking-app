@@ -27,8 +27,10 @@ class MenuDetailService {
   }
 
   Future<MenuDetail> assignMenuData() async {
-    QuerySnapshot querySnapshot =
-        await this._menuReference.where('name', isEqualTo: this._menuName).get();
+    QuerySnapshot querySnapshot = await this
+        ._menuReference
+        .where('name', isEqualTo: this._menuName)
+        .get();
 
     if (querySnapshot.docs.isNotEmpty) {
       var data = querySnapshot.docs[0].data();
@@ -36,6 +38,7 @@ class MenuDetailService {
       this._imagePath = data['image'];
       this._menuOwner = data['menuOwner'];
       this._menuType = data['type'];
+
       this._commentList = await fetchReview(menuId);
       this._stepList = await fetchStep(menuId);
       this._ingredientList = await fetchIngredient(menuId);
@@ -61,6 +64,7 @@ class MenuDetailService {
   }
 
   Future<List<Steps>> fetchStep(var docId) async {
+
     QuerySnapshot reviewSnapshot =
         await _menuReference.doc(docId).collection(stepCollection).orderBy('order').get();
 
@@ -80,8 +84,8 @@ class MenuDetailService {
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs
-          .map((doc) => Ingredient(
-              doc.data()['name'], doc.data()['units'], doc.data()['amount']))
+          .map((doc) => Ingredient(doc.data()['name'], doc.data()['units'],
+              doc.data()['amount'].toDouble()))
           .toList();
     } else {
       throw Exception("No ingredients found");

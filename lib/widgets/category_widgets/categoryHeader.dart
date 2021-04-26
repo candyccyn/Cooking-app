@@ -19,7 +19,7 @@ class CategoryHeader extends StatelessWidget {
         height: size.height * 0.35,
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            image: new NetworkImage(imagePath),
+            image: new NetworkImage(imagePath.toString()),
             fit: BoxFit.cover,
           ),
         ),

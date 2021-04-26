@@ -159,23 +159,28 @@ class MenuProvider extends ChangeNotifier {
 
   void setBookmarkData(List<Menu> bookmarkData) {
     _bookmarkData = bookmarkData;
+    notifyListeners();
   }
 
   void setMenuDetail(MenuDetail menuDetail) {
     setMenuOwner(menuDetail.menuOwner);
-    setReviewList(menuDetail.reviewList);
-    setIngredientList(menuDetail.ingredientList);
-    setStepList(menuDetail.stepList);
     setMenuImagePath(menuDetail.imagePath);
     setMenuType(menuDetail.menuType);
+    setReviewList(menuDetail.reviewList);
+    setStepList(menuDetail.stepList);
+    setIngredientList(menuDetail.ingredientList);
+
+    notifyListeners();
   }
 
   void setDuration(int duration) {
     _duration = duration;
+    notifyListeners();
   }
 
   void setCurrentStep(int currentStep) {
     _currentStep = currentStep;
+    notifyListeners();
   }
 
   String setAlltime(List<Steps> stepList) {
@@ -188,26 +193,32 @@ class MenuProvider extends ChangeNotifier {
 
   void setProfileDescription(String profileDescription) {
     _profileDescription = profileDescription;
+    notifyListeners();
   }
 
   void setProfileImagePath(String profileImagePath) {
     _profilePathImage = profileImagePath;
+    notifyListeners();
   }
 
   void setOwnMenu(List<Menu> ownMenu) {
     _ownMenu = ownMenu;
+    notifyListeners();
   }
 
   void setUserNamePost(String userNamePost) {
     _userNamePost = userNamePost;
+    notifyListeners();
   }
 
   void setUserBioPost(String userBioPost) {
     _userBioPost = userBioPost;
+    notifyListeners();
   }
 
   void setUserImageLinkPost(String userImageLinkPost) {
     _userImageLinkPost = userImageLinkPost;
+    notifyListeners();
   }
 
   bool isSetBookmark(menuName, bookmarkData) {
