@@ -11,22 +11,35 @@ class WelcomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Column(
       children: [
         Spacer(),
+        Container(
+            // color: Colors.green,
+            height: size.height * .20,
+            child: Image.asset('assets/images/bechef-logo.png')),
+        // Text(
+        //   "Cooking App",
+        //   style: TextStyle(
+        //     color: Color(0xff012060),
+        //     fontSize: 30,
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
+        Spacer(),
         Text(
-          "Cooking App",
+          text,
+          textAlign: TextAlign.center,
           style: TextStyle(
-            color:Color(0xff012060),
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+            color: Color(0xff012060),
+            fontSize: 24,
           ),
         ),
-        Text(text, textAlign: TextAlign.center,),
-        Image.asset(
-          image,
-          height: 320,
-          width: 320,
+        Spacer(),
+        Container(
+        height: size.height * .35,
+          child: Image.asset(image),
         ),
       ],
     );

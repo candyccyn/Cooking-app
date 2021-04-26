@@ -79,7 +79,8 @@ class _TimerScreenState extends State<TimerScreen>
                 padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(menuProvider.getMenuImagePath),
+                    image:
+                        NetworkImage(menuProvider.getMenuImagePath.toString()),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(30),
