@@ -26,10 +26,10 @@ class _IngredientState extends State<Ingredients> {
   Widget build(BuildContext context) {
     TextEditingController amountController = TextEditingController();
     TextEditingController textController = TextEditingController();
-
+    String name, amount;
+    name = textController.text;
+    amount = amountController.text;
     final menuProvider = Provider.of<MenuProvider>(context);
-    Ingredient ingredient = Ingredient(
-        textController.text, unit, int.tryParse(amountController.text));
     return Row(
       children: [
         Container(width: 140, child: buildIngredientFormField(textController)),
@@ -56,10 +56,9 @@ class _IngredientState extends State<Ingredients> {
                 color: Color(0xff091D67),
               ),
               value: unit,
-              onChanged: (newValue) {
-                setState(() {
-                  unit = newValue;
-                });
+              onTap: () {
+                Ingredient ingredient = Ingredient(textController.text, unit,
+                    int.tryParse(amountController.text));
                 if (menuProvider.getIngredientPost.length <=
                     int.parse(countLine) - 1) {
                   menuProvider.addIngredient(
@@ -68,6 +67,11 @@ class _IngredientState extends State<Ingredients> {
                   menuProvider.updateIngredient(
                       int.parse(countLine) - 1, ingredient);
                 }
+              },
+              onChanged: (newValue) {
+                setState(() {
+                  unit = newValue;
+                });
               },
               items: unitItem.map((valueItem) {
                 return DropdownMenuItem(
@@ -83,20 +87,12 @@ class _IngredientState extends State<Ingredients> {
   }
 }
 
-TextFormField buildIngredientFormField(TextEditingController nameController
+TextFormField buildIngredientFormField(TextEditingController textController
     // MenuProvider menuProvider,
     // String countLine,
     ) {
   return TextFormField(
-    // onSaved: (value) {
-    //   name = value;
-    //   if (menuProvider.getIngredientPost.length <= int.parse(countLine) - 1) {
-    //     menuProvider.addIngredient(int.parse(countLine) - 1, ingredient);
-    //   } else {
-    //     menuProvider.updateIngredient(int.parse(countLine) - 1, ingredient);
-    //   }
-    // },
-    controller: nameController,
+    controller: textController,
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),
@@ -124,14 +120,6 @@ TextFormField buildAmountFormField(TextEditingController amountController
     ) {
   return TextFormField(
     controller: amountController,
-    // onSaved: (value) {
-    //   amount = int.parse(value);
-    //   if (menuProvider.getIngredientPost.length <= int.parse(countLine) - 1) {
-    //     menuProvider.addIngredient(int.parse(countLine) - 1, ingredient);
-    //   } else {
-    //     menuProvider.updateIngredient(int.parse(countLine) - 1, ingredient);
-    //   }
-    // },
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),
@@ -142,7 +130,7 @@ TextFormField buildAmountFormField(TextEditingController amountController
         borderSide: BorderSide(
           color: Color(0xFFFFFE4C4),
         ),
-        //  gapPadding: 10,
+        gapPadding: 10,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),

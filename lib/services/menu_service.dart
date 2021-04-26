@@ -25,7 +25,7 @@ class CategoryService {
   }
 }
 
-class MenuService with ChangeNotifier {
+class MenuService {
   CollectionReference _menuReference =
       FirebaseFirestore.instance.collection(menuCollection);
 

@@ -96,6 +96,8 @@ class _AddStepState extends State<AddStep> {
                             borderRadius: BorderRadius.circular(20)),
                         color: Color(0xFFFFB448),
                         onPressed: () {
+                          print(menuProvider.getIngredientPost.length);
+
                           for (Ingredient a in menuProvider.getIngredientPost) {
                             print(a.name +
                                 ": " +
