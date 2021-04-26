@@ -49,8 +49,8 @@ class ProfileBody extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, top: 20),
+            SizedBox(height: 20),
+            Center(
               child: Wrap(
                 alignment: WrapAlignment.start,
                 children: [
