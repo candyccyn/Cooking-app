@@ -63,14 +63,18 @@ class _SignUpFormState extends State<SignUpForm> {
                 children: [
                   Text(
                     "Already have an account ? ",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15,fontFamily: "Century Gothic",),
                   ),
                   GestureDetector(
                       onTap: () =>
-                          Navigator.pushNamed(context, SignInScreen.routeName),
+                          Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignInScreen()),
+                              ),
                       child: Text("Sign in ",
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 15,fontFamily: "Century Gothic",
                               color: Color(0xFFFFA925),
                               fontWeight: FontWeight.bold))),
                 ],
@@ -100,6 +104,8 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
         labelText: "username",
         hintText: "enter username",
+        labelStyle: TextStyle(fontFamily: "Century Gothic",),
+        hintStyle: TextStyle(fontFamily: "Century Gothic",),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -145,6 +151,8 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         labelText: "Confirm password",
         hintText: "Re-entered a password",
+        labelStyle: TextStyle(fontFamily: "Century Gothic",),
+        hintStyle: TextStyle(fontFamily: "Century Gothic",),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.lock),
         enabledBorder: OutlineInputBorder(
@@ -190,6 +198,8 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
         labelText: "Password",
         hintText: "enter a password",
+        labelStyle: TextStyle(fontFamily: "Century Gothic",),
+        hintStyle: TextStyle(fontFamily: "Century Gothic",),
         filled: true,
         fillColor: Color(0xFFFFECDF),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -240,6 +250,8 @@ class _SignUpFormState extends State<SignUpForm> {
         fillColor: Color(0xFFFFECDF),
         labelText: "Email",
         hintText: "enter an email",
+        labelStyle: TextStyle(fontFamily: "Century Gothic",),
+        hintStyle: TextStyle(fontFamily: "Century Gothic",),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: Icon(Icons.mail),
         enabledBorder: OutlineInputBorder(

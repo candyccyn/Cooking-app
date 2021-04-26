@@ -19,9 +19,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             children: [
               SizedBox(height:70),
-              Text("Sign up",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color:Color(0xff012160)),),
+              Text("Sign up",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,fontFamily: "Century Gothic",color:Color(0xff012160)),),
               SizedBox(height:30),
-              Text("Complete your detail or continue with social media",textAlign: TextAlign.center,),
+              Text("Complete your detail or continue with social media",textAlign: TextAlign.center,style: TextStyle(fontFamily: "Century Gothic",),),
               SizedBox(height:30),
               SignUpForm(),
             ],
