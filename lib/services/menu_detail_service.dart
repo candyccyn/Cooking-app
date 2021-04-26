@@ -25,6 +25,7 @@ class MenuDetailService {
     return querySnapshot.docs[0].data()['type'];
   }
 
+
   Future<List<Review>> fetchReview() async {
     QuerySnapshot querySnapshot =
         await _menuReference.where('name', isEqualTo: _menuName).get();

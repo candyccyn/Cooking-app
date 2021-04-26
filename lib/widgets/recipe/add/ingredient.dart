@@ -1,30 +1,52 @@
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cooking_app/models/ingredient.dart';
 
-class Ingredient extends StatefulWidget {
+class Ingredients extends StatefulWidget {
   String countLine;
-  Ingredient(String countLine){
-    this.countLine=countLine;
+  Ingredients(String countLine) {
+    this.countLine = countLine;
   }
   @override
   _IngredientState createState() => _IngredientState(this.countLine);
 }
 
-class _IngredientState extends State<Ingredient> {
-  List unitItem = ['grams', 'kilo'];
-  String unit;
+class _IngredientState extends State<Ingredients> {
+  List unitItem = ['grams', 'kilo', 'tbsp', 'tsp', 'oz', 'L', 'mL', 'cup'];
+
   String countLine;
-  _IngredientState(String countLine){
-    this.countLine=countLine;
+
+  String unit;
+  _IngredientState(String countLine) {
+    this.countLine = countLine;
   }
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController amountController = TextEditingController();
+    TextEditingController textController = TextEditingController();
+    String name, amount;
+    name = textController.text;
+    amount = amountController.text;
+    final menuProvider = Provider.of<MenuProvider>(context);
     return Row(
       children: [
-        Container(width: 230, child: buildIngredientFormField()),
-        Spacer(flex: 2),
+        Expanded(
+            child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                ),
+                child: buildIngredientFormField(textController))),
+        // child: buildIngredientFormField(menuProvider, countLine)),
+        SizedBox(width: 10),
+        Container(width: 80, child: buildAmountFormField(amountController)),
+        // width: 100, child: buildAmountFormField(menuProvider, countLine)),
+        SizedBox(width: 10),
         Container(
-          width: 120,
+          constraints: BoxConstraints(
+            maxWidth: double.infinity,
+          ),
           decoration: BoxDecoration(
               border: Border.all(color: Color(0xFFFFFE4C4)),
               borderRadius: BorderRadius.circular(25),
@@ -41,6 +63,18 @@ class _IngredientState extends State<Ingredient> {
                 color: Color(0xff091D67),
               ),
               value: unit,
+              onTap: () {
+                Ingredient ingredient = Ingredient(textController.text, unit,
+                    double.tryParse(amountController.text));
+                if (menuProvider.getIngredientPost.length <=
+                    int.parse(countLine) - 1) {
+                  menuProvider.addIngredient(
+                      int.parse(countLine) - 1, ingredient);
+                } else {
+                  menuProvider.updateIngredient(
+                      int.parse(countLine) - 1, ingredient);
+                }
+              },
               onChanged: (newValue) {
                 setState(() {
                   unit = newValue;
@@ -60,8 +94,39 @@ class _IngredientState extends State<Ingredient> {
   }
 }
 
-TextFormField buildIngredientFormField() {
+TextFormField buildIngredientFormField(TextEditingController textController
+    // MenuProvider menuProvider,
+    // String countLine,
+    ) {
   return TextFormField(
+    controller: textController,
+    decoration: InputDecoration(
+      filled: true,
+      fillColor: Color(0xFFFFFE4C4),
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide(
+          color: Color(0xFFFFFE4C4),
+        ),
+        gapPadding: 10,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide(
+          color: Color(0xFFFFFE4C4),
+        ),
+      ),
+    ),
+  );
+}
+
+TextFormField buildAmountFormField(TextEditingController amountController
+    //MenuProvider menuProvider, String countLine
+    ) {
+  return TextFormField(
+    controller: amountController,
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),

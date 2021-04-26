@@ -10,6 +10,7 @@ class CommentBar extends StatefulWidget {
 
 class _CommentBarState extends State<CommentBar> {
   TextEditingController textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
@@ -51,6 +52,7 @@ class _CommentBarState extends State<CommentBar> {
                         onPressed: () => {
                           menuPost.createReview(menuProvider.getUsername,
                               menuProvider.getPickReciepe, textController.text)
+
                         },
                         icon: Icon(
                           Icons.send,
