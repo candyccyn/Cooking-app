@@ -62,7 +62,7 @@ class MenuDetailService {
 
   Future<List<Steps>> fetchStep(var docId) async {
     QuerySnapshot reviewSnapshot =
-        await _menuReference.doc(docId).collection(stepCollection).get();
+        await _menuReference.doc(docId).collection(stepCollection).orderBy('order').get();
 
     if (reviewSnapshot.docs.isNotEmpty) {
       return reviewSnapshot.docs

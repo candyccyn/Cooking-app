@@ -8,12 +8,14 @@ import 'package:provider/provider.dart';
 class MenuCard extends StatelessWidget {
   final String imagePath;
   final String title;
+  final String menuOwner;
   final Function press;
 
   const MenuCard({
     Key key,
     this.imagePath,
     this.title,
+    this.menuOwner,
     this.press,
     this.width = 140,
     this.aspectRetio = 1.02,
@@ -69,7 +71,7 @@ class MenuCard extends StatelessWidget {
                 maxLines: 1,
               ),
               Text(
-                "by " + menuProvider.getMenuOwner ,
+                "by " + menuOwner ,
                 style: TextStyle(
                     fontFamily: 'Century Gothic',
                     fontWeight: FontWeight.bold,
