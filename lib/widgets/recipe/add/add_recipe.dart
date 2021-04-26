@@ -1,4 +1,5 @@
 import 'package:cooking_app/models/ingredient.dart';
+import 'package:cooking_app/models/step.dart';
 import 'package:cooking_app/services/post_services/menu_post.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:cooking_app/widgets/recipe/add/add_form.dart';
@@ -96,15 +97,21 @@ class _AddStepState extends State<AddStep> {
                             borderRadius: BorderRadius.circular(20)),
                         color: Color(0xFFFFB448),
                         onPressed: () {
-                          print(menuProvider.getIngredientPost.length);
-
-                          for (Ingredient a in menuProvider.getIngredientPost) {
-                            print(a.name +
-                                ": " +
-                                a.amount.toString() +
-                                ": " +
-                                a.units);
-                          }
+                          menuPost.createNewMenu(
+                              menuProvider.getMenuNamePost,
+                              menuProvider.getMenuCategoryPost,
+                              menuProvider.getMenuImagePost,
+                              menuProvider.getIngredientPost,
+                              menuProvider.getStepPost);
+                          //print(menuProvider.getIngredientPost.length);
+                          // print(menuProvider.getStepPost.length);
+                          // for (Steps a in menuProvider.getStepPost) {
+                          //   print(a.text +
+                          //       ": " +
+                          //       a.time.toString() +
+                          //       ": " +
+                          //       a.unit);
+                          // }
                           // print(menuProvider.getMenuCategoryPost +
                           //     ":  " +
                           //     menuProvider.getMenuImagePost +

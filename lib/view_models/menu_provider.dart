@@ -53,6 +53,7 @@ class MenuProvider extends ChangeNotifier {
   String _menuCategoryPost = "";
 
   List<Ingredient> _ingredientPost = [];
+  List<Steps> _stepPost = [];
 
   get getUid => _uid;
   get getUsername => _username;
@@ -83,6 +84,7 @@ class MenuProvider extends ChangeNotifier {
   get getMenuCategoryPost => _menuCategoryPost;
 
   get getIngredientPost => _ingredientPost;
+  get getStepPost => _stepPost;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -220,6 +222,14 @@ class MenuProvider extends ChangeNotifier {
 
   void updateIngredient(int index, Ingredient newDataIngredient) {
     _ingredientPost[index] = newDataIngredient;
+  }
+
+  void addSteps(int index, Steps newSteps) {
+    _stepPost.insert(index, newSteps);
+  }
+
+  void updateSteps(int index, Steps newDataStep) {
+    _stepPost[index] = newDataStep;
   }
 
   bool isSetBookmark(menuName, bookmarkData) {

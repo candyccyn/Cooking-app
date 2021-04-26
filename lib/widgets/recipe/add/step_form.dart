@@ -1,7 +1,10 @@
+import 'package:cooking_app/models/step.dart';
+import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinbox/cupertino.dart';
 import 'package:flutter_spinbox/material.dart';
+import 'package:provider/provider.dart';
 
 class StepForm extends StatefulWidget {
   String countStep;
@@ -19,8 +22,12 @@ class _StepFormState extends State<StepForm> {
     this.countStep = countStep;
   }
   List unitList = ['Hours', 'Minutes', 'Seconds'];
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController pictureController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final menuProvider = Provider.of<MenuProvider>(context);
+    double time;
     return Container(
       padding: EdgeInsets.only(right: 5),
       margin: EdgeInsets.symmetric(vertical: 5),
@@ -45,7 +52,8 @@ class _StepFormState extends State<StepForm> {
                       Container(
                           width: 250,
                           height: 30,
-                          child: buildDescriptionFormField()),
+                          child:
+                              buildDescriptionFormField(descriptionController)),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -61,7 +69,9 @@ class _StepFormState extends State<StepForm> {
                             max: 59,
                             value: 0,
                             // direction: Axis.vertical,
-                            onChanged: (value) => print(value),
+                            onChanged: (value) {
+                              time = value;
+                            },
                           ),
                         ),
                       ),
@@ -83,6 +93,18 @@ class _StepFormState extends State<StepForm> {
                             dropdownColor: Colors.white,
                             underline: SizedBox(),
                             value: unit,
+                            onTap: () {
+                              Steps steps = Steps(descriptionController.text,
+                                  time.toInt(), unit);
+                              if (menuProvider.getStepPost.length <=
+                                  int.parse(countStep) - 1) {
+                                menuProvider.addSteps(
+                                    int.parse(countStep) - 1, steps);
+                              } else {
+                                menuProvider.updateSteps(
+                                    int.parse(countStep) - 1, steps);
+                              }
+                            },
                             onChanged: (newValue) {
                               setState(() {
                                 unit = newValue;
@@ -101,11 +123,13 @@ class _StepFormState extends State<StepForm> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.only(left: 50),
-                    child: Container(
-                        width: 250, height: 30, child: buildPictureFormField()),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(left: 50),
+                  //   child: Container(
+                  //       width: 250,
+                  //       height: 30,
+                  //       child: buildPictureFormField(pictureController)),
+                  // ),
                 ],
               ),
             )
@@ -116,8 +140,10 @@ class _StepFormState extends State<StepForm> {
   }
 }
 
-TextFormField buildDescriptionFormField() {
+TextFormField buildDescriptionFormField(
+    TextEditingController descriptionController) {
   return TextFormField(
+    controller: descriptionController,
     decoration: InputDecoration(
       hintText: "Description",
       filled: true,
@@ -141,30 +167,31 @@ TextFormField buildDescriptionFormField() {
   );
 }
 
-TextFormField buildPictureFormField() {
-  return TextFormField(
-    decoration: InputDecoration(
-      hintText: "Picture",
-      filled: true,
-      fillColor: Colors.white,
-      floatingLabelBehavior: FloatingLabelBehavior.always,
-      contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 4),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Color(0xFFFFFE4C4),
-        ),
-        gapPadding: 10,
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Color(0xFFFFFE4C4),
-        ),
-      ),
-    ),
-  );
-}
+// TextFormField buildPictureFormField(TextEditingController pictureController) {
+//   return TextFormField(
+//     controller: pictureController,
+//     decoration: InputDecoration(
+//       hintText: "Picture",
+//       filled: true,
+//       fillColor: Colors.white,
+//       floatingLabelBehavior: FloatingLabelBehavior.always,
+//       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 4),
+//       enabledBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(30),
+//         borderSide: BorderSide(
+//           color: Color(0xFFFFFE4C4),
+//         ),
+//         gapPadding: 10,
+//       ),
+//       focusedBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(30),
+//         borderSide: BorderSide(
+//           color: Color(0xFFFFFE4C4),
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 class DrawCircle extends StatelessWidget {
   String countStep;
