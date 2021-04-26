@@ -48,6 +48,10 @@ class MenuProvider extends ChangeNotifier {
   int _currentStep = 0;
   int _duration = 0;
 
+  String _userNamePost = "";
+  String _userBioPost = "";
+  String _userImageLinkPost = "";
+
   get getUid => _uid;
   get getUsername => _username;
   get getPickCategory => _pickCategory;
@@ -71,6 +75,10 @@ class MenuProvider extends ChangeNotifier {
   get getCurrentStep => _currentStep;
 
   get getOwnMenu => _ownMenu;
+
+  get getUserUserName => _userNamePost;
+  get getUserBioPost => _userBioPost;
+  get getUserImagePost => _userImageLinkPost;
 
   void setUid(String uid) {
     this._uid = uid;
@@ -188,6 +196,18 @@ class MenuProvider extends ChangeNotifier {
 
   void setOwnMenu(List<Menu> ownMenu) {
     _ownMenu = ownMenu;
+  }
+
+  void setUserNamePost(String userNamePost) {
+    _userNamePost = userNamePost;
+  }
+
+  void setUserBioPost(String userBioPost) {
+    _userBioPost = userBioPost;
+  }
+
+  void setUserImageLinkPost(String userImageLinkPost) {
+    _userImageLinkPost = userImageLinkPost;
   }
 
   bool isSetBookmark(menuName, bookmarkData) {
