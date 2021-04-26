@@ -11,7 +11,7 @@ class _EditProfileHeaderState extends State<EditProfileHeader> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.35,
+      height: size.height * 0.1,
       child: Column(
         children: [
           // SizedBox(height: 20),
