@@ -18,7 +18,7 @@ import 'package:cooking_app/widgets/navigate_component.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 import 'screens/home/home.dart';
 
@@ -38,8 +38,10 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: routes,
+
       initialRoute: WelcomeScreen.routeName,
       // home: ProfileScreen(),
+
 
       // home: ChangeNotifierProvider<NavigationBarProvider>(
       //   child: MyStatefulWidget(),

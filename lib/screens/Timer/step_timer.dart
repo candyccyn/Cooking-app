@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/screens/recipe_detail/recipeDetailPage.dart';
 import 'package:cooking_app/view_models/menu_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -176,11 +177,20 @@ class _TimerScreenState extends State<TimerScreen>
                         // onPressed: () => _setProgressIndicatorDirection(
                         //     TimerProgressIndicatorDirection.counter_clockwise),
                         onPressed: () => {
-                          Navigator.push(
-                              context,
-                              new MaterialPageRoute(
-                                  builder: (context) =>
-                                      new TimerScreen(currentStep: 2)))
+                          if (this.currentStep <
+                              menuProvider.getStepList.length)
+                            {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) =>
+                                          new TimerScreen(currentStep: 2)))
+                            }
+                          // else
+                          //   {
+                          //     Navigator.popUntil(
+                          //         context, ModalRoute.withName("/recipe"))
+                          //   }
                         },
                         color: Colors.orange,
                         shape: RoundedRectangleBorder(
