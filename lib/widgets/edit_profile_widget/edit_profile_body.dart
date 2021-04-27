@@ -12,9 +12,7 @@ class EditProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
     UserDetailPost userDetailPost = UserDetailPost(menuProvider.getUid);
-    TextEditingController usernameController = new TextEditingController();
-    TextEditingController bioController = new TextEditingController();
-    TextEditingController profilePicController = new TextEditingController();
+
     String nameOld, bioOld, imagePathOld;
     nameOld = menuProvider.getUsername;
     bioOld = menuProvider.getProfileDescription;
@@ -90,12 +88,12 @@ class EditProfileBody extends StatelessWidget {
                                 color: Color(0xffFFA132))),
                         color: Color(0xfffFFB448),
                         onPressed: () {
-                          // userDetailPost.updateUsername(name);
-                          // userDetailPost.updateUserBio(bio);
-                          // userDetailPost.updateUserImage(imagePath);
+                          userDetailPost.updateUsername(name);
+                          userDetailPost.updateUserBio(bio);
+                          userDetailPost.updateUserImage(imagePath);
 
-                          // menuProvider.setUsername(name);
-                          // print(name + bio + imagePath);
+                          menuProvider.setUsername(name);
+                          print("aa:   " + name + bio + imagePath);
                           // userDetailPost
                           //     .updateUsername(usernameController.text);
                           // userDetailPost.updateUserBio(bioController.text);
@@ -121,7 +119,7 @@ class EditProfileBody extends StatelessWidget {
   }
 }
 
-TextFormField buildEditUsernameFormField(String name) {
+TextFormField buildEditUsernameFormField(String nameOld) {
   return TextFormField(
     // controller: usernameController,
     onChanged: (value) {
@@ -129,7 +127,7 @@ TextFormField buildEditUsernameFormField(String name) {
     },
     decoration: InputDecoration(
       filled: true,
-      hintText: name,
+      hintText: nameOld,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
@@ -150,7 +148,7 @@ TextFormField buildEditUsernameFormField(String name) {
   );
 }
 
-TextFormField buildBioFormField(String bio) {
+TextFormField buildBioFormField(String bioOld) {
   return TextFormField(
     // controller: bioFormController,
     //
@@ -160,7 +158,7 @@ TextFormField buildBioFormField(String bio) {
     maxLines: 8,
     decoration: InputDecoration(
       filled: true,
-      hintText: bio,
+      hintText: bioOld,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
@@ -181,7 +179,7 @@ TextFormField buildBioFormField(String bio) {
   );
 }
 
-TextFormField buildEditImagePathFormField(String imagePath) {
+TextFormField buildEditImagePathFormField(String imagePathOld) {
   return TextFormField(
     // controller: profilePicController,
 
@@ -190,7 +188,7 @@ TextFormField buildEditImagePathFormField(String imagePath) {
     },
     decoration: InputDecoration(
       filled: true,
-      hintText: imagePath,
+      hintText: imagePathOld,
       fillColor: Color(0xFFFFFE4C4),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 10),
