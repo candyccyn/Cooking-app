@@ -16,6 +16,7 @@ class _IngredientState extends State<Ingredients> {
   List unitItem = ['grams', 'kilo', 'tbsp', 'tsp', 'oz', 'L', 'mL', 'cup'];
 
   String countLine;
+  String name, amount;
 
   String unit;
   _IngredientState(String countLine) {
@@ -37,10 +38,10 @@ class _IngredientState extends State<Ingredients> {
                 constraints: BoxConstraints(
                   maxWidth: double.infinity,
                 ),
-                child: buildIngredientFormField(textController))),
+                child: buildIngredientFormField(name))),
         // child: buildIngredientFormField(menuProvider, countLine)),
         SizedBox(width: 10),
-        Container(width: 80, child: buildAmountFormField(amountController)),
+        Container(width: 95, child: buildAmountFormField(amount)),
         // width: 100, child: buildAmountFormField(menuProvider, countLine)),
         SizedBox(width: 10),
         Container(
@@ -102,12 +103,14 @@ class _IngredientState extends State<Ingredients> {
   }
 }
 
-TextFormField buildIngredientFormField(TextEditingController textController
+TextFormField buildIngredientFormField(String name
     // MenuProvider menuProvider,
     // String countLine,
     ) {
   return TextFormField(
-    controller: textController,
+    onChanged: (value) {
+      name = value;
+    },
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),
@@ -130,11 +133,13 @@ TextFormField buildIngredientFormField(TextEditingController textController
   );
 }
 
-TextFormField buildAmountFormField(TextEditingController amountController
+TextFormField buildAmountFormField(String amount
     //MenuProvider menuProvider, String countLine
     ) {
   return TextFormField(
-    controller: amountController,
+    onChanged: (value) {
+      amount = value;
+    },
     decoration: InputDecoration(
       filled: true,
       fillColor: Color(0xFFFFFE4C4),

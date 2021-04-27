@@ -29,10 +29,19 @@ class UserDetailPost {
         (value) => print("Update username done."));
   }
 
-  Future<void> addMenuOwned(String menuName, String image) {
+  // Future<void> addMenuOwned(String menuName, String image) {
+  //   return _userReference
+  //       .doc(_uid)
+  //       .collection(menuOwnedCollection)
+  //       .add({'image': image, 'menuName': menuName});
+  // }
+
+  Future<void> addMenuOwned(String menuName, String image, String owner) async{
+    var userSnapshot = await _userReference.doc(_uid).get();
+    var ownerUsername = userSnapshot.data()['username'];
     return _userReference
         .doc(_uid)
         .collection(menuOwnedCollection)
-        .add({'image': image, 'menuName': menuName});
+        .add({'image': image, 'menuName': menuName, 'menuOwner': owner});
   }
 }

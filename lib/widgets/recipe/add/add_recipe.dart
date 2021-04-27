@@ -103,6 +103,11 @@ class _AddStepState extends State<AddStep> {
                               menuProvider.getMenuImagePost,
                               menuProvider.getIngredientPost,
                               menuProvider.getStepPost);
+                          print(menuProvider.getMenuNamePost);
+                          print(menuProvider.getMenuImagePost);
+                          print(menuProvider.getMenuCategoryPost);
+                          print(menuProvider.getIngredientPost);
+                          print(menuProvider.getStepPost);
                           //print(menuProvider.getIngredientPost.length);
                           // print(menuProvider.getStepPost.length);
                           // for (Steps a in menuProvider.getStepPost) {

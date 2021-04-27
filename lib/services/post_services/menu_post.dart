@@ -28,51 +28,104 @@ class MenuPost {
   MenuPost(String uid) {
     this._uid = uid;
     userDetailService = UserDetailService(_uid);
+    userDetailPost = UserDetailPost(_uid);
   }
+
+  // Future<void> createNewMenu(String menuName, String category, String image,
+  //     List<Ingredient> ingredientList, List<Steps> stepList) async {
+  //
+  //   var menuOwner = await userDetailService.getUsername();
+  //
+  //   // adding data to first level of collection
+  //   _menuReference.add({
+  //         'image': image,
+  //     'menuOwner': menuOwner,
+  //     'name': menuName,
+  //     'type': category
+  //       });
+  //
+  //   QuerySnapshot menuSnapshot =
+  //       await this._menuReference.where('name', isEqualTo: menuName).get();
+  //
+  //   var menuId = menuSnapshot.docs[0].id;
+  //   var ingredientIterator = 1;
+  //   // adding data to second level of collection (step and ingredient)
+  //   // ----> ingredients
+  //   ingredientList.forEach((element) {
+  //     _menuReference.doc(menuId).collection(ingredientCollection)
+  //         .add({
+  //       'amount': element.amount,
+  //       'name': element.name,
+  //       'units': element.units
+  //     });
+  //   });
+  //   // ----> steps
+  //   stepList.forEach((element) {
+  //     _menuReference.doc(menuId).collection(stepCollection)
+  //         .add({
+  //       'text': element.text,
+  //       'time': element.time,
+  //       'unit': element.unit,
+  //       'order': ingredientIterator
+  //     });
+  //     ingredientIterator = ingredientIterator + 1;
+  //   });
+  //   // end of add to menu reference
+  //
+  //   // updating user detail for menuOwned
+  // //   userDetailPost.addMenuOwned(menuName, image);
+  // }       // end of create menu function
 
   Future<void> createNewMenu(String menuName, String category, String image,
       List<Ingredient> ingredientList, List<Steps> stepList) async {
 
-    var menuOwner = userDetailService.getUsername();
+    var menuOwner = await userDetailService.getUsername();
 
     // adding data to first level of collection
     _menuReference.add({
-          'image': image,
+      'image': image,
       'menuOwner': menuOwner,
       'name': menuName,
       'type': category
-        });
+    });
 
     QuerySnapshot menuSnapshot =
-        await this._menuReference.where('name', isEqualTo: menuName).get();
+    await this._menuReference.where('name', isEqualTo: menuName).get();
 
     var menuId = menuSnapshot.docs[0].id;
-    var ingredientIterator = 1;
+    var stepIterator = 1;
     // adding data to second level of collection (step and ingredient)
     // ----> ingredients
     ingredientList.forEach((element) {
       _menuReference.doc(menuId).collection(ingredientCollection)
           .add({
-        'amount': element.amount,
-        'name': element.name,
-        'units': element.units
+        'amount': element.amount.toString(),
+        'name': element.name.toString(),
+        'units': element.units.toString()
       });
     });
+    print(stepList[0].text);
     // ----> steps
     stepList.forEach((element) {
       _menuReference.doc(menuId).collection(stepCollection)
           .add({
         'text': element.text,
         'time': element.time,
-        'unit': element.unit,
-        'order': ingredientIterator
+        'order': stepIterator,
+        'unit': element.unit
       });
-      ingredientIterator = ingredientIterator + 1;
+      stepIterator = stepIterator + 1;
+    });
+
+    // ---> init review
+    _menuReference.doc(menuId).collection(reviewCollection).add({
+      'reviewer': '',
+      'text': ''
     });
     // end of add to menu reference
 
     // updating user detail for menuOwned
-    userDetailPost.addMenuOwned(menuName, image);
+    userDetailPost.addMenuOwned(menuName, image, menuOwner);
   }       // end of create menu function
 
   Future<void> createReview(String reviewer, String menuName, String text) async {
