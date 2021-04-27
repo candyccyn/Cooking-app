@@ -44,12 +44,21 @@ class _TimerScreenState extends State<TimerScreen>
 
   @override
   Widget build(BuildContext context) {
+    int timeAmount;
     final menuProvider = Provider.of<MenuProvider>(context);
+    if (menuProvider.getStepList[currentStep - 1].unit == "minutes") {
+      timeAmount = menuProvider.getStepList[currentStep - 1].time * 60;
+    } else if (menuProvider.getStepList[currentStep - 1].unit == "seconds") {
+      timeAmount = menuProvider.getStepList[currentStep - 1].time;
+    } else {
+      timeAmount = menuProvider.getStepList[currentStep - 1].time * 3600;
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         textTheme: TextTheme(
-            headline6: TextStyle(color: Color(0xff091D67), fontSize: 18)),
+            headline: TextStyle(color: Color(0xff091D67), fontSize: 18)),
         title: Text(
           "Steps " +
               this.currentStep.toString() +
@@ -96,15 +105,19 @@ class _TimerScreenState extends State<TimerScreen>
                 alignment: Alignment.topLeft,
                 child: RichText(
                   text: TextSpan(
-                    text: menuProvider.getStepList[currentStep - 1].text
-                        .toString(),
+                    text: menuProvider.getStepList[currentStep - 1].text +
+                        " for  ".toString(),
                     style: TextStyle(
                         fontFamily: 'Century Gothic',
                         fontSize: 16,
                         color: Color.fromRGBO(9, 29, 103, 1)),
                     children: <TextSpan>[
                       TextSpan(
-                          text: "10 minutes",
+                          text: menuProvider.getStepList[currentStep - 1].time
+                                  .toString() +
+                              " " +
+                              menuProvider.getStepList[currentStep - 1].unit
+                                  .toString(),
                           style: TextStyle(
                               fontFamily: 'Century Gothic',
                               fontSize: 16,
@@ -119,7 +132,7 @@ class _TimerScreenState extends State<TimerScreen>
               width: 120,
               height: 120,
               child: SimpleTimer(
-                duration: const Duration(seconds: 600),
+                duration: Duration(seconds: timeAmount),
                 controller: _timerController,
                 timerStyle: _timerStyle,
                 onStart: handleTimerOnStart,
@@ -186,8 +199,8 @@ class _TimerScreenState extends State<TimerScreen>
                               Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                      builder: (context) =>
-                                          new TimerScreen(currentStep: 2)))
+                                      builder: (context) => new TimerScreen(
+                                          currentStep: this.currentStep + 1)))
                             }
                           else
                             {
